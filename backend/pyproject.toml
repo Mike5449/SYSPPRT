@@ -22,7 +22,7 @@ dependencies = [
     "sentry-sdk[fastapi]<2.0.0,>=1.40.6",
     "pyjwt<3.0.0,>=2.8.0",
     # Saisie automatique des notes (OCR, 100 % local, sans IA générative)
-    "opencv-python-headless>=4.9",
+    "opencv-python-headless>=5.0.0.93",
     "easyocr>=1.7.1",
     "pillow>=10",
 ]
