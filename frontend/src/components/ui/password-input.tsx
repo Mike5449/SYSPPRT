@@ -29,15 +29,17 @@ export interface PasswordVisibilityProps {
 
 export interface PasswordInputProps
   extends InputProps,
-    PasswordVisibilityProps {
+  PasswordVisibilityProps {
   rootProps?: GroupProps
   startElement?: React.ReactNode
-  type: string
-  errors: any
+  type?: string
+  errors?: any
 }
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   function PasswordInput(props, ref) {
+    if (!props) return null;
+
     const {
       rootProps,
       defaultVisible,
@@ -45,8 +47,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       onVisibleChange,
       visibilityIcon = { on: <FiEye />, off: <FiEyeOff /> },
       startElement,
-      type,
-      errors,
+      type: typeProp,
+      errors: errorsProp,
       ...rest
     } = props
 
@@ -58,10 +60,22 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 
     const inputRef = useRef<HTMLInputElement>(null)
 
+    // Extremely defensive error check
+    let hasError = false
+    let errorText = undefined
+
+    if (typeProp && errorsProp && typeof errorsProp === 'object') {
+      const fieldError = errorsProp[typeProp]
+      if (fieldError) {
+        hasError = true
+        errorText = fieldError.message
+      }
+    }
+
     return (
       <Field
-        invalid={!!errors[type]}
-        errorText={errors[type]?.message}
+        invalid={hasError}
+        errorText={errorText}
         alignSelf="start"
       >
         <InputGroup

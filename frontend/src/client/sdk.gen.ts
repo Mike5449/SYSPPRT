@@ -3,7 +3,3118 @@
 import type { CancelablePromise } from './core/CancelablePromise';
 import { OpenAPI } from './core/OpenAPI';
 import { request as __request } from './core/request';
-import type { ItemsReadItemsData, ItemsReadItemsResponse, ItemsCreateItemData, ItemsCreateItemResponse, ItemsReadItemData, ItemsReadItemResponse, ItemsUpdateItemData, ItemsUpdateItemResponse, ItemsDeleteItemData, ItemsDeleteItemResponse, LoginLoginAccessTokenData, LoginLoginAccessTokenResponse, LoginTestTokenResponse, LoginRecoverPasswordData, LoginRecoverPasswordResponse, LoginResetPasswordData, LoginResetPasswordResponse, LoginRecoverPasswordHtmlContentData, LoginRecoverPasswordHtmlContentResponse, PrivateCreateUserData, PrivateCreateUserResponse, UsersReadUsersData, UsersReadUsersResponse, UsersCreateUserData, UsersCreateUserResponse, UsersReadUserMeResponse, UsersDeleteUserMeResponse, UsersUpdateUserMeData, UsersUpdateUserMeResponse, UsersUpdatePasswordMeData, UsersUpdatePasswordMeResponse, UsersRegisterUserData, UsersRegisterUserResponse, UsersReadUserByIdData, UsersReadUserByIdResponse, UsersUpdateUserData, UsersUpdateUserResponse, UsersDeleteUserData, UsersDeleteUserResponse, UtilsTestEmailData, UtilsTestEmailResponse, UtilsHealthCheckResponse } from './types.gen';
+import type { AcademicYearsReadAcademicYearsData, AcademicYearsReadAcademicYearsResponse, AcademicYearsCreateAcademicYearData, AcademicYearsCreateAcademicYearResponse, AcademicYearsReadCurrentAcademicYearResponse, AcademicYearsReadAcademicYearData, AcademicYearsReadAcademicYearResponse, AcademicYearsUpdateAcademicYearData, AcademicYearsUpdateAcademicYearResponse, AcademicYearsDeleteAcademicYearData, AcademicYearsDeleteAcademicYearResponse, AcademicYearsSetCurrentAcademicYearData, AcademicYearsSetCurrentAcademicYearResponse, AssessmentsReadAssessmentsData, AssessmentsReadAssessmentsResponse, AssessmentsCreateAssessmentData, AssessmentsCreateAssessmentResponse, AssessmentsReadAssessmentsByCourseSessionData, AssessmentsReadAssessmentsByCourseSessionResponse, AssessmentsReadPublishedAssessmentsData, AssessmentsReadPublishedAssessmentsResponse, AssessmentsReadMandatoryAssessmentsData, AssessmentsReadMandatoryAssessmentsResponse, AssessmentsReadAssessmentsByTypeData, AssessmentsReadAssessmentsByTypeResponse, AssessmentsGetTotalWeightData, AssessmentsGetTotalWeightResponse, AssessmentsReadAssessmentData, AssessmentsReadAssessmentResponse, AssessmentsUpdateAssessmentData, AssessmentsUpdateAssessmentResponse, AssessmentsDeleteAssessmentData, AssessmentsDeleteAssessmentResponse, AttendanceQrGenerateQrTokenData, AttendanceQrGenerateQrTokenResponse, AttendanceQrEndSessionData, AttendanceQrEndSessionResponse, AttendanceQrStartSessionForScheduleData, AttendanceQrStartSessionForScheduleResponse, AttendanceQrReopenSessionData, AttendanceQrReopenSessionResponse, AttendanceQrScanQrTokenData, AttendanceQrScanQrTokenResponse, AttendanceRecordsReadAttendanceRecordsData, AttendanceRecordsReadAttendanceRecordsResponse, AttendanceRecordsCreateAttendanceRecordData, AttendanceRecordsCreateAttendanceRecordResponse, AttendanceRecordsReadAttendanceRecordsBySessionData, AttendanceRecordsReadAttendanceRecordsBySessionResponse, AttendanceRecordsReadAttendanceRecordsByStudentData, AttendanceRecordsReadAttendanceRecordsByStudentResponse, AttendanceRecordsReadAttendanceRecordsByStatusData, AttendanceRecordsReadAttendanceRecordsByStatusResponse, AttendanceRecordsGetStudentStatisticsData, AttendanceRecordsGetStudentStatisticsResponse, AttendanceRecordsReadAttendanceRecordData, AttendanceRecordsReadAttendanceRecordResponse, AttendanceRecordsUpdateAttendanceRecordData, AttendanceRecordsUpdateAttendanceRecordResponse, AttendanceRecordsDeleteAttendanceRecordData, AttendanceRecordsDeleteAttendanceRecordResponse, AttendanceRecordsBulkMarkAttendanceData, AttendanceRecordsBulkMarkAttendanceResponse, AttendanceRecordsMarkPresentData, AttendanceRecordsMarkPresentResponse, AttendanceRecordsMarkAbsentData, AttendanceRecordsMarkAbsentResponse, AttendanceRecordsMarkLateData, AttendanceRecordsMarkLateResponse, AttendanceRecordsMarkExcusedData, AttendanceRecordsMarkExcusedResponse, AttendanceSessionsReadAttendanceSessionsData, AttendanceSessionsReadAttendanceSessionsResponse, AttendanceSessionsCreateAttendanceSessionData, AttendanceSessionsCreateAttendanceSessionResponse, AttendanceSessionsReadAttendanceSessionsByScheduleData, AttendanceSessionsReadAttendanceSessionsByScheduleResponse, AttendanceSessionsReadUpcomingAttendanceSessionsData, AttendanceSessionsReadUpcomingAttendanceSessionsResponse, AttendanceSessionsReadPastAttendanceSessionsData, AttendanceSessionsReadPastAttendanceSessionsResponse, AttendanceSessionsReadAttendanceSessionByDateData, AttendanceSessionsReadAttendanceSessionByDateResponse, AttendanceSessionsReadAttendanceSessionsByDateRangeData, AttendanceSessionsReadAttendanceSessionsByDateRangeResponse, AttendanceSessionsReadAttendanceSessionData, AttendanceSessionsReadAttendanceSessionResponse, AttendanceSessionsUpdateAttendanceSessionData, AttendanceSessionsUpdateAttendanceSessionResponse, AttendanceSessionsDeleteAttendanceSessionData, AttendanceSessionsDeleteAttendanceSessionResponse, AttendanceSessionsCancelAttendanceSessionData, AttendanceSessionsCancelAttendanceSessionResponse, AttendanceSessionsMarkAttendanceTakenData, AttendanceSessionsMarkAttendanceTakenResponse, CourseProgramLevelsReadCourseProgramLevelsData, CourseProgramLevelsReadCourseProgramLevelsResponse, CourseProgramLevelsCreateCourseProgramLevelData, CourseProgramLevelsCreateCourseProgramLevelResponse, CourseProgramLevelsReadActiveCourseProgramLevelsData, CourseProgramLevelsReadActiveCourseProgramLevelsResponse, CourseProgramLevelsReadCourseProgramLevelsByCourseData, CourseProgramLevelsReadCourseProgramLevelsByCourseResponse, CourseProgramLevelsReadCourseProgramLevelsByProgramLevelData, CourseProgramLevelsReadCourseProgramLevelsByProgramLevelResponse, CourseProgramLevelsReadCourseProgramLevelsByYearLevelData, CourseProgramLevelsReadCourseProgramLevelsByYearLevelResponse, CourseProgramLevelsReadCourseProgramLevelData, CourseProgramLevelsReadCourseProgramLevelResponse, CourseProgramLevelsUpdateCourseProgramLevelData, CourseProgramLevelsUpdateCourseProgramLevelResponse, CourseProgramLevelsDeleteCourseProgramLevelData, CourseProgramLevelsDeleteCourseProgramLevelResponse, CoursesReadCoursesData, CoursesReadCoursesResponse, CoursesCreateCourseData, CoursesCreateCourseResponse, CoursesSearchCoursesData, CoursesSearchCoursesResponse, CoursesReadCoursesByProgramData, CoursesReadCoursesByProgramResponse, CoursesReadCoursesByProgramAndYearData, CoursesReadCoursesByProgramAndYearResponse, CoursesReadMandatoryCoursesData, CoursesReadMandatoryCoursesResponse, CoursesReadOptionalCoursesData, CoursesReadOptionalCoursesResponse, CoursesReadCourseData, CoursesReadCourseResponse, CoursesUpdateCourseData, CoursesUpdateCourseResponse, CoursesDeleteCourseData, CoursesDeleteCourseResponse, CourseSessionsReadCourseSessionsData, CourseSessionsReadCourseSessionsResponse, CourseSessionsCreateCourseSessionData, CourseSessionsCreateCourseSessionResponse, CourseSessionsReadCourseSessionsBySessionData, CourseSessionsReadCourseSessionsBySessionResponse, CourseSessionsReadCourseSessionsByCourseProgramLevelData, CourseSessionsReadCourseSessionsByCourseProgramLevelResponse, CourseSessionsReadCourseSessionData, CourseSessionsReadCourseSessionResponse, CourseSessionsUpdateCourseSessionData, CourseSessionsUpdateCourseSessionResponse, CourseSessionsDeleteCourseSessionData, CourseSessionsDeleteCourseSessionResponse, CourseSessionsEnrollStudentData, CourseSessionsEnrollStudentResponse, CourseSessionsUnenrollStudentData, CourseSessionsUnenrollStudentResponse, DepartmentsReadDepartmentsData, DepartmentsReadDepartmentsResponse, DepartmentsCreateDepartmentData, DepartmentsCreateDepartmentResponse, DepartmentsReadDepartmentData, DepartmentsReadDepartmentResponse, DepartmentsUpdateDepartmentData, DepartmentsUpdateDepartmentResponse, DepartmentsDeleteDepartmentData, DepartmentsDeleteDepartmentResponse, DepartmentsDeactivateDepartmentData, DepartmentsDeactivateDepartmentResponse, DepartmentsActivateDepartmentData, DepartmentsActivateDepartmentResponse, EnrollmentsReadEnrollmentsData, EnrollmentsReadEnrollmentsResponse, EnrollmentsCreateEnrollmentData, EnrollmentsCreateEnrollmentResponse, EnrollmentsReadEnrollmentsByStudentData, EnrollmentsReadEnrollmentsByStudentResponse, EnrollmentsReadActiveEnrollmentsByStudentData, EnrollmentsReadActiveEnrollmentsByStudentResponse, EnrollmentsReadEnrollmentsByCourseSessionData, EnrollmentsReadEnrollmentsByCourseSessionResponse, EnrollmentsReadEnrollmentData, EnrollmentsReadEnrollmentResponse, EnrollmentsUpdateEnrollmentData, EnrollmentsUpdateEnrollmentResponse, EnrollmentsDeleteEnrollmentData, EnrollmentsDeleteEnrollmentResponse, EnrollmentsDropEnrollmentData, EnrollmentsDropEnrollmentResponse, FacultiesReadFacultiesData, FacultiesReadFacultiesResponse, FacultiesCreateFacultyData, FacultiesCreateFacultyResponse, FacultiesReadActiveFacultiesData, FacultiesReadActiveFacultiesResponse, FacultiesReadFacultiesByDepartmentData, FacultiesReadFacultiesByDepartmentResponse, FacultiesReadFacultyData, FacultiesReadFacultyResponse, FacultiesUpdateFacultyData, FacultiesUpdateFacultyResponse, FacultiesDeleteFacultyData, FacultiesDeleteFacultyResponse, FacultiesDeactivateFacultyData, FacultiesDeactivateFacultyResponse, FacultiesActivateFacultyData, FacultiesActivateFacultyResponse, GradesReadGradesData, GradesReadGradesResponse, GradesCreateGradeData, GradesCreateGradeResponse, GradesReadGradesByStudentData, GradesReadGradesByStudentResponse, GradesReadPublishedGradesByStudentData, GradesReadPublishedGradesByStudentResponse, GradesReadGradesByStudentAndYearLevelData, GradesReadGradesByStudentAndYearLevelResponse, GradesGetStudentYearLevelStatisticsData, GradesGetStudentYearLevelStatisticsResponse, GradesReadGradesByStudentAndSessionData, GradesReadGradesByStudentAndSessionResponse, GradesGetStudentSessionStatisticsData, GradesGetStudentSessionStatisticsResponse, GradesReadGradesByStudentAndCourseData, GradesReadGradesByStudentAndCourseResponse, GradesGetStudentCourseStatisticsData, GradesGetStudentCourseStatisticsResponse, GradesReadGradesByStudentAndYearLevelWithCourseInfoData, GradesReadGradesByStudentAndYearLevelWithCourseInfoResponse, GradesReadGradesByStudentAndSessionWithCourseInfoData, GradesReadGradesByStudentAndSessionWithCourseInfoResponse, GradesReadGradesByStudentAndCourseWithCourseInfoData, GradesReadGradesByStudentAndCourseWithCourseInfoResponse, GradesReadStudentGradesSummaryByLevelData, GradesReadStudentGradesSummaryByLevelResponse, GradesReadStudentGradesSummaryBySessionData, GradesReadStudentGradesSummaryBySessionResponse, GradesReadStudentGradesSummaryByCourseData, GradesReadStudentGradesSummaryByCourseResponse, GradesReadGradesByEnrollmentData, GradesReadGradesByEnrollmentResponse, GradesGetEnrollmentStatisticsData, GradesGetEnrollmentStatisticsResponse, GradesReadGradesByAssessmentData, GradesReadGradesByAssessmentResponse, GradesGetAssessmentStatisticsData, GradesGetAssessmentStatisticsResponse, GradesGetStudentTranscriptData, GradesGetStudentTranscriptResponse, GradesReadGradeData, GradesReadGradeResponse, GradesUpdateGradeData, GradesUpdateGradeResponse, GradesDeleteGradeData, GradesDeleteGradeResponse, GradesPublishGradeData, GradesPublishGradeResponse, GradesUnpublishGradeData, GradesUnpublishGradeResponse, ItemsReadItemsData, ItemsReadItemsResponse, ItemsCreateItemData, ItemsCreateItemResponse, ItemsReadItemData, ItemsReadItemResponse, ItemsUpdateItemData, ItemsUpdateItemResponse, ItemsDeleteItemData, ItemsDeleteItemResponse, LoginLoginAccessTokenData, LoginLoginAccessTokenResponse, LoginRequestOtpData, LoginRequestOtpResponse, LoginVerifyOtpData, LoginVerifyOtpResponse, LoginTestTokenResponse, LoginRecoverPasswordData, LoginRecoverPasswordResponse, LoginResetPasswordData, LoginResetPasswordResponse, LoginRecoverPasswordHtmlContentData, LoginRecoverPasswordHtmlContentResponse, ProgramLevelsReadProgramLevelsData, ProgramLevelsReadProgramLevelsResponse, ProgramLevelsCreateProgramLevelData, ProgramLevelsCreateProgramLevelResponse, ProgramLevelsReadActiveProgramLevelsData, ProgramLevelsReadActiveProgramLevelsResponse, ProgramLevelsReadProgramLevelData, ProgramLevelsReadProgramLevelResponse, ProgramLevelsUpdateProgramLevelData, ProgramLevelsUpdateProgramLevelResponse, ProgramLevelsDeleteProgramLevelData, ProgramLevelsDeleteProgramLevelResponse, ProgramLevelsReadProgramLevelByCodeData, ProgramLevelsReadProgramLevelByCodeResponse, ProgramsReadProgramsData, ProgramsReadProgramsResponse, ProgramsCreateProgramData, ProgramsCreateProgramResponse, ProgramsReadActiveProgramsData, ProgramsReadActiveProgramsResponse, ProgramsReadProgramsByFacultyData, ProgramsReadProgramsByFacultyResponse, ProgramsReadProgramData, ProgramsReadProgramResponse, ProgramsUpdateProgramData, ProgramsUpdateProgramResponse, ProgramsDeleteProgramData, ProgramsDeleteProgramResponse, ProgramsDeactivateProgramData, ProgramsDeactivateProgramResponse, ProgramsActivateProgramData, ProgramsActivateProgramResponse, RolesGetUserRolesData, RolesGetUserRolesResponse, RolesGetAllRolesResponse, RolesAssignRoleToUserData, RolesAssignRoleToUserResponse, RolesRemoveRoleFromUserData, RolesRemoveRoleFromUserResponse, SchedulesReadSchedulesData, SchedulesReadSchedulesResponse, SchedulesCreateScheduleData, SchedulesCreateScheduleResponse, SchedulesSearchSchedulesData, SchedulesSearchSchedulesResponse, SchedulesReadSchedulesByCourseSessionData, SchedulesReadSchedulesByCourseSessionResponse, SchedulesReadSchedulesByDayData, SchedulesReadSchedulesByDayResponse, SchedulesReadScheduleData, SchedulesReadScheduleResponse, SchedulesUpdateScheduleData, SchedulesUpdateScheduleResponse, SchedulesDeleteScheduleData, SchedulesDeleteScheduleResponse, SessionsReadSessionsData, SessionsReadSessionsResponse, SessionsCreateSessionData, SessionsCreateSessionResponse, SessionsReadSessionsWithAcademicYearData, SessionsReadSessionsWithAcademicYearResponse, SessionsReadSessionsByAcademicYearData, SessionsReadSessionsByAcademicYearResponse, SessionsReadSessionData, SessionsReadSessionResponse, SessionsUpdateSessionData, SessionsUpdateSessionResponse, SessionsDeleteSessionData, SessionsDeleteSessionResponse, SessionsReadSessionWithAcademicYearData, SessionsReadSessionWithAcademicYearResponse, StudentAnalyticsGetStudentDashboardMetricsData, StudentAnalyticsGetStudentDashboardMetricsResponse, StudentAssessmentsViewsGetStudentAssessmentsData, StudentAssessmentsViewsGetStudentAssessmentsResponse, StudentAssessmentsViewsGetStudentAssessmentsStatisticsData, StudentAssessmentsViewsGetStudentAssessmentsStatisticsResponse, StudentAssessmentsViewsGetStudentAssessmentPerformanceReportData, StudentAssessmentsViewsGetStudentAssessmentPerformanceReportResponse, StudentAssessmentsViewsGetAssessmentStudentsData, StudentAssessmentsViewsGetAssessmentStudentsResponse, StudentAssessmentsViewsGetAssessmentStatisticsData, StudentAssessmentsViewsGetAssessmentStatisticsResponse, StudentAssessmentsViewsGetCourseSessionAssessmentsData, StudentAssessmentsViewsGetCourseSessionAssessmentsResponse, StudentAssessmentsViewsGetTeacherAssessmentsData, StudentAssessmentsViewsGetTeacherAssessmentsResponse, StudentAssessmentsViewsGetTeacherAssessmentsOverviewData, StudentAssessmentsViewsGetTeacherAssessmentsOverviewResponse, StudentAssessmentsViewsSearchAssessmentsData, StudentAssessmentsViewsSearchAssessmentsResponse, StudentAssessmentsViewsFilterAssessmentsData, StudentAssessmentsViewsFilterAssessmentsResponse, StudentAssessmentsViewsGetAssessmentAlertsData, StudentAssessmentsViewsGetAssessmentAlertsResponse, StudentAssessmentsViewsGetOverdueAssessmentsData, StudentAssessmentsViewsGetOverdueAssessmentsResponse, StudentAssessmentsViewsGetUrgentAssessmentsData, StudentAssessmentsViewsGetUrgentAssessmentsResponse, StudentAssessmentsViewsGetAssessmentsByDateRangeData, StudentAssessmentsViewsGetAssessmentsByDateRangeResponse, StudentAssessmentsViewsGetAssessmentsSummaryAdminResponse, StudentAssessmentsViewsGetAssessmentsAnalyticsAdminResponse, StudentAssessmentsViewsGetAssessmentsWorkloadAnalysisAdminResponse, StudentAttendanceViewsGetStudentAttendanceCompleteData, StudentAttendanceViewsGetStudentAttendanceCompleteResponse, StudentAttendanceViewsGetStudentAttendanceReportData, StudentAttendanceViewsGetStudentAttendanceReportResponse, StudentAttendanceViewsGetCourseSessionAttendanceCompleteData, StudentAttendanceViewsGetCourseSessionAttendanceCompleteResponse, StudentAttendanceViewsGetAttendanceSessionCompleteData, StudentAttendanceViewsGetAttendanceSessionCompleteResponse, StudentAttendanceViewsGetTeacherAttendanceOverviewData, StudentAttendanceViewsGetTeacherAttendanceOverviewResponse, StudentAttendanceViewsGetAcademicSessionAttendanceSummaryData, StudentAttendanceViewsGetAcademicSessionAttendanceSummaryResponse, StudentAttendanceViewsGetYearLevelAttendanceAnalysisData, StudentAttendanceViewsGetYearLevelAttendanceAnalysisResponse, StudentAttendanceViewsGetAttendanceAlertsData, StudentAttendanceViewsGetAttendanceAlertsResponse, StudentAttendanceViewsGetAttendanceStatisticsData, StudentAttendanceViewsGetAttendanceStatisticsResponse, StudentAttendanceViewsSearchAttendanceData, StudentAttendanceViewsSearchAttendanceResponse, StudentAttendanceViewsGetAttendanceByDateRangeData, StudentAttendanceViewsGetAttendanceByDateRangeResponse, StudentAttendanceViewsGetStudentAttendanceStatisticsData, StudentAttendanceViewsGetStudentAttendanceStatisticsResponse, StudentCoursesViewsGetStudentCoursesData, StudentCoursesViewsGetStudentCoursesResponse, StudentCoursesViewsGetStudentCoursesStatisticsData, StudentCoursesViewsGetStudentCoursesStatisticsResponse, StudentCoursesViewsGetStudentPerformanceReportData, StudentCoursesViewsGetStudentPerformanceReportResponse, StudentCoursesViewsGetCourseSessionStudentsData, StudentCoursesViewsGetCourseSessionStudentsResponse, StudentCoursesViewsGetTeacherCoursesData, StudentCoursesViewsGetTeacherCoursesResponse, StudentCoursesViewsGetTeacherCoursesOverviewData, StudentCoursesViewsGetTeacherCoursesOverviewResponse, StudentCoursesViewsSearchCoursesData, StudentCoursesViewsSearchCoursesResponse, StudentCoursesViewsFilterCoursesData, StudentCoursesViewsFilterCoursesResponse, StudentCoursesViewsGetAcademicAlertsData, StudentCoursesViewsGetAcademicAlertsResponse, StudentCoursesViewsGetCoursesByDateRangeData, StudentCoursesViewsGetCoursesByDateRangeResponse, StudentCoursesViewsGetCourseSessionStatisticsData, StudentCoursesViewsGetCourseSessionStatisticsResponse, StudentCoursesViewsGetStudentPerformanceTrendsData, StudentCoursesViewsGetStudentPerformanceTrendsResponse, StudentCoursesViewsGetCoursesSummaryAdminResponse, StudentCoursesViewsGetCoursesAnalyticsAdminResponse, StudentGradeViewsGetStudentGradesCompleteData, StudentGradeViewsGetStudentGradesCompleteResponse, StudentGradeViewsGetStudentTranscriptData, StudentGradeViewsGetStudentTranscriptResponse, StudentGradeViewsGetCourseSessionGradesCompleteData, StudentGradeViewsGetCourseSessionGradesCompleteResponse, StudentGradeViewsGetAcademicSessionSummaryData, StudentGradeViewsGetAcademicSessionSummaryResponse, StudentGradeViewsGetYearLevelPerformanceAnalysisData, StudentGradeViewsGetYearLevelPerformanceAnalysisResponse, StudentGradeViewsGetGradesStatisticsData, StudentGradeViewsGetGradesStatisticsResponse, StudentGradeViewsSearchGradesData, StudentGradeViewsSearchGradesResponse, StudentsReadStudentsData, StudentsReadStudentsResponse, StudentsCreateStudentData, StudentsCreateStudentResponse, StudentsReadActiveStudentsData, StudentsReadActiveStudentsResponse, StudentsReadStudentsByProgramData, StudentsReadStudentsByProgramResponse, StudentsReadStudentsByYearLevelData, StudentsReadStudentsByYearLevelResponse, StudentsReadStudentsByProgramLevelAndYearData, StudentsReadStudentsByProgramLevelAndYearResponse, StudentsReadStudentByNumberData, StudentsReadStudentByNumberResponse, StudentsReadStudentByUserData, StudentsReadStudentByUserResponse, StudentsReadStudentData, StudentsReadStudentResponse, StudentsUpdateStudentData, StudentsUpdateStudentResponse, StudentsDeleteStudentData, StudentsDeleteStudentResponse, StudentsCreateStudentWithUserData, StudentsCreateStudentWithUserResponse, StudentsUpdateStudentGpaData, StudentsUpdateStudentGpaResponse, StudentsReadTheoreticalCoursesData, StudentsReadTheoreticalCoursesResponse, StudentsReadStudentGradesByYearWithCourseInfoData, StudentsReadStudentGradesByYearWithCourseInfoResponse, StudentsGetStudentTranscriptData, StudentsGetStudentTranscriptResponse, TeacherAnalyticsGetAssignedProgramLevelsData, TeacherAnalyticsGetAssignedProgramLevelsResponse, TeacherAnalyticsGetAssignedTeachersData, TeacherAnalyticsGetAssignedTeachersResponse, TeacherAnalyticsGetTeacherDashboardMetricsData, TeacherAnalyticsGetTeacherDashboardMetricsResponse, TeachersReadTeachersData, TeachersReadTeachersResponse, TeachersCreateTeacherData, TeachersCreateTeacherResponse, TeachersReadActiveTeachersData, TeachersReadActiveTeachersResponse, TeachersReadTeachersByDepartmentData, TeachersReadTeachersByDepartmentResponse, TeachersReadTeacherByUserNumberData, TeachersReadTeacherByUserNumberResponse, TeachersReadTeacherByUserData, TeachersReadTeacherByUserResponse, TeachersReadTeacherData, TeachersReadTeacherResponse, TeachersUpdateTeacherData, TeachersUpdateTeacherResponse, TeachersDeleteTeacherData, TeachersDeleteTeacherResponse, TeachersCreateTeacherWithUserData, TeachersCreateTeacherWithUserResponse, UniversitiesReadUniversitiesData, UniversitiesReadUniversitiesResponse, UniversitiesCreateUniversityData, UniversitiesCreateUniversityResponse, UniversitiesReadActiveUniversitiesData, UniversitiesReadActiveUniversitiesResponse, UniversitiesReadUniversityData, UniversitiesReadUniversityResponse, UniversitiesUpdateUniversityData, UniversitiesUpdateUniversityResponse, UniversitiesDeleteUniversityData, UniversitiesDeleteUniversityResponse, UniversitiesReadUniversityByCodeData, UniversitiesReadUniversityByCodeResponse, UniversitiesDeactivateUniversityData, UniversitiesDeactivateUniversityResponse, UniversitiesActivateUniversityData, UniversitiesActivateUniversityResponse, UsersReadUsersData, UsersReadUsersResponse, UsersCreateUserData, UsersCreateUserResponse, UsersReadUserMeResponse, UsersDeleteUserMeResponse, UsersUpdateUserMeData, UsersUpdateUserMeResponse, UsersUpdatePasswordMeData, UsersUpdatePasswordMeResponse, UsersRegisterUserData, UsersRegisterUserResponse, UsersReadUserByIdData, UsersReadUserByIdResponse, UsersUpdateUserData, UsersUpdateUserResponse, UsersDeleteUserData, UsersDeleteUserResponse, UtilsTestEmailData, UtilsTestEmailResponse, UtilsHealthCheckResponse, NotesScanNoteData, NotesScanNoteResponse, NotesSaveNoteData, NotesSaveNoteResponse } from './types.gen';
+
+export class AcademicYearsService {
+    /**
+     * Read Academic Years
+     * Retrieve academic years.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.name
+     * @param data.code
+     * @param data.isCurrent
+     * @returns AcademicYearsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAcademicYears(data: AcademicYearsReadAcademicYearsData = {}): CancelablePromise<AcademicYearsReadAcademicYearsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/academic-years/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                name: data.name,
+                code: data.code,
+                is_current: data.isCurrent
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Academic Year
+     * Create new academic year.
+     * Only superusers can create academic years.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AcademicYearPublic Successful Response
+     * @throws ApiError
+     */
+    public static createAcademicYear(data: AcademicYearsCreateAcademicYearData): CancelablePromise<AcademicYearsCreateAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/academic-years/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Current Academic Year
+     * Get current academic year.
+     * @returns AcademicYearPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCurrentAcademicYear(): CancelablePromise<AcademicYearsReadCurrentAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/academic-years/current'
+        });
+    }
+    
+    /**
+     * Read Academic Year
+     * Get academic year by ID.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @returns AcademicYearPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAcademicYear(data: AcademicYearsReadAcademicYearData): CancelablePromise<AcademicYearsReadAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/academic-years/{academic_year_id}',
+            path: {
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Academic Year
+     * Update an academic year.
+     * Only superusers can update academic years.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @param data.requestBody
+     * @returns AcademicYearPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateAcademicYear(data: AcademicYearsUpdateAcademicYearData): CancelablePromise<AcademicYearsUpdateAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/academic-years/{academic_year_id}',
+            path: {
+                academic_year_id: data.academicYearId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Academic Year
+     * Delete an academic year.
+     * Only superusers can delete academic years.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteAcademicYear(data: AcademicYearsDeleteAcademicYearData): CancelablePromise<AcademicYearsDeleteAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/academic-years/{academic_year_id}',
+            path: {
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Set Current Academic Year
+     * Set an academic year as current.
+     * Only superusers can set current academic year.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @returns AcademicYearPublic Successful Response
+     * @throws ApiError
+     */
+    public static setCurrentAcademicYear(data: AcademicYearsSetCurrentAcademicYearData): CancelablePromise<AcademicYearsSetCurrentAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/academic-years/{academic_year_id}/set-current',
+            path: {
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class AssessmentsService {
+    /**
+     * Read Assessments
+     * Retrieve assessments.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.name
+     * @param data.assessmentType
+     * @param data.dueDate
+     * @param data.courseSessionId
+     * @param data.teacherId
+     * @returns AssessmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAssessments(data: AssessmentsReadAssessmentsData = {}): CancelablePromise<AssessmentsReadAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                name: data.name,
+                assessment_type: data.assessmentType,
+                due_date: data.dueDate,
+                course_session_id: data.courseSessionId,
+                teacher_id: data.teacherId,
+                course_name: data.courseName,
+                year_level: data.yearLevel,
+                session_number: data.sessionNumber,
+                student_id: data.studentId,
+                program_level_id: data.programLevelId,
+                session_id: data.sessionId,
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    /**
+     * Create Assessment
+     * Create new assessment.
+     * Only superusers can create assessments.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AssessmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static createAssessment(data: AssessmentsCreateAssessmentData): CancelablePromise<AssessmentsCreateAssessmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/assessments/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Assessments By Course Session
+     * Retrieve assessments by course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns AssessmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAssessmentsByCourseSession(data: AssessmentsReadAssessmentsByCourseSessionData): CancelablePromise<AssessmentsReadAssessmentsByCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/course-session/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Published Assessments
+     * Retrieve published assessments.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns AssessmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readPublishedAssessments(data: AssessmentsReadPublishedAssessmentsData): CancelablePromise<AssessmentsReadPublishedAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/course-session/{course_session_id}/published',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Mandatory Assessments
+     * Retrieve mandatory assessments.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns AssessmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readMandatoryAssessments(data: AssessmentsReadMandatoryAssessmentsData): CancelablePromise<AssessmentsReadMandatoryAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/course-session/{course_session_id}/mandatory',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Assessments By Type
+     * Retrieve assessments by type.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.assessmentType
+     * @param data.skip
+     * @param data.limit
+     * @returns AssessmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAssessmentsByType(data: AssessmentsReadAssessmentsByTypeData): CancelablePromise<AssessmentsReadAssessmentsByTypeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/course-session/{course_session_id}/type/{assessment_type}',
+            path: {
+                course_session_id: data.courseSessionId,
+                assessment_type: data.assessmentType
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Total Weight
+     * Get total weight of assessments for a course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getTotalWeight(data: AssessmentsGetTotalWeightData): CancelablePromise<AssessmentsGetTotalWeightResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/course-session/{course_session_id}/total-weight',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Assessment
+     * Get assessment by ID.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @returns AssessmentPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readAssessment(data: AssessmentsReadAssessmentData): CancelablePromise<AssessmentsReadAssessmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/assessments/{assessment_id}',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Assessment
+     * Update an assessment.
+     * Only superusers can update assessments.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @param data.requestBody
+     * @returns AssessmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateAssessment(data: AssessmentsUpdateAssessmentData): CancelablePromise<AssessmentsUpdateAssessmentResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/assessments/{assessment_id}',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Assessment
+     * Delete an assessment.
+     * Only superusers can delete assessments.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteAssessment(data: AssessmentsDeleteAssessmentData): CancelablePromise<AssessmentsDeleteAssessmentResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/assessments/{assessment_id}',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class AttendanceQrService {
+    /**
+     * Generate Qr Token
+     * Generate a new single‑use QR token for an attendance session.
+     * Only superusers and teachers can generate QR tokens.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @param data.refreshInterval
+     * @returns AttendanceQRResponse Successful Response
+     * @throws ApiError
+     */
+    public static generateQrToken(data: AttendanceQrGenerateQrTokenData): CancelablePromise<AttendanceQrGenerateQrTokenResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-qr/{session_id}/generate-qr',
+            path: {
+                session_id: data.sessionId
+            },
+            query: {
+                refresh_interval: data.refreshInterval
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    public static endSession(data: AttendanceQrEndSessionData): CancelablePromise<AttendanceQrEndSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-qr/{session_id}/end-session',
+            path: {
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    public static reopenSession(data: AttendanceQrReopenSessionData): CancelablePromise<AttendanceQrReopenSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-qr/{session_id}/reopen',
+            path: {
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    public static startSessionForSchedule(data: AttendanceQrStartSessionForScheduleData): CancelablePromise<AttendanceQrStartSessionForScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-qr/schedule/{schedule_id}/start-session',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            query: {
+                late_threshold_minutes: data.lateThresholdMinutes
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    /**
+     * Scan Qr Token
+     * Scan a QR token to record attendance.
+     * The student must be logged in.
+     * Returns attendance record with student and session details.
+     * @param data The data for the request.
+     * @param data.token
+     * @returns AttendanceRecordPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static scanQrToken(data: AttendanceQrScanQrTokenData): CancelablePromise<AttendanceQrScanQrTokenResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-qr/scan-qr',
+            query: {
+                token: data.token
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class AttendanceRecordsService {
+    /**
+     * Read Attendance Records
+     * Retrieve attendance records.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.studentQuery
+     * @param data.status
+     * @param data.teacherId
+     * @param data.courseId
+     * @param data.academicYearId
+     * @param data.yearLevel
+     * @returns AttendanceRecordsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceRecords(data: AttendanceRecordsReadAttendanceRecordsData = {}): CancelablePromise<AttendanceRecordsReadAttendanceRecordsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                student_query: data.studentQuery,
+                status: data.status,
+                teacher_id: data.teacherId,
+                course_id: data.courseId,
+                academic_year_id: data.academicYearId,
+                year_level: data.yearLevel,
+                program_level_id: data.programLevelId,
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Attendance Record
+     * Create new attendance record.
+     * Only superusers can create attendance records.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static createAttendanceRecord(data: AttendanceRecordsCreateAttendanceRecordData): CancelablePromise<AttendanceRecordsCreateAttendanceRecordResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Records By Session
+     * Retrieve attendance records by session.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceRecordsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceRecordsBySession(data: AttendanceRecordsReadAttendanceRecordsBySessionData): CancelablePromise<AttendanceRecordsReadAttendanceRecordsBySessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/session/{attendance_session_id}',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Records By Student
+     * Retrieve attendance records by student.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceRecordsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceRecordsByStudent(data: AttendanceRecordsReadAttendanceRecordsByStudentData): CancelablePromise<AttendanceRecordsReadAttendanceRecordsByStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/student/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Records By Status
+     * Retrieve attendance records by status.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @param data.status
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceRecordsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceRecordsByStatus(data: AttendanceRecordsReadAttendanceRecordsByStatusData): CancelablePromise<AttendanceRecordsReadAttendanceRecordsByStatusResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/session/{attendance_session_id}/status/{status}',
+            path: {
+                attendance_session_id: data.attendanceSessionId,
+                status: data.status
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Statistics
+     * Get attendance statistics for a student in a specific schedule.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.scheduleId
+     * @returns AttendanceStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentStatistics(data: AttendanceRecordsGetStudentStatisticsData): CancelablePromise<AttendanceRecordsGetStudentStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/student/{student_id}/schedule/{schedule_id}/statistics',
+            path: {
+                student_id: data.studentId,
+                schedule_id: data.scheduleId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Record
+     * Get attendance record by ID.
+     * @param data The data for the request.
+     * @param data.attendanceRecordId
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceRecord(data: AttendanceRecordsReadAttendanceRecordData): CancelablePromise<AttendanceRecordsReadAttendanceRecordResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-records/{attendance_record_id}',
+            path: {
+                attendance_record_id: data.attendanceRecordId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Attendance Record
+     * Update an attendance record.
+     * Only superusers can update attendance records.
+     * @param data The data for the request.
+     * @param data.attendanceRecordId
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateAttendanceRecord(data: AttendanceRecordsUpdateAttendanceRecordData): CancelablePromise<AttendanceRecordsUpdateAttendanceRecordResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/attendance-records/{attendance_record_id}',
+            path: {
+                attendance_record_id: data.attendanceRecordId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Attendance Record
+     * Delete an attendance record.
+     * Only superusers can delete attendance records.
+     * @param data The data for the request.
+     * @param data.attendanceRecordId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteAttendanceRecord(data: AttendanceRecordsDeleteAttendanceRecordData): CancelablePromise<AttendanceRecordsDeleteAttendanceRecordResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/attendance-records/{attendance_record_id}',
+            path: {
+                attendance_record_id: data.attendanceRecordId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Bulk Mark Attendance
+     * Mark attendance for multiple students at once.
+     * student_statuses format: [{"student_id": "uuid", "status": "present|absent|late|excused"}]
+     * Only superusers can mark attendance.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordsPublic Successful Response
+     * @throws ApiError
+     */
+    public static bulkMarkAttendance(data: AttendanceRecordsBulkMarkAttendanceData): CancelablePromise<AttendanceRecordsBulkMarkAttendanceResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/bulk-mark',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Mark Present
+     * Mark a student as present.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static markPresent(data: AttendanceRecordsMarkPresentData): CancelablePromise<AttendanceRecordsMarkPresentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/mark-present',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Mark Absent
+     * Mark a student as absent.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static markAbsent(data: AttendanceRecordsMarkAbsentData): CancelablePromise<AttendanceRecordsMarkAbsentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/mark-absent',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Mark Late
+     * Mark a student as late.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static markLate(data: AttendanceRecordsMarkLateData): CancelablePromise<AttendanceRecordsMarkLateResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/mark-late',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Mark Excused
+     * Mark a student as excused.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceRecordPublic Successful Response
+     * @throws ApiError
+     */
+    public static markExcused(data: AttendanceRecordsMarkExcusedData): CancelablePromise<AttendanceRecordsMarkExcusedResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-records/mark-excused',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class AttendanceSessionsService {
+    /**
+     * Read Attendance Sessions
+     * Retrieve attendance sessions.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.courseQuery
+     * @param data.sessionDate
+     * @param data.status
+     * @returns AttendanceSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceSessions(data: AttendanceSessionsReadAttendanceSessionsData = {}): CancelablePromise<AttendanceSessionsReadAttendanceSessionsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                course_query: data.courseQuery,
+                session_date: data.sessionDate,
+                status: data.status
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Attendance Session
+     * Only superusers and teachers can create attendance sessions.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static createAttendanceSession(data: AttendanceSessionsCreateAttendanceSessionData): CancelablePromise<AttendanceSessionsCreateAttendanceSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-sessions/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Sessions By Schedule
+     * Retrieve attendance sessions by schedule.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceSessionsBySchedule(data: AttendanceSessionsReadAttendanceSessionsByScheduleData): CancelablePromise<AttendanceSessionsReadAttendanceSessionsByScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/schedule/{schedule_id}',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Upcoming Attendance Sessions
+     * Retrieve upcoming attendance sessions.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readUpcomingAttendanceSessions(data: AttendanceSessionsReadUpcomingAttendanceSessionsData): CancelablePromise<AttendanceSessionsReadUpcomingAttendanceSessionsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/schedule/{schedule_id}/upcoming',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Past Attendance Sessions
+     * Retrieve past attendance sessions.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readPastAttendanceSessions(data: AttendanceSessionsReadPastAttendanceSessionsData): CancelablePromise<AttendanceSessionsReadPastAttendanceSessionsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/schedule/{schedule_id}/past',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Session By Date
+     * Get attendance session by date.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.sessionDate
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceSessionByDate(data: AttendanceSessionsReadAttendanceSessionByDateData): CancelablePromise<AttendanceSessionsReadAttendanceSessionByDateResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/schedule/{schedule_id}/date/{session_date}',
+            path: {
+                schedule_id: data.scheduleId,
+                session_date: data.sessionDate
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Sessions By Date Range
+     * Retrieve attendance sessions by date range.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.startDate
+     * @param data.endDate
+     * @param data.skip
+     * @param data.limit
+     * @returns AttendanceSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceSessionsByDateRange(data: AttendanceSessionsReadAttendanceSessionsByDateRangeData): CancelablePromise<AttendanceSessionsReadAttendanceSessionsByDateRangeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/schedule/{schedule_id}/date-range',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            query: {
+                start_date: data.startDate,
+                end_date: data.endDate,
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Attendance Session
+     * Get attendance session by ID.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static readAttendanceSession(data: AttendanceSessionsReadAttendanceSessionData): CancelablePromise<AttendanceSessionsReadAttendanceSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/attendance-sessions/{attendance_session_id}',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Attendance Session
+     * Update an attendance session.
+     * Only superusers and teachers can update attendance sessions.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @param data.requestBody
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateAttendanceSession(data: AttendanceSessionsUpdateAttendanceSessionData): CancelablePromise<AttendanceSessionsUpdateAttendanceSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/attendance-sessions/{attendance_session_id}',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Attendance Session
+     * Delete an attendance session.
+     * Only superusers can delete attendance sessions.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteAttendanceSession(data: AttendanceSessionsDeleteAttendanceSessionData): CancelablePromise<AttendanceSessionsDeleteAttendanceSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/attendance-sessions/{attendance_session_id}',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Cancel Attendance Session
+     * Cancel an attendance session.
+     * Only superusers and teachers can cancel sessions.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @param data.cancellationReason
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static cancelAttendanceSession(data: AttendanceSessionsCancelAttendanceSessionData): CancelablePromise<AttendanceSessionsCancelAttendanceSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-sessions/{attendance_session_id}/cancel',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            query: {
+                cancellation_reason: data.cancellationReason
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Mark Attendance Taken
+     * Mark attendance as taken for this session.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @returns AttendanceSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static markAttendanceTaken(data: AttendanceSessionsMarkAttendanceTakenData): CancelablePromise<AttendanceSessionsMarkAttendanceTakenResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/attendance-sessions/{attendance_session_id}/mark-taken',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class CourseProgramLevelsService {
+    /**
+     * Read Course Program Levels
+     * Retrieve all course-program level relations.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseProgramLevels(data: CourseProgramLevelsReadCourseProgramLevelsData = {}): CancelablePromise<CourseProgramLevelsReadCourseProgramLevelsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Course Program Level
+     * Create new course-program level relation.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns CourseProgramLevelPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static createCourseProgramLevel(data: CourseProgramLevelsCreateCourseProgramLevelData): CancelablePromise<CourseProgramLevelsCreateCourseProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/course-program-levels/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Course Program Levels
+     * Retrieve active course-program level relations.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveCourseProgramLevels(data: CourseProgramLevelsReadActiveCourseProgramLevelsData = {}): CancelablePromise<CourseProgramLevelsReadActiveCourseProgramLevelsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Program Levels By Course
+     * Retrieve all program levels for a specific course.
+     * @param data The data for the request.
+     * @param data.courseId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseProgramLevelsByCourse(data: CourseProgramLevelsReadCourseProgramLevelsByCourseData): CancelablePromise<CourseProgramLevelsReadCourseProgramLevelsByCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/course/{course_id}',
+            path: {
+                course_id: data.courseId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Program Levels By Program Level
+     * Retrieve all courses for a specific program level.
+     * @param data The data for the request.
+     * @param data.programLevelId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseProgramLevelsByProgramLevel(data: CourseProgramLevelsReadCourseProgramLevelsByProgramLevelData): CancelablePromise<CourseProgramLevelsReadCourseProgramLevelsByProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/program-level/{program_level_id}',
+            path: {
+                program_level_id: data.programLevelId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Program Levels By Year Level
+     * Retrieve all relations for a specific year level.
+     * @param data The data for the request.
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseProgramLevelsByYearLevel(data: CourseProgramLevelsReadCourseProgramLevelsByYearLevelData): CancelablePromise<CourseProgramLevelsReadCourseProgramLevelsByYearLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/year-level/{year_level}',
+            path: {
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Program Level
+     * Get course-program level relation by ID.
+     * @param data The data for the request.
+     * @param data.cplId
+     * @returns CourseProgramLevelPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readCourseProgramLevel(data: CourseProgramLevelsReadCourseProgramLevelData): CancelablePromise<CourseProgramLevelsReadCourseProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-program-levels/{cpl_id}',
+            path: {
+                cpl_id: data.cplId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Course Program Level
+     * Update a course-program level relation.
+     * @param data The data for the request.
+     * @param data.cplId
+     * @param data.requestBody
+     * @returns CourseProgramLevelPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static updateCourseProgramLevel(data: CourseProgramLevelsUpdateCourseProgramLevelData): CancelablePromise<CourseProgramLevelsUpdateCourseProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/course-program-levels/{cpl_id}',
+            path: {
+                cpl_id: data.cplId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Course Program Level
+     * Delete a course-program level relation.
+     * @param data The data for the request.
+     * @param data.cplId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteCourseProgramLevel(data: CourseProgramLevelsDeleteCourseProgramLevelData): CancelablePromise<CourseProgramLevelsDeleteCourseProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/course-program-levels/{cpl_id}',
+            path: {
+                cpl_id: data.cplId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class CoursesService {
+    /**
+     * Read Courses
+     * Retrieve courses.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.name
+     * @param data.code
+     * @param data.isMandatory
+     * @param data.isActive
+     * @returns CoursesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourses(data: CoursesReadCoursesData = {}): CancelablePromise<CoursesReadCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                name: data.name,
+                code: data.code,
+                is_mandatory: data.isMandatory,
+                is_active: data.isActive
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Course
+     * Create new course.
+     * Only superusers can create courses.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns CoursePublic Successful Response
+     * @throws ApiError
+     */
+    public static createCourse(data: CoursesCreateCourseData): CancelablePromise<CoursesCreateCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/courses/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Search Courses
+     * Search courses by program level with enriched information.
+     * Returns courses with teacher, session, academic year, and program details.
+     * Optional: filter by academic year, session number, year level, and teacher.
+     * @param data The data for the request.
+     * @param data.programLevelId
+     * @param data.academicYearId
+     * @param data.sessionNumber
+     * @param data.yearLevel
+     * @param data.teacherId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesWithSessionInfoPublic Successful Response
+     * @throws ApiError
+     */
+    public static searchCourses(data: CoursesSearchCoursesData): CancelablePromise<CoursesSearchCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/search',
+            query: {
+                program_level_id: data.programLevelId,
+                academic_year_id: data.academicYearId,
+                session_number: data.sessionNumber,
+                year_level: data.yearLevel,
+                teacher_id: data.teacherId,
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Courses By Program
+     * Retrieve courses by program.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCoursesByProgram(data: CoursesReadCoursesByProgramData): CancelablePromise<CoursesReadCoursesByProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/program/{program_id}',
+            path: {
+                program_id: data.programId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Courses By Program And Year
+     * Retrieve courses by program and year level.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCoursesByProgramAndYear(data: CoursesReadCoursesByProgramAndYearData): CancelablePromise<CoursesReadCoursesByProgramAndYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/program/{program_id}/year/{year_level}',
+            path: {
+                program_id: data.programId,
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Mandatory Courses
+     * Retrieve mandatory courses for a program.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readMandatoryCourses(data: CoursesReadMandatoryCoursesData): CancelablePromise<CoursesReadMandatoryCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/program/{program_id}/mandatory',
+            path: {
+                program_id: data.programId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Optional Courses
+     * Retrieve optional courses for a program.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.skip
+     * @param data.limit
+     * @returns CoursesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readOptionalCourses(data: CoursesReadOptionalCoursesData): CancelablePromise<CoursesReadOptionalCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/program/{program_id}/optional',
+            path: {
+                program_id: data.programId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course
+     * Get course by ID.
+     * @param data The data for the request.
+     * @param data.courseId
+     * @returns CoursePublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourse(data: CoursesReadCourseData): CancelablePromise<CoursesReadCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/courses/{course_id}',
+            path: {
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Course
+     * Update a course.
+     * Only superusers can update courses.
+     * @param data The data for the request.
+     * @param data.courseId
+     * @param data.requestBody
+     * @returns CoursePublic Successful Response
+     * @throws ApiError
+     */
+    public static updateCourse(data: CoursesUpdateCourseData): CancelablePromise<CoursesUpdateCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/courses/{course_id}',
+            path: {
+                course_id: data.courseId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Course
+     * Delete a course.
+     * Only superusers can delete courses.
+     * @param data The data for the request.
+     * @param data.courseId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteCourse(data: CoursesDeleteCourseData): CancelablePromise<CoursesDeleteCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/courses/{course_id}',
+            path: {
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class CourseSessionsService {
+    /**
+     * Read Course Sessions
+     * Retrieve course sessions.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.courseQuery
+     * @param data.programId
+     * @param data.programLevelId
+     * @param data.teacherId
+     * @param data.sessionId
+     * @param data.isActive
+     * @returns CourseSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseSessions(data: CourseSessionsReadCourseSessionsData = {}): CancelablePromise<CourseSessionsReadCourseSessionsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-sessions/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                course_query: data.courseQuery,
+                program_id: data.programId,
+                program_level_id: data.programLevelId,
+                teacher_id: data.teacherId,
+                session_id: data.sessionId,
+                is_active: data.isActive,
+                year_level: data.yearLevel,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Course Session
+     * Create new course session.
+     * Only superusers can create course sessions.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns CourseSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static createCourseSession(data: CourseSessionsCreateCourseSessionData): CancelablePromise<CourseSessionsCreateCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/course-sessions/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Sessions By Session
+     * Retrieve course sessions by session.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns CourseSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseSessionsBySession(data: CourseSessionsReadCourseSessionsBySessionData): CancelablePromise<CourseSessionsReadCourseSessionsBySessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-sessions/session/{session_id}',
+            path: {
+                session_id: data.sessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Sessions By Course Program Level
+     * Retrieve course sessions by course program level.
+     * @param data The data for the request.
+     * @param data.courseProgramLevelId
+     * @param data.skip
+     * @param data.limit
+     * @returns CourseSessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseSessionsByCourseProgramLevel(data: CourseSessionsReadCourseSessionsByCourseProgramLevelData): CancelablePromise<CourseSessionsReadCourseSessionsByCourseProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-sessions/course-program-level/{course_program_level_id}',
+            path: {
+                course_program_level_id: data.courseProgramLevelId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Course Session
+     * Get course session by ID.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns CourseSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static readCourseSession(data: CourseSessionsReadCourseSessionData): CancelablePromise<CourseSessionsReadCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/course-sessions/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Course Session
+     * Update a course session.
+     * Only superusers can update course sessions.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.requestBody
+     * @returns CourseSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateCourseSession(data: CourseSessionsUpdateCourseSessionData): CancelablePromise<CourseSessionsUpdateCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/course-sessions/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Course Session
+     * Delete a course session.
+     * Only superusers can delete course sessions.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteCourseSession(data: CourseSessionsDeleteCourseSessionData): CancelablePromise<CourseSessionsDeleteCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/course-sessions/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Enroll Student
+     * Enroll a student in a course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns CourseSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static enrollStudent(data: CourseSessionsEnrollStudentData): CancelablePromise<CourseSessionsEnrollStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/course-sessions/{course_session_id}/enroll',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Unenroll Student
+     * Unenroll a student from a course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns CourseSessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static unenrollStudent(data: CourseSessionsUnenrollStudentData): CancelablePromise<CourseSessionsUnenrollStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/course-sessions/{course_session_id}/unenroll',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class DepartmentsService {
+    /**
+     * Read Departments
+     * Retrieve departments.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns DepartmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readDepartments(data: DepartmentsReadDepartmentsData = {}): CancelablePromise<DepartmentsReadDepartmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/departments/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Department
+     * Create new department.
+     * Only superusers can create departments.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns DepartmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static createDepartment(data: DepartmentsCreateDepartmentData): CancelablePromise<DepartmentsCreateDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/departments/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Department
+     * Get department by ID.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @returns DepartmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static readDepartment(data: DepartmentsReadDepartmentData): CancelablePromise<DepartmentsReadDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/departments/{department_id}',
+            path: {
+                department_id: data.departmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Department
+     * Update a department.
+     * Only superusers can update departments.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @param data.requestBody
+     * @returns DepartmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateDepartment(data: DepartmentsUpdateDepartmentData): CancelablePromise<DepartmentsUpdateDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/departments/{department_id}',
+            path: {
+                department_id: data.departmentId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Department
+     * Delete a department.
+     * Only superusers can delete departments.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteDepartment(data: DepartmentsDeleteDepartmentData): CancelablePromise<DepartmentsDeleteDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/departments/{department_id}',
+            path: {
+                department_id: data.departmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Deactivate Department
+     * Deactivate a department.
+     * Only superusers can deactivate departments.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @returns DepartmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static deactivateDepartment(data: DepartmentsDeactivateDepartmentData): CancelablePromise<DepartmentsDeactivateDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/departments/{department_id}/deactivate',
+            path: {
+                department_id: data.departmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Activate Department
+     * Activate a department.
+     * Only superusers can activate departments.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @returns DepartmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static activateDepartment(data: DepartmentsActivateDepartmentData): CancelablePromise<DepartmentsActivateDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/departments/{department_id}/activate',
+            path: {
+                department_id: data.departmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class EnrollmentsService {
+    /**
+     * Read Enrollments
+     * Retrieve enrollments.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns EnrollmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readEnrollments(data: EnrollmentsReadEnrollmentsData = {}): CancelablePromise<EnrollmentsReadEnrollmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/enrollments/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Enrollment
+     * Create new enrollment.
+     * Only superusers can create enrollments.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns EnrollmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static createEnrollment(data: EnrollmentsCreateEnrollmentData): CancelablePromise<EnrollmentsCreateEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/enrollments/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Enrollments By Student
+     * Retrieve enrollments by student.
+     * Students can only see their own enrollments.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @returns EnrollmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readEnrollmentsByStudent(data: EnrollmentsReadEnrollmentsByStudentData): CancelablePromise<EnrollmentsReadEnrollmentsByStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/enrollments/student/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Enrollments By Student
+     * Retrieve active enrollments by student.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @returns EnrollmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveEnrollmentsByStudent(data: EnrollmentsReadActiveEnrollmentsByStudentData): CancelablePromise<EnrollmentsReadActiveEnrollmentsByStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/enrollments/student/{student_id}/active',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Enrollments By Course Session
+     * Retrieve enrollments by course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns EnrollmentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readEnrollmentsByCourseSession(data: EnrollmentsReadEnrollmentsByCourseSessionData): CancelablePromise<EnrollmentsReadEnrollmentsByCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/enrollments/course-session/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Enrollment
+     * Get enrollment by ID.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @returns EnrollmentPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readEnrollment(data: EnrollmentsReadEnrollmentData): CancelablePromise<EnrollmentsReadEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/enrollments/{enrollment_id}',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Enrollment
+     * Update an enrollment.
+     * Only superusers can update enrollments.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @param data.requestBody
+     * @returns EnrollmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateEnrollment(data: EnrollmentsUpdateEnrollmentData): CancelablePromise<EnrollmentsUpdateEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/enrollments/{enrollment_id}',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Enrollment
+     * Delete an enrollment.
+     * Only superusers can delete enrollments.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteEnrollment(data: EnrollmentsDeleteEnrollmentData): CancelablePromise<EnrollmentsDeleteEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/enrollments/{enrollment_id}',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Drop Enrollment
+     * Drop an enrollment.
+     * Only superusers can drop enrollments.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @returns EnrollmentPublic Successful Response
+     * @throws ApiError
+     */
+    public static dropEnrollment(data: EnrollmentsDropEnrollmentData): CancelablePromise<EnrollmentsDropEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/enrollments/{enrollment_id}/drop',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class FacultiesService {
+    /**
+     * Read Faculties
+     * Retrieve faculties.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns FacultiesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readFaculties(data: FacultiesReadFacultiesData = {}): CancelablePromise<FacultiesReadFacultiesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/faculties/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Faculty
+     * Create new faculty.
+     * Only superusers can create faculties.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns FacultyPublic Successful Response
+     * @throws ApiError
+     */
+    public static createFaculty(data: FacultiesCreateFacultyData): CancelablePromise<FacultiesCreateFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/faculties/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Faculties
+     * Retrieve active faculties only.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns FacultiesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveFaculties(data: FacultiesReadActiveFacultiesData = {}): CancelablePromise<FacultiesReadActiveFacultiesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/faculties/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Faculties By Department
+     * Retrieve faculties by department.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @param data.skip
+     * @param data.limit
+     * @param data.activeOnly
+     * @returns FacultiesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readFacultiesByDepartment(data: FacultiesReadFacultiesByDepartmentData): CancelablePromise<FacultiesReadFacultiesByDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/faculties/department/{department_id}',
+            path: {
+                department_id: data.departmentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                active_only: data.activeOnly
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Faculty
+     * Get faculty by ID.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @returns FacultyPublic Successful Response
+     * @throws ApiError
+     */
+    public static readFaculty(data: FacultiesReadFacultyData): CancelablePromise<FacultiesReadFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/faculties/{faculty_id}',
+            path: {
+                faculty_id: data.facultyId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Faculty
+     * Update a faculty.
+     * Only superusers can update faculties.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @param data.requestBody
+     * @returns FacultyPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateFaculty(data: FacultiesUpdateFacultyData): CancelablePromise<FacultiesUpdateFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/faculties/{faculty_id}',
+            path: {
+                faculty_id: data.facultyId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Faculty
+     * Delete a faculty.
+     * Only superusers can delete faculties.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteFaculty(data: FacultiesDeleteFacultyData): CancelablePromise<FacultiesDeleteFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/faculties/{faculty_id}',
+            path: {
+                faculty_id: data.facultyId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Deactivate Faculty
+     * Deactivate a faculty.
+     * Only superusers can deactivate faculties.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @returns FacultyPublic Successful Response
+     * @throws ApiError
+     */
+    public static deactivateFaculty(data: FacultiesDeactivateFacultyData): CancelablePromise<FacultiesDeactivateFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/faculties/{faculty_id}/deactivate',
+            path: {
+                faculty_id: data.facultyId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Activate Faculty
+     * Activate a faculty.
+     * Only superusers can activate faculties.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @returns FacultyPublic Successful Response
+     * @throws ApiError
+     */
+    public static activateFaculty(data: FacultiesActivateFacultyData): CancelablePromise<FacultiesActivateFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/faculties/{faculty_id}/activate',
+            path: {
+                faculty_id: data.facultyId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class GradesService {
+    /**
+     * Read Grades
+     * Retrieve grades.
+     * Only superusers can see all grades.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.studentQuery
+     * @param data.assessmentQuery
+     * @param data.examType
+     * @param data.isPublished
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGrades(data: GradesReadGradesData = {}): CancelablePromise<GradesReadGradesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                student_query: data.studentQuery,
+                assessment_query: data.assessmentQuery,
+                exam_type: data.examType,
+                is_published: data.isPublished
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Grade
+     * Create new grade.
+     * Only superusers can create grades.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns GradePublic Successful Response
+     * @throws ApiError
+     */
+    public static createGrade(data: GradesCreateGradeData): CancelablePromise<GradesCreateGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/grades/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student
+     * Retrieve grades by student.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudent(data: GradesReadGradesByStudentData): CancelablePromise<GradesReadGradesByStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Published Grades By Student
+     * Retrieve published grades by student.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readPublishedGradesByStudent(data: GradesReadPublishedGradesByStudentData): CancelablePromise<GradesReadPublishedGradesByStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/published',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Year Level
+     * Retrieve grades by student for a specific year level.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndYearLevel(data: GradesReadGradesByStudentAndYearLevelData): CancelablePromise<GradesReadGradesByStudentAndYearLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/year-level/{year_level}',
+            path: {
+                student_id: data.studentId,
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Year Level Statistics
+     * Get grade statistics for a student at a specific year level.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.yearLevel
+     * @returns GradeStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentYearLevelStatistics(data: GradesGetStudentYearLevelStatisticsData): CancelablePromise<GradesGetStudentYearLevelStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/year-level/{year_level}/statistics',
+            path: {
+                student_id: data.studentId,
+                year_level: data.yearLevel
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Session
+     * Retrieve grades by student for a specific session (semester).
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.sessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndSession(data: GradesReadGradesByStudentAndSessionData): CancelablePromise<GradesReadGradesByStudentAndSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/session/{session_id}',
+            path: {
+                student_id: data.studentId,
+                session_id: data.sessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Session Statistics
+     * Get grade statistics for a student in a specific session.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.sessionId
+     * @returns GradeStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentSessionStatistics(data: GradesGetStudentSessionStatisticsData): CancelablePromise<GradesGetStudentSessionStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/session/{session_id}/statistics',
+            path: {
+                student_id: data.studentId,
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Course
+     * Retrieve grades by student for a specific course.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndCourse(data: GradesReadGradesByStudentAndCourseData): CancelablePromise<GradesReadGradesByStudentAndCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/course/{course_id}',
+            path: {
+                student_id: data.studentId,
+                course_id: data.courseId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Course Statistics
+     * Get grade statistics for a student in a specific course.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @returns CourseGradeStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentCourseStatistics(data: GradesGetStudentCourseStatisticsData): CancelablePromise<GradesGetStudentCourseStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/course/{course_id}/statistics',
+            path: {
+                student_id: data.studentId,
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Year Level With Course Info
+     * Retrieve grades by student for a specific year level WITH complete course information.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesWithCourseInfo Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndYearLevelWithCourseInfo(data: GradesReadGradesByStudentAndYearLevelWithCourseInfoData): CancelablePromise<GradesReadGradesByStudentAndYearLevelWithCourseInfoResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/year-level/{year_level}/with-course-info',
+            path: {
+                student_id: data.studentId,
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Session With Course Info
+     * Retrieve grades by student for a specific session WITH complete course information.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.sessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesWithCourseInfo Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndSessionWithCourseInfo(data: GradesReadGradesByStudentAndSessionWithCourseInfoData): CancelablePromise<GradesReadGradesByStudentAndSessionWithCourseInfoResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/session/{session_id}/with-course-info',
+            path: {
+                student_id: data.studentId,
+                session_id: data.sessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Student And Course With Course Info
+     * Retrieve grades by student for a specific course WITH complete course information.
+     * Students can only see their own grades.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesWithCourseInfo Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByStudentAndCourseWithCourseInfo(data: GradesReadGradesByStudentAndCourseWithCourseInfoData): CancelablePromise<GradesReadGradesByStudentAndCourseWithCourseInfoResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/course/{course_id}/with-course-info',
+            path: {
+                student_id: data.studentId,
+                course_id: data.courseId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student Grades Summary By Level
+     * Récupère le résumé complet des notes d'un étudiant pour un niveau donné,
+     * AGRÉGÉ PAR COURS avec toutes les informations de l'étudiant et statistiques.
+     *
+     * Cette endpoint retourne:
+     * - Informations complètes de l'étudiant
+     * - Liste des cours groupés avec toutes leurs notes
+     * - Statistiques détaillées par cours (moyenne, GPA, etc.)
+     * - Statistiques globales du niveau
+     * - Calculs de progression et réussite
+     *
+     * Idéal pour: bulletins de notes, tableaux de bord, rapports académiques
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.yearLevel
+     * @returns StudentGradesSummaryByLevel Successful Response
+     * @throws ApiError
+     */
+    public static readStudentGradesSummaryByLevel(data: GradesReadStudentGradesSummaryByLevelData): CancelablePromise<GradesReadStudentGradesSummaryByLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/year-level/{year_level}/courses-summary',
+            path: {
+                student_id: data.studentId,
+                year_level: data.yearLevel
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student Grades Summary By Session
+     * Récupère le résumé complet des notes d'un étudiant pour une session donnée,
+     * AGRÉGÉ PAR COURS avec toutes les informations de l'étudiant.
+     *
+     * Idéal pour: bulletins de session, rapports semestriels, suivi par période
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.sessionId
+     * @returns StudentGradesSummaryBySession Successful Response
+     * @throws ApiError
+     */
+    public static readStudentGradesSummaryBySession(data: GradesReadStudentGradesSummaryBySessionData): CancelablePromise<GradesReadStudentGradesSummaryBySessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/session/{session_id}/courses-summary',
+            path: {
+                student_id: data.studentId,
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student Grades Summary By Course
+     * Récupère le résumé complet des notes d'un étudiant pour un cours spécifique,
+     * avec toutes les informations de l'étudiant et statistiques détaillées du cours.
+     *
+     * Idéal pour: suivi détaillé par cours, analyses de performance, rapports spécialisés
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @returns StudentGradesSummaryByCourse Successful Response
+     * @throws ApiError
+     */
+    public static readStudentGradesSummaryByCourse(data: GradesReadStudentGradesSummaryByCourseData): CancelablePromise<GradesReadStudentGradesSummaryByCourseResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/course/{course_id}/course-summary',
+            path: {
+                student_id: data.studentId,
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Enrollment
+     * Retrieve grades by enrollment.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByEnrollment(data: GradesReadGradesByEnrollmentData): CancelablePromise<GradesReadGradesByEnrollmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/enrollment/{enrollment_id}',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Enrollment Statistics
+     * Get grade statistics for an enrollment.
+     * @param data The data for the request.
+     * @param data.enrollmentId
+     * @returns GradeStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getEnrollmentStatistics(data: GradesGetEnrollmentStatisticsData): CancelablePromise<GradesGetEnrollmentStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/enrollment/{enrollment_id}/statistics',
+            path: {
+                enrollment_id: data.enrollmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grades By Assessment
+     * Retrieve grades by assessment.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readGradesByAssessment(data: GradesReadGradesByAssessmentData): CancelablePromise<GradesReadGradesByAssessmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/assessment/{assessment_id}',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Assessment Statistics
+     * Get statistics for an assessment.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentStatistics(data: GradesGetAssessmentStatisticsData): CancelablePromise<GradesGetAssessmentStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/assessment/{assessment_id}/statistics',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Transcript
+     * Get complete transcript for a student.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns StudentTranscript Successful Response
+     * @throws ApiError
+     */
+    public static getStudentTranscript(data: GradesGetStudentTranscriptData): CancelablePromise<GradesGetStudentTranscriptResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/student/{student_id}/transcript',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Grade
+     * Get grade by ID.
+     * @param data The data for the request.
+     * @param data.gradeId
+     * @returns GradePublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readGrade(data: GradesReadGradeData): CancelablePromise<GradesReadGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/grades/{grade_id}',
+            path: {
+                grade_id: data.gradeId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Grade
+     * Update a grade.
+     * Only superusers can update grades.
+     * @param data The data for the request.
+     * @param data.gradeId
+     * @param data.requestBody
+     * @returns GradePublic Successful Response
+     * @throws ApiError
+     */
+    public static updateGrade(data: GradesUpdateGradeData): CancelablePromise<GradesUpdateGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/grades/{grade_id}',
+            path: {
+                grade_id: data.gradeId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Grade
+     * Delete a grade.
+     * Only superusers can delete grades.
+     * @param data The data for the request.
+     * @param data.gradeId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteGrade(data: GradesDeleteGradeData): CancelablePromise<GradesDeleteGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/grades/{grade_id}',
+            path: {
+                grade_id: data.gradeId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Publish Grade
+     * Publish a grade.
+     * Only superusers can publish grades.
+     * @param data The data for the request.
+     * @param data.gradeId
+     * @returns GradePublic Successful Response
+     * @throws ApiError
+     */
+    public static publishGrade(data: GradesPublishGradeData): CancelablePromise<GradesPublishGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/grades/{grade_id}/publish',
+            path: {
+                grade_id: data.gradeId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Unpublish Grade
+     * Unpublish a grade.
+     * Only superusers can unpublish grades.
+     * @param data The data for the request.
+     * @param data.gradeId
+     * @returns GradePublic Successful Response
+     * @throws ApiError
+     */
+    public static unpublishGrade(data: GradesUnpublishGradeData): CancelablePromise<GradesUnpublishGradeResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/grades/{grade_id}/unpublish',
+            path: {
+                grade_id: data.gradeId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
 
 export class ItemsService {
     /**
@@ -138,6 +3249,46 @@ export class LoginService {
     }
     
     /**
+     * Request Otp
+     * Validate credentials and send OTP.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns Message Successful Response
+     * @throws ApiError
+     */
+    public static requestOtp(data: LoginRequestOtpData): CancelablePromise<LoginRequestOtpResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/login/otp-request',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Verify Otp
+     * Verify OTP and return access token.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns Token Successful Response
+     * @throws ApiError
+     */
+    public static verifyOtp(data: LoginVerifyOtpData): CancelablePromise<LoginVerifyOtpResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/login/otp-verify',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
      * Test Token
      * Test access token
      * @returns UserPublic Successful Response
@@ -213,21 +3364,3103 @@ export class LoginService {
     }
 }
 
-export class PrivateService {
+export class ProgramLevelsService {
     /**
-     * Create User
-     * Create a new user.
+     * Read Program Levels
+     * Retrieve program levels.
      * @param data The data for the request.
-     * @param data.requestBody
-     * @returns UserPublic Successful Response
+     * @param data.skip
+     * @param data.limit
+     * @returns ProgramLevelsPublic Successful Response
      * @throws ApiError
      */
-    public static createUser(data: PrivateCreateUserData): CancelablePromise<PrivateCreateUserResponse> {
+    public static readProgramLevels(data: ProgramLevelsReadProgramLevelsData = {}): CancelablePromise<ProgramLevelsReadProgramLevelsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/program-levels/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Program Level
+     * Create new program level.
+     * Only superusers can create program levels.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns ProgramLevelPublic Successful Response
+     * @throws ApiError
+     */
+    public static createProgramLevel(data: ProgramLevelsCreateProgramLevelData): CancelablePromise<ProgramLevelsCreateProgramLevelResponse> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/v1/private/users/',
+            url: '/api/v1/program-levels/',
             body: data.requestBody,
             mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Program Levels
+     * Retrieve active program levels only.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns ProgramLevelsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveProgramLevels(data: ProgramLevelsReadActiveProgramLevelsData = {}): CancelablePromise<ProgramLevelsReadActiveProgramLevelsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/program-levels/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Program Level
+     * Get program level by ID with program details.
+     * @param data The data for the request.
+     * @param data.levelId
+     * @returns ProgramLevelPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readProgramLevel(data: ProgramLevelsReadProgramLevelData): CancelablePromise<ProgramLevelsReadProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/program-levels/{level_id}',
+            path: {
+                level_id: data.levelId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Program Level
+     * Update a program level.
+     * Only superusers can update program levels.
+     * @param data The data for the request.
+     * @param data.levelId
+     * @param data.requestBody
+     * @returns ProgramLevelPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateProgramLevel(data: ProgramLevelsUpdateProgramLevelData): CancelablePromise<ProgramLevelsUpdateProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/program-levels/{level_id}',
+            path: {
+                level_id: data.levelId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Program Level
+     * Delete a program level.
+     * Only superusers can delete program levels.
+     * @param data The data for the request.
+     * @param data.levelId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteProgramLevel(data: ProgramLevelsDeleteProgramLevelData): CancelablePromise<ProgramLevelsDeleteProgramLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/program-levels/{level_id}',
+            path: {
+                level_id: data.levelId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Program Level By Code
+     * Get program level by code with program details.
+     * @param data The data for the request.
+     * @param data.code
+     * @returns ProgramLevelPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readProgramLevelByCode(data: ProgramLevelsReadProgramLevelByCodeData): CancelablePromise<ProgramLevelsReadProgramLevelByCodeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/program-levels/code/{code}',
+            path: {
+                code: data.code
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class ProgramsService {
+    /**
+     * Read Programs
+     * Retrieve programs.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns ProgramsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readPrograms(data: ProgramsReadProgramsData = {}): CancelablePromise<ProgramsReadProgramsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/programs/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Program
+     * Create new program.
+     * Only superusers can create programs.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns ProgramPublic Successful Response
+     * @throws ApiError
+     */
+    public static createProgram(data: ProgramsCreateProgramData): CancelablePromise<ProgramsCreateProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/programs/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Programs
+     * Retrieve active programs only.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns ProgramsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActivePrograms(data: ProgramsReadActiveProgramsData = {}): CancelablePromise<ProgramsReadActiveProgramsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/programs/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Programs By Faculty
+     * Retrieve programs by faculty.
+     * @param data The data for the request.
+     * @param data.facultyId
+     * @param data.skip
+     * @param data.limit
+     * @returns ProgramsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readProgramsByFaculty(data: ProgramsReadProgramsByFacultyData): CancelablePromise<ProgramsReadProgramsByFacultyResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/programs/faculty/{faculty_id}',
+            path: {
+                faculty_id: data.facultyId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Program
+     * Get program by ID with faculty details.
+     * @param data The data for the request.
+     * @param data.programId
+     * @returns ProgramPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readProgram(data: ProgramsReadProgramData): CancelablePromise<ProgramsReadProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/programs/{program_id}',
+            path: {
+                program_id: data.programId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Program
+     * Update a program.
+     * Only superusers can update programs.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.requestBody
+     * @returns ProgramPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateProgram(data: ProgramsUpdateProgramData): CancelablePromise<ProgramsUpdateProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/programs/{program_id}',
+            path: {
+                program_id: data.programId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Program
+     * Delete a program.
+     * Only superusers can delete programs.
+     * @param data The data for the request.
+     * @param data.programId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteProgram(data: ProgramsDeleteProgramData): CancelablePromise<ProgramsDeleteProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/programs/{program_id}',
+            path: {
+                program_id: data.programId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Deactivate Program
+     * Deactivate a program.
+     * Only superusers can deactivate programs.
+     * @param data The data for the request.
+     * @param data.programId
+     * @returns ProgramPublic Successful Response
+     * @throws ApiError
+     */
+    public static deactivateProgram(data: ProgramsDeactivateProgramData): CancelablePromise<ProgramsDeactivateProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/programs/{program_id}/deactivate',
+            path: {
+                program_id: data.programId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Activate Program
+     * Activate a program.
+     * Only superusers can activate programs.
+     * @param data The data for the request.
+     * @param data.programId
+     * @returns ProgramPublic Successful Response
+     * @throws ApiError
+     */
+    public static activateProgram(data: ProgramsActivateProgramData): CancelablePromise<ProgramsActivateProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/programs/{program_id}/activate',
+            path: {
+                program_id: data.programId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class RolesService {
+    /**
+     * Get User Roles
+     * Get all roles assigned to a user.
+     *
+     * Users can only see their own roles unless they are superusers.
+     * @param data The data for the request.
+     * @param data.userId
+     * @returns RolePublic Successful Response
+     * @throws ApiError
+     */
+    public static getUserRoles(data: RolesGetUserRolesData): CancelablePromise<RolesGetUserRolesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/roles/user/{user_id}',
+            path: {
+                user_id: data.userId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get All Roles
+     * Get all available roles (superuser only).
+     * @returns RolePublic Successful Response
+     * @throws ApiError
+     */
+    public static getAllRoles(): CancelablePromise<RolesGetAllRolesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/roles/'
+        });
+    }
+    
+    /**
+     * Assign Role To User
+     * Assign a role to a user (superuser only).
+     * @param data The data for the request.
+     * @param data.userId
+     * @param data.roleCode
+     * @returns boolean Successful Response
+     * @throws ApiError
+     */
+    public static assignRoleToUser(data: RolesAssignRoleToUserData): CancelablePromise<RolesAssignRoleToUserResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/roles/user/{user_id}/role/{role_code}',
+            path: {
+                user_id: data.userId,
+                role_code: data.roleCode
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Remove Role From User
+     * Remove a role from a user (superuser only).
+     * @param data The data for the request.
+     * @param data.userId
+     * @param data.roleCode
+     * @returns boolean Successful Response
+     * @throws ApiError
+     */
+    public static removeRoleFromUser(data: RolesRemoveRoleFromUserData): CancelablePromise<RolesRemoveRoleFromUserResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/roles/user/{user_id}/role/{role_code}',
+            path: {
+                user_id: data.userId,
+                role_code: data.roleCode
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class SchedulesService {
+    /**
+     * Read Schedules
+     * Retrieve schedules.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns SchedulesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSchedules(data: SchedulesReadSchedulesData = {}): CancelablePromise<SchedulesReadSchedulesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/schedules/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Schedule
+     * Create new schedule.
+     * Only superusers can create schedules.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns SchedulePublic Successful Response
+     * @throws ApiError
+     */
+    public static createSchedule(data: SchedulesCreateScheduleData): CancelablePromise<SchedulesCreateScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/schedules/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Search Schedules
+     * Search schedules with filters.
+     * @param data The data for the request.
+     * @param data.programLevelId
+     * @param data.academicYearId
+     * @param data.sessionNumber
+     * @param data.yearLevel
+     * @param data.teacherId
+     * @param data.skip
+     * @param data.limit
+     * @returns SchedulesPublic Successful Response
+     * @throws ApiError
+     */
+    public static searchSchedules(data: SchedulesSearchSchedulesData = {}): CancelablePromise<SchedulesSearchSchedulesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/schedules/search',
+            query: {
+                program_level_id: data.programLevelId,
+                academic_year_id: data.academicYearId,
+                session_number: data.sessionNumber,
+                year_level: data.yearLevel,
+                teacher_id: data.teacherId,
+                day_of_week: data.dayOfWeek,
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Schedules By Course Session
+     * Retrieve schedules by course session.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @returns SchedulesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSchedulesByCourseSession(data: SchedulesReadSchedulesByCourseSessionData): CancelablePromise<SchedulesReadSchedulesByCourseSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/schedules/course-session/{course_session_id}',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Schedules By Day
+     * Retrieve schedules by day of week.
+     * day_of_week: 0=Monday, 6=Sunday
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.dayOfWeek
+     * @returns SchedulesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSchedulesByDay(data: SchedulesReadSchedulesByDayData): CancelablePromise<SchedulesReadSchedulesByDayResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/schedules/course-session/{course_session_id}/day/{day_of_week}',
+            path: {
+                course_session_id: data.courseSessionId,
+                day_of_week: data.dayOfWeek
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Schedule
+     * Get schedule by ID.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @returns SchedulePublic Successful Response
+     * @throws ApiError
+     */
+    public static readSchedule(data: SchedulesReadScheduleData): CancelablePromise<SchedulesReadScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/schedules/{schedule_id}',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Schedule
+     * Update a schedule.
+     * Only superusers can update schedules.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @param data.requestBody
+     * @returns SchedulePublic Successful Response
+     * @throws ApiError
+     */
+    public static updateSchedule(data: SchedulesUpdateScheduleData): CancelablePromise<SchedulesUpdateScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/schedules/{schedule_id}',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Schedule
+     * Delete a schedule.
+     * Only superusers can delete schedules.
+     * @param data The data for the request.
+     * @param data.scheduleId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteSchedule(data: SchedulesDeleteScheduleData): CancelablePromise<SchedulesDeleteScheduleResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/schedules/{schedule_id}',
+            path: {
+                schedule_id: data.scheduleId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class SessionsService {
+    /**
+     * Read Sessions
+     * Retrieve sessions.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.code
+     * @param data.academicYearId
+     * @param data.isActive
+     * @returns SessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSessions(data: SessionsReadSessionsData = {}): CancelablePromise<SessionsReadSessionsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/sessions/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                code: data.code,
+                academic_year_id: data.academicYearId,
+                is_active: data.isActive
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Session
+     * Create new session.
+     * Only superusers can create sessions.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns SessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static createSession(data: SessionsCreateSessionData): CancelablePromise<SessionsCreateSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/sessions/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Sessions With Academic Year
+     * Retrieve sessions with their academic year details.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.code
+     * @param data.academicYearId
+     * @param data.isActive
+     * @returns SessionsPublicWithAcademicYear Successful Response
+     * @throws ApiError
+     */
+    public static readSessionsWithAcademicYear(data: SessionsReadSessionsWithAcademicYearData = {}): CancelablePromise<SessionsReadSessionsWithAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/sessions/with-academic-year',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                code: data.code,
+                academic_year_id: data.academicYearId,
+                is_active: data.isActive
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Sessions By Academic Year
+     * Retrieve sessions by academic year.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @param data.skip
+     * @param data.limit
+     * @returns SessionsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSessionsByAcademicYear(data: SessionsReadSessionsByAcademicYearData): CancelablePromise<SessionsReadSessionsByAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/sessions/academic-year/{academic_year_id}',
+            path: {
+                academic_year_id: data.academicYearId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Session
+     * Get session by ID.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @returns SessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static readSession(data: SessionsReadSessionData): CancelablePromise<SessionsReadSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/sessions/{session_id}',
+            path: {
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Session
+     * Update a session.
+     * Only superusers can update sessions.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @param data.requestBody
+     * @returns SessionPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateSession(data: SessionsUpdateSessionData): CancelablePromise<SessionsUpdateSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/sessions/{session_id}',
+            path: {
+                session_id: data.sessionId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Session
+     * Delete a session.
+     * Only superusers can delete sessions.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteSession(data: SessionsDeleteSessionData): CancelablePromise<SessionsDeleteSessionResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/sessions/{session_id}',
+            path: {
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Session With Academic Year
+     * Get session by ID with academic year details.
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @returns SessionPublicWithAcademicYear Successful Response
+     * @throws ApiError
+     */
+    public static readSessionWithAcademicYear(data: SessionsReadSessionWithAcademicYearData): CancelablePromise<SessionsReadSessionWithAcademicYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/sessions/{session_id}/with-academic-year',
+            path: {
+                session_id: data.sessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class StudentAnalyticsService {
+    /**
+     * Get student dashboard metrics
+     * Calculates dashboard metrics using direct table queries instead of views.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.yearLevel
+     * @param data.academicYearId
+     * @returns StudentDashboardMetrics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentDashboardMetrics(data: StudentAnalyticsGetStudentDashboardMetricsData): CancelablePromise<StudentAnalyticsGetStudentDashboardMetricsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-analytics/student/dashboard',
+            query: {
+                student_id: data.studentId,
+                year_level: data.yearLevel,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class StudentAssessmentsViewsService {
+    /**
+     * Récupérer toutes les évaluations d'un étudiant
+     * Obtient la liste complète des évaluations d'un étudiant avec analyses détaillées, statuts et métriques de performance.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAssessments(data: StudentAssessmentsViewsGetStudentAssessmentsData): CancelablePromise<StudentAssessmentsViewsGetStudentAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/students/{student_id}/assessments',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Statistiques des évaluations d'un étudiant
+     * Calcule les statistiques complètes des évaluations pour un étudiant (moyennes, taux de réussite, tendances, etc.).
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns AssessmentStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAssessmentsStatistics(data: StudentAssessmentsViewsGetStudentAssessmentsStatisticsData): CancelablePromise<StudentAssessmentsViewsGetStudentAssessmentsStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/students/{student_id}/assessments/statistics',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Rapport de performance des évaluations
+     * Génère un rapport détaillé de la performance des évaluations d'un étudiant avec analyses et recommandations.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns AssessmentPerformanceReport Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAssessmentPerformanceReport(data: StudentAssessmentsViewsGetStudentAssessmentPerformanceReportData): CancelablePromise<StudentAssessmentsViewsGetStudentAssessmentPerformanceReportResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/students/{student_id}/assessments/report',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Étudiants d'une évaluation spécifique
+     * Récupère tous les étudiants avec leurs résultats pour une évaluation spécifique.
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentStudents(data: StudentAssessmentsViewsGetAssessmentStudentsData): CancelablePromise<StudentAssessmentsViewsGetAssessmentStudentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/{assessment_id}/students',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Statistiques d'une évaluation
+     * Calcule les statistiques de classe pour une évaluation spécifique (moyennes, distribution, taux de réussite).
+     * @param data The data for the request.
+     * @param data.assessmentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentStatistics(data: StudentAssessmentsViewsGetAssessmentStatisticsData): CancelablePromise<StudentAssessmentsViewsGetAssessmentStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/{assessment_id}/statistics',
+            path: {
+                assessment_id: data.assessmentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Évaluations d'une session de cours
+     * Récupère toutes les évaluations d'une session de cours avec les résultats des étudiants.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getCourseSessionAssessments(data: StudentAssessmentsViewsGetCourseSessionAssessmentsData): CancelablePromise<StudentAssessmentsViewsGetCourseSessionAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/course-sessions/{course_session_id}/assessments',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Évaluations d'un enseignant
+     * Récupère toutes les évaluations créées par un enseignant avec les résultats des étudiants.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherAssessments(data: StudentAssessmentsViewsGetTeacherAssessmentsData): CancelablePromise<StudentAssessmentsViewsGetTeacherAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/teachers/{teacher_id}/assessments',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Vue d'ensemble des évaluations d'un enseignant
+     * Fournit une vue d'ensemble statistique des évaluations et de la charge de travail pour un enseignant.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns TeacherAssessmentsOverview Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherAssessmentsOverview(data: StudentAssessmentsViewsGetTeacherAssessmentsOverviewData): CancelablePromise<StudentAssessmentsViewsGetTeacherAssessmentsOverviewResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/teachers/{teacher_id}/assessments/overview',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Rechercher des évaluations
+     * Recherche des évaluations par nom, description, cours, étudiant ou enseignant.
+     * @param data The data for the request.
+     * @param data.q Terme de recherche
+     * @param data.limit Nombre maximum de résultats
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static searchAssessments(data: StudentAssessmentsViewsSearchAssessmentsData): CancelablePromise<StudentAssessmentsViewsSearchAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/search',
+            query: {
+                q: data.q,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Filtrer les évaluations
+     * Applique des filtres avancés pour récupérer des évaluations spécifiques avec pagination.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @param data.skip Nombre d'éléments à ignorer
+     * @param data.limit Nombre maximum d'éléments à retourner
+     * @returns StudentAssessmentsCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static filterAssessments(data: StudentAssessmentsViewsFilterAssessmentsData): CancelablePromise<StudentAssessmentsViewsFilterAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/student-assessments-views/assessments/filter',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Alertes d'évaluations
+     * Génère des alertes basées sur les échéances, performances et statuts d'évaluations.
+     * @param data The data for the request.
+     * @param data.studentId Filtrer par étudiant spécifique
+     * @param data.teacherId Filtrer par enseignant spécifique
+     * @param data.assessmentType Filtrer par type d'évaluation
+     * @param data.deadlineStatus Filtrer par statut d'échéance
+     * @returns AssessmentAlerts Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentAlerts(data: StudentAssessmentsViewsGetAssessmentAlertsData = {}): CancelablePromise<StudentAssessmentsViewsGetAssessmentAlertsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/alerts',
+            query: {
+                student_id: data.studentId,
+                teacher_id: data.teacherId,
+                assessment_type: data.assessmentType,
+                deadline_status: data.deadlineStatus
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Évaluations en retard
+     * Récupère toutes les évaluations en retard avec analyses de priorité.
+     * @param data The data for the request.
+     * @param data.limit Nombre maximum de résultats
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getOverdueAssessments(data: StudentAssessmentsViewsGetOverdueAssessmentsData = {}): CancelablePromise<StudentAssessmentsViewsGetOverdueAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/overdue',
+            query: {
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Évaluations urgentes
+     * Récupère les évaluations avec des échéances imminentes.
+     * @param data The data for the request.
+     * @param data.daysAhead Nombre de jours à regarder en avant
+     * @param data.limit Nombre maximum de résultats
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getUrgentAssessments(data: StudentAssessmentsViewsGetUrgentAssessmentsData = {}): CancelablePromise<StudentAssessmentsViewsGetUrgentAssessmentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/urgent',
+            query: {
+                days_ahead: data.daysAhead,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Évaluations par période
+     * Récupère les évaluations dans une période donnée, optionnellement pour un étudiant ou enseignant spécifique.
+     * @param data The data for the request.
+     * @param data.startDate Date de début de la période
+     * @param data.endDate Date de fin de la période
+     * @param data.studentId UUID optionnel de l'étudiant
+     * @param data.teacherId UUID optionnel de l'enseignant
+     * @returns StudentAssessmentsCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentsByDateRange(data: StudentAssessmentsViewsGetAssessmentsByDateRangeData): CancelablePromise<StudentAssessmentsViewsGetAssessmentsByDateRangeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/assessments/date-range',
+            query: {
+                start_date: data.startDate,
+                end_date: data.endDate,
+                student_id: data.studentId,
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Résumé global des évaluations (Admin)
+     * Fournit un résumé statistique global de toutes les évaluations pour les administrateurs.
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentsSummaryAdmin(): CancelablePromise<StudentAssessmentsViewsGetAssessmentsSummaryAdminResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/admin/assessments/summary'
+        });
+    }
+    
+    /**
+     * Analytics avancées des évaluations (Admin)
+     * Fournit des analytics avancées sur les évaluations et performances pour les administrateurs.
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentsAnalyticsAdmin(): CancelablePromise<StudentAssessmentsViewsGetAssessmentsAnalyticsAdminResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/admin/assessments/analytics'
+        });
+    }
+    
+    /**
+     * Analyse de la charge de travail (Admin)
+     * Analyse la charge de travail des évaluations pour optimiser la planification académique.
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssessmentsWorkloadAnalysisAdmin(): CancelablePromise<StudentAssessmentsViewsGetAssessmentsWorkloadAnalysisAdminResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-assessments-views/admin/assessments/workload'
+        });
+    }
+}
+
+export class StudentAttendanceViewsService {
+    /**
+     * Get Student Attendance Complete
+     * Récupère toutes les présences d'un étudiant via la vue complète.
+     *
+     * Inclut toutes les informations liées : cours, sessions, horaires, enseignants, etc.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @param data.courseId
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @param data.attendanceStatus
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @param data.isExcused
+     * @param data.dayOfWeek
+     * @param data.yearLevel
+     * @returns StudentAttendanceCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAttendanceComplete(data: StudentAttendanceViewsGetStudentAttendanceCompleteData): CancelablePromise<StudentAttendanceViewsGetStudentAttendanceCompleteResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/students/{student_id}/attendance/complete',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                course_id: data.courseId,
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId,
+                attendance_status: data.attendanceStatus,
+                date_from: data.dateFrom,
+                date_to: data.dateTo,
+                is_excused: data.isExcused,
+                day_of_week: data.dayOfWeek,
+                year_level: data.yearLevel
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Attendance Report
+     * Génère un rapport de présence détaillé pour un étudiant.
+     *
+     * Inclut statistiques, analyses, recommandations et données pour graphiques.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @param data.courseId
+     * @returns AttendanceReport Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAttendanceReport(data: StudentAttendanceViewsGetStudentAttendanceReportData): CancelablePromise<StudentAttendanceViewsGetStudentAttendanceReportResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/students/{student_id}/attendance/report',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                date_from: data.dateFrom,
+                date_to: data.dateTo,
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Course Session Attendance Complete
+     * Récupère toutes les présences d'une session de cours avec statistiques complètes.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @param data.attendanceStatus
+     * @param data.isExcused
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getCourseSessionAttendanceComplete(data: StudentAttendanceViewsGetCourseSessionAttendanceCompleteData): CancelablePromise<StudentAttendanceViewsGetCourseSessionAttendanceCompleteResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/course-sessions/{course_session_id}/attendance/complete',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                attendance_status: data.attendanceStatus,
+                is_excused: data.isExcused,
+                date_from: data.dateFrom,
+                date_to: data.dateTo
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Attendance Session Complete
+     * Récupère toutes les présences pour une séance spécifique.
+     * @param data The data for the request.
+     * @param data.attendanceSessionId
+     * @param data.skip
+     * @param data.limit
+     * @param data.attendanceStatus
+     * @returns StudentAttendanceCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static getAttendanceSessionComplete(data: StudentAttendanceViewsGetAttendanceSessionCompleteData): CancelablePromise<StudentAttendanceViewsGetAttendanceSessionCompleteResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/attendance-sessions/{attendance_session_id}/attendance/complete',
+            path: {
+                attendance_session_id: data.attendanceSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                attendance_status: data.attendanceStatus
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Teacher Attendance Overview
+     * Vue d'ensemble des présences pour un enseignant.
+     *
+     * Inclut toutes ses sessions de cours avec statistiques et alertes.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherAttendanceOverview(data: StudentAttendanceViewsGetTeacherAttendanceOverviewData): CancelablePromise<StudentAttendanceViewsGetTeacherAttendanceOverviewResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/teachers/{teacher_id}/attendance/overview',
+            path: {
+                teacher_id: data.teacherId
+            },
+            query: {
+                date_from: data.dateFrom,
+                date_to: data.dateTo
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Academic Session Attendance Summary
+     * Résumé des présences pour une session académique (semestre).
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.teacherId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAcademicSessionAttendanceSummary(data: StudentAttendanceViewsGetAcademicSessionAttendanceSummaryData): CancelablePromise<StudentAttendanceViewsGetAcademicSessionAttendanceSummaryResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/sessions/{session_id}/attendance/summary',
+            path: {
+                session_id: data.sessionId
+            },
+            query: {
+                student_id: data.studentId,
+                course_id: data.courseId,
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Year Level Attendance Analysis
+     * Analyse des présences par niveau d'année.
+     * @param data The data for the request.
+     * @param data.yearLevel
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getYearLevelAttendanceAnalysis(data: StudentAttendanceViewsGetYearLevelAttendanceAnalysisData): CancelablePromise<StudentAttendanceViewsGetYearLevelAttendanceAnalysisResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/year-levels/{year_level}/attendance/analysis',
+            path: {
+                year_level: data.yearLevel
+            },
+            query: {
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Attendance Alerts
+     * Génère des alertes de présence basées sur des seuils critiques.
+     *
+     * Identifie les étudiants avec absentéisme chronique, retards excessifs, etc.
+     * @param data The data for the request.
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.teacherId
+     * @returns AttendanceAlerts Successful Response
+     * @throws ApiError
+     */
+    public static getAttendanceAlerts(data: StudentAttendanceViewsGetAttendanceAlertsData = {}): CancelablePromise<StudentAttendanceViewsGetAttendanceAlertsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/attendance/alerts',
+            query: {
+                date_from: data.dateFrom,
+                date_to: data.dateTo,
+                student_id: data.studentId,
+                course_id: data.courseId,
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Attendance Statistics
+     * Récupère des statistiques résumées des présences selon les filtres.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @param data.teacherId
+     * @param data.yearLevel
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @returns StudentAttendanceViewSummary Successful Response
+     * @throws ApiError
+     */
+    public static getAttendanceStatistics(data: StudentAttendanceViewsGetAttendanceStatisticsData = {}): CancelablePromise<StudentAttendanceViewsGetAttendanceStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/attendance/statistics',
+            query: {
+                student_id: data.studentId,
+                course_id: data.courseId,
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId,
+                teacher_id: data.teacherId,
+                year_level: data.yearLevel,
+                date_from: data.dateFrom,
+                date_to: data.dateTo
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Search Attendance
+     * Recherche dans les présences par nom d'étudiant, numéro étudiant, cours, etc.
+     * @param data The data for the request.
+     * @param data.searchTerm
+     * @param data.skip
+     * @param data.limit
+     * @param data.attendanceStatus
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @returns StudentAttendanceCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static searchAttendance(data: StudentAttendanceViewsSearchAttendanceData): CancelablePromise<StudentAttendanceViewsSearchAttendanceResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/attendance/search',
+            query: {
+                search_term: data.searchTerm,
+                skip: data.skip,
+                limit: data.limit,
+                attendance_status: data.attendanceStatus,
+                date_from: data.dateFrom,
+                date_to: data.dateTo
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Attendance By Date Range
+     * Récupère les présences dans une période donnée.
+     * @param data The data for the request.
+     * @param data.startDate
+     * @param data.endDate
+     * @param data.skip
+     * @param data.limit
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.teacherId
+     * @returns StudentAttendanceCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static getAttendanceByDateRange(data: StudentAttendanceViewsGetAttendanceByDateRangeData): CancelablePromise<StudentAttendanceViewsGetAttendanceByDateRangeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/attendance/date-range',
+            query: {
+                start_date: data.startDate,
+                end_date: data.endDate,
+                skip: data.skip,
+                limit: data.limit,
+                student_id: data.studentId,
+                course_id: data.courseId,
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Attendance Statistics
+     * Statistiques détaillées de présence pour un étudiant spécifique.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.dateFrom
+     * @param data.dateTo
+     * @param data.courseId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getStudentAttendanceStatistics(data: StudentAttendanceViewsGetStudentAttendanceStatisticsData): CancelablePromise<StudentAttendanceViewsGetStudentAttendanceStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-attendance-views/students/{student_id}/attendance/statistics',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                date_from: data.dateFrom,
+                date_to: data.dateTo,
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class StudentCoursesViewsService {
+    /**
+     * Récupérer tous les cours d'un étudiant
+     * Obtient la liste complète des cours d'un étudiant avec analyses détaillées et métriques de performance.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns StudentCoursesCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentCourses(data: StudentCoursesViewsGetStudentCoursesData): CancelablePromise<StudentCoursesViewsGetStudentCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/students/{student_id}/courses',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Statistiques des cours d'un étudiant
+     * Calcule les statistiques complètes des cours pour un étudiant (moyennes, crédits, taux de réussite, etc.).
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns StudentCoursesStatistics Successful Response
+     * @throws ApiError
+     */
+    public static getStudentCoursesStatistics(data: StudentCoursesViewsGetStudentCoursesStatisticsData): CancelablePromise<StudentCoursesViewsGetStudentCoursesStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/students/{student_id}/courses/statistics',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Rapport de performance académique
+     * Génère un rapport détaillé de la performance académique d'un étudiant avec analyses et recommandations.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns CoursePerformanceReport Successful Response
+     * @throws ApiError
+     */
+    public static getStudentPerformanceReport(data: StudentCoursesViewsGetStudentPerformanceReportData): CancelablePromise<StudentCoursesViewsGetStudentPerformanceReportResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/students/{student_id}/courses/report',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Étudiants d'une session de cours
+     * Récupère tous les étudiants inscrits dans une session de cours spécifique avec leurs performances.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns StudentCoursesCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getCourseSessionStudents(data: StudentCoursesViewsGetCourseSessionStudentsData): CancelablePromise<StudentCoursesViewsGetCourseSessionStudentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/course-sessions/{course_session_id}/students',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Cours enseignés par un professeur
+     * Récupère tous les cours enseignés par un professeur avec les détails des étudiants.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns StudentCoursesCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherCourses(data: StudentCoursesViewsGetTeacherCoursesData): CancelablePromise<StudentCoursesViewsGetTeacherCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/teachers/{teacher_id}/courses',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Vue d'ensemble des cours d'un enseignant
+     * Fournit une vue d'ensemble statistique des cours et performances pour un enseignant.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns TeacherCoursesOverview Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherCoursesOverview(data: StudentCoursesViewsGetTeacherCoursesOverviewData): CancelablePromise<StudentCoursesViewsGetTeacherCoursesOverviewResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/teachers/{teacher_id}/overview',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Rechercher des cours
+     * Recherche des cours par nom, code, description, nom d'étudiant ou d'enseignant.
+     * @param data The data for the request.
+     * @param data.q Terme de recherche
+     * @param data.limit Nombre maximum de résultats
+     * @returns StudentCoursesCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static searchCourses(data: StudentCoursesViewsSearchCoursesData): CancelablePromise<StudentCoursesViewsSearchCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/courses/search',
+            query: {
+                q: data.q,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Filtrer les cours
+     * Applique des filtres avancés pour récupérer des cours spécifiques avec pagination.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @param data.skip Nombre d'éléments à ignorer
+     * @param data.limit Nombre maximum d'éléments à retourner
+     * @returns StudentCoursesCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static filterCourses(data: StudentCoursesViewsFilterCoursesData): CancelablePromise<StudentCoursesViewsFilterCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/student-courses-views/courses/filter',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Alertes académiques
+     * Génère des alertes basées sur les performances et risques académiques.
+     * @param data The data for the request.
+     * @param data.studentId Filtrer par étudiant spécifique
+     * @param data.teacherId Filtrer par enseignant spécifique
+     * @param data.courseId Filtrer par cours spécifique
+     * @param data.riskLevel Filtrer par niveau de risque
+     * @returns AcademicAlerts Successful Response
+     * @throws ApiError
+     */
+    public static getAcademicAlerts(data: StudentCoursesViewsGetAcademicAlertsData = {}): CancelablePromise<StudentCoursesViewsGetAcademicAlertsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/courses/alerts',
+            query: {
+                student_id: data.studentId,
+                teacher_id: data.teacherId,
+                course_id: data.courseId,
+                risk_level: data.riskLevel
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Cours par période
+     * Récupère les cours dans une période donnée, optionnellement pour un étudiant spécifique.
+     * @param data The data for the request.
+     * @param data.startDate Date de début de la période
+     * @param data.endDate Date de fin de la période
+     * @param data.studentId UUID optionnel de l'étudiant
+     * @returns StudentCoursesCompleteWithAnalytics Successful Response
+     * @throws ApiError
+     */
+    public static getCoursesByDateRange(data: StudentCoursesViewsGetCoursesByDateRangeData): CancelablePromise<StudentCoursesViewsGetCoursesByDateRangeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/courses/date-range',
+            query: {
+                start_date: data.startDate,
+                end_date: data.endDate,
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Statistiques d'une session de cours
+     * Calcule les statistiques détaillées pour une session de cours spécifique.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getCourseSessionStatistics(data: StudentCoursesViewsGetCourseSessionStatisticsData): CancelablePromise<StudentCoursesViewsGetCourseSessionStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/course-sessions/{course_session_id}/statistics',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Tendances de performance d'un étudiant
+     * Analyse les tendances de performance d'un étudiant au fil du temps.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getStudentPerformanceTrends(data: StudentCoursesViewsGetStudentPerformanceTrendsData): CancelablePromise<StudentCoursesViewsGetStudentPerformanceTrendsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/students/{student_id}/performance-trends',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Résumé global des cours (Admin)
+     * Fournit un résumé statistique global de tous les cours pour les administrateurs.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @param data.programLevelId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getCoursesSummaryAdmin(data: { academicYearId?: string; programLevelId?: string } = {}): CancelablePromise<StudentCoursesViewsGetCoursesSummaryAdminResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/admin/courses/summary',
+            query: {
+                academic_year_id: data.academicYearId,
+                program_level_id: data.programLevelId
+            }
+        });
+    }
+
+    /**
+     * Analytics avancées des cours (Admin)
+     * Fournit des analytics avancées sur les performances académiques pour les administrateurs.
+     * @param data The data for the request.
+     * @param data.academicYearId
+     * @param data.programLevelId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getCoursesAnalyticsAdmin(data: { academicYearId?: string; programLevelId?: string } = {}): CancelablePromise<StudentCoursesViewsGetCoursesAnalyticsAdminResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-courses-views/admin/courses/analytics',
+            query: {
+                academic_year_id: data.academicYearId,
+                program_level_id: data.programLevelId
+            }
+        });
+    }
+}
+
+export class StudentGradeViewsService {
+    /**
+     * Get Student Grades Complete
+     * Récupère toutes les notes d'un étudiant via la vue complète.
+     *
+     * Inclut toutes les informations liées : cours, évaluations, sessions, programmes, etc.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.skip
+     * @param data.limit
+     * @param data.courseId
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @param data.yearLevel
+     * @param data.isPublished
+     * @param data.isPassing
+     * @param data.assessmentType
+     * @returns StudentGradeCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static getStudentGradesComplete(data: StudentGradeViewsGetStudentGradesCompleteData): CancelablePromise<StudentGradeViewsGetStudentGradesCompleteResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/students/{student_id}/grades/complete',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                course_id: data.courseId,
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId,
+                year_level: data.yearLevel,
+                is_published: data.isPublished,
+                is_passing: data.isPassing,
+                assessment_type: data.assessmentType
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Transcript
+     * Récupère le relevé complet d'un étudiant (toutes ses notes publiées).
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.academicYearId
+     * @param data.includeUnpublished
+     * @returns StudentGradeCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static getStudentTranscript(data: StudentGradeViewsGetStudentTranscriptData): CancelablePromise<StudentGradeViewsGetStudentTranscriptResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/students/{student_id}/transcript',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                academic_year_id: data.academicYearId,
+                include_unpublished: data.includeUnpublished
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Course Session Grades Complete
+     * Récupère toutes les notes d'une session de cours via la vue complète avec statistiques.
+     * @param data The data for the request.
+     * @param data.courseSessionId
+     * @param data.skip
+     * @param data.limit
+     * @param data.isPublished
+     * @param data.isPassing
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getCourseSessionGradesComplete(data: StudentGradeViewsGetCourseSessionGradesCompleteData): CancelablePromise<StudentGradeViewsGetCourseSessionGradesCompleteResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/course-sessions/{course_session_id}/grades/complete',
+            path: {
+                course_session_id: data.courseSessionId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                is_published: data.isPublished,
+                is_passing: data.isPassing
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Academic Session Summary
+     * Résumé des notes pour une session académique (semestre).
+     * @param data The data for the request.
+     * @param data.sessionId
+     * @param data.studentId
+     * @param data.courseId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAcademicSessionSummary(data: StudentGradeViewsGetAcademicSessionSummaryData): CancelablePromise<StudentGradeViewsGetAcademicSessionSummaryResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/sessions/{session_id}/grades/summary',
+            path: {
+                session_id: data.sessionId
+            },
+            query: {
+                student_id: data.studentId,
+                course_id: data.courseId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Year Level Performance Analysis
+     * Analyse des performances par niveau d'année.
+     * @param data The data for the request.
+     * @param data.yearLevel
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getYearLevelPerformanceAnalysis(data: StudentGradeViewsGetYearLevelPerformanceAnalysisData): CancelablePromise<StudentGradeViewsGetYearLevelPerformanceAnalysisResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/year-levels/{year_level}/performance-analysis',
+            path: {
+                year_level: data.yearLevel
+            },
+            query: {
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Grades Statistics
+     * Récupère des statistiques résumées des notes selon les filtres.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.courseId
+     * @param data.sessionId
+     * @param data.academicYearId
+     * @param data.teacherId
+     * @param data.yearLevel
+     * @param data.isPublished
+     * @returns StudentGradeViewSummary Successful Response
+     * @throws ApiError
+     */
+    public static getGradesStatistics(data: StudentGradeViewsGetGradesStatisticsData = {}): CancelablePromise<StudentGradeViewsGetGradesStatisticsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/grades/statistics',
+            query: {
+                student_id: data.studentId,
+                course_id: data.courseId,
+                session_id: data.sessionId,
+                academic_year_id: data.academicYearId,
+                teacher_id: data.teacherId,
+                year_level: data.yearLevel,
+                is_published: data.isPublished
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Search Grades
+     * Recherche dans les notes par nom d'étudiant, numéro étudiant, cours, etc.
+     * @param data The data for the request.
+     * @param data.searchTerm
+     * @param data.skip
+     * @param data.limit
+     * @param data.isPublished
+     * @returns StudentGradeCompletesPublic Successful Response
+     * @throws ApiError
+     */
+    public static searchGrades(data: StudentGradeViewsSearchGradesData): CancelablePromise<StudentGradeViewsSearchGradesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/student-grade-views/grades/search',
+            query: {
+                search_term: data.searchTerm,
+                skip: data.skip,
+                limit: data.limit,
+                is_published: data.isPublished
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class StudentsService {
+    /**
+     * Read Students
+     * Retrieve students with optional advanced filtering.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.q
+     * @param data.yearLevel
+     * @param data.programId
+     * @param data.programLevelId
+     * @param data.scholarshipType
+     * @returns StudentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readStudents(data: StudentsReadStudentsData = {}): CancelablePromise<StudentsReadStudentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                q: data.q,
+                year_level: data.yearLevel,
+                program_id: data.programId,
+                program_level_id: data.programLevelId,
+                scholarship_type: data.scholarshipType
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Student
+     * Create new student.
+     * Only superusers can create students.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns StudentPublic Successful Response
+     * @throws ApiError
+     */
+    public static createStudent(data: StudentsCreateStudentData): CancelablePromise<StudentsCreateStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/students/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Students
+     * Retrieve active students.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns StudentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveStudents(data: StudentsReadActiveStudentsData = {}): CancelablePromise<StudentsReadActiveStudentsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Students By Program
+     * Retrieve students by program.
+     * @param data The data for the request.
+     * @param data.programId
+     * @param data.skip
+     * @param data.limit
+     * @returns StudentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readStudentsByProgram(data: StudentsReadStudentsByProgramData): CancelablePromise<StudentsReadStudentsByProgramResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/program/{program_id}',
+            path: {
+                program_id: data.programId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Students By Year Level
+     * Retrieve students by year level.
+     * @param data The data for the request.
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns StudentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readStudentsByYearLevel(data: StudentsReadStudentsByYearLevelData): CancelablePromise<StudentsReadStudentsByYearLevelResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/year-level/{year_level}',
+            path: {
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Students By Program Level And Year
+     * Retrieve students by program level and year level.
+     * @param data The data for the request.
+     * @param data.programLevelId
+     * @param data.yearLevel
+     * @param data.skip
+     * @param data.limit
+     * @returns StudentsPublic Successful Response
+     * @throws ApiError
+     */
+    public static readStudentsByProgramLevelAndYear(data: StudentsReadStudentsByProgramLevelAndYearData): CancelablePromise<StudentsReadStudentsByProgramLevelAndYearResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/program-level/{program_level_id}/year/{year_level}',
+            path: {
+                program_level_id: data.programLevelId,
+                year_level: data.yearLevel
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student By Number
+     * Get student by student number.
+     * @param data The data for the request.
+     * @param data.studentNumber
+     * @returns StudentPublic Successful Response
+     * @throws ApiError
+     */
+    public static readStudentByNumber(data: StudentsReadStudentByNumberData): CancelablePromise<StudentsReadStudentByNumberResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/student-number/{student_number}',
+            path: {
+                student_number: data.studentNumber
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student By User
+     * Get student by user ID.
+     * @param data The data for the request.
+     * @param data.userId
+     * @returns StudentPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readStudentByUser(data: StudentsReadStudentByUserData): CancelablePromise<StudentsReadStudentByUserResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/user/{user_id}',
+            path: {
+                user_id: data.userId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student
+     * Get student by ID.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns StudentPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readStudent(data: StudentsReadStudentData): CancelablePromise<StudentsReadStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Student
+     * Update a student.
+     * Only superusers can update students.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.requestBody
+     * @returns StudentPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateStudent(data: StudentsUpdateStudentData): CancelablePromise<StudentsUpdateStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/students/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Student
+     * Delete a student.
+     * Only superusers can delete students.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteStudent(data: StudentsDeleteStudentData): CancelablePromise<StudentsDeleteStudentResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/students/{student_id}',
+            path: {
+                student_id: data.studentId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Student With User
+     * Create new student with user account.
+     * Only superusers can create students.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns StudentPublic Successful Response
+     * @throws ApiError
+     */
+    public static createStudentWithUser(data: StudentsCreateStudentWithUserData): CancelablePromise<StudentsCreateStudentWithUserResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/students/with-user',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Student Gpa
+     * Update student GPA.
+     * Only superusers can update GPA.
+     * @param data The data for the request.
+     * @param data.studentId
+     * @param data.newGpa
+     * @returns StudentPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateStudentGpa(data: StudentsUpdateStudentGpaData): CancelablePromise<StudentsUpdateStudentGpaResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/students/{student_id}/gpa',
+            path: {
+                student_id: data.studentId
+            },
+            query: {
+                new_gpa: data.newGpa
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Theoretical Courses
+     * Get theoretical courses for a student in a specific year level.
+     * Based on the student's program level.
+     * Optional: filter by session_number (1 or 2).
+     * @param data The data for the request.
+     * @param data.studentNumber
+     * @param data.yearLevel
+     * @param data.sessionNumber
+     * @returns CoursePublic Successful Response
+     * @throws ApiError
+     */
+    public static readTheoreticalCourses(data: StudentsReadTheoreticalCoursesData): CancelablePromise<StudentsReadTheoreticalCoursesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/student-number/{student_number}/theoretical-courses/{year_level}',
+            path: {
+                student_number: data.studentNumber,
+                year_level: data.yearLevel
+            },
+            query: {
+                session_number: data.sessionNumber
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Student Grades By Year With Course Info
+     * Get grades for a specific student and year level, including full course details.
+     * Optional: filter by session_number (1 or 2) and assessment_type (e.g. 'EXAM', 'ASSIGNMENT').
+     * @param data The data for the request.
+     * @param data.studentNumber
+     * @param data.yearLevel
+     * @param data.sessionNumber
+     * @param data.assessmentType
+     * @param data.assessmentQuery
+     * @param data.isPassing
+     * @param data.skip
+     * @param data.limit
+     * @returns GradesWithCourseInfo Successful Response
+     * @throws ApiError
+     */
+    public static readStudentGradesByYearWithCourseInfo(data: StudentsReadStudentGradesByYearWithCourseInfoData): CancelablePromise<StudentsReadStudentGradesByYearWithCourseInfoResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/student-number/{student_number}/grades/{year_level}',
+            path: {
+                student_number: data.studentNumber,
+                year_level: data.yearLevel
+            },
+            query: {
+                session_number: data.sessionNumber,
+                assessment_type: data.assessmentType,
+                assessment_query: data.assessmentQuery,
+                is_passing: data.isPassing,
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get Student Transcript
+     * Génère le bulletin académique complet pour un étudiant.
+     *
+     * Args:
+     * student_number: Numéro d'étudiant
+     * year_level: Niveau d'année (1, 2, 3, etc.)
+     * session_number: Filtre optionnel par session (1 ou 2)
+     *
+     * Returns:
+     * YearTranscript avec:
+     * - Notes détaillées par type (intra, final, participation)
+     * - Calculs de moyennes pondérées par cours
+     * - Moyennes par session et annuelle
+     * - Crédits obtenus/totaux
+     * - GPA et statut de réussite
+     *
+     * Example:
+     * GET /api/v1/students/student-number/2345dfgh/transcript/1?session_number=1
+     * -> Bulletin 1ère année, 1ère session
+     *
+     * GET /api/v1/students/student-number/2345dfgh/transcript/2
+     * -> Bulletin 2ème année complet (toutes sessions)
+     * @param data The data for the request.
+     * @param data.studentNumber
+     * @param data.yearLevel
+     * @param data.sessionNumber
+     * @returns YearTranscript Successful Response
+     * @throws ApiError
+     */
+    public static getStudentTranscript(data: StudentsGetStudentTranscriptData): CancelablePromise<StudentsGetStudentTranscriptResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/students/student-number/{student_number}/transcript/{year_level}',
+            path: {
+                student_number: data.studentNumber,
+                year_level: data.yearLevel
+            },
+            query: {
+                session_number: data.sessionNumber
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class TeacherAnalyticsService {
+    /**
+     * Get program levels assigned to a teacher
+     * Returns program levels where the teacher has active course sessions in the specific academic year.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @param data.academicYearId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssignedProgramLevels(data: TeacherAnalyticsGetAssignedProgramLevelsData): CancelablePromise<TeacherAnalyticsGetAssignedProgramLevelsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teacher-analytics/teacher/assigned-program-levels',
+            query: {
+                teacher_id: data.teacherId,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get teachers assigned to a program level (Admin)
+     * Returns teachers who have active course sessions in the specific program level and academic year.
+     * @param data The data for the request.
+     * @param data.programLevelId
+     * @param data.academicYearId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static getAssignedTeachers(data: TeacherAnalyticsGetAssignedTeachersData = {}): CancelablePromise<TeacherAnalyticsGetAssignedTeachersResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teacher-analytics/admin/assigned-teachers',
+            query: {
+                program_level_id: data.programLevelId,
+                academic_year_id: data.academicYearId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Get teacher dashboard metrics
+     * Calculates aggregate metrics for all students associated with the teacher's sessions.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @param data.academicYearId
+     * @param data.programLevelId
+     * @param data.yearLevel
+     * @returns TeacherDashboardMetrics Successful Response
+     * @throws ApiError
+     */
+    public static getTeacherDashboardMetrics(data: TeacherAnalyticsGetTeacherDashboardMetricsData): CancelablePromise<TeacherAnalyticsGetTeacherDashboardMetricsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teacher-analytics/teacher/dashboard',
+            query: {
+                teacher_id: data.teacherId,
+                academic_year_id: data.academicYearId,
+                program_level_id: data.programLevelId,
+                year_level: data.yearLevel
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    public static getGlobalDashboardMetrics(data: {
+        academicYearId?: string;
+        programLevelId?: string;
+        yearLevel?: number;
+    } = {}): CancelablePromise<TeacherAnalyticsGetTeacherDashboardMetricsResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teacher-analytics/admin/dashboard',
+            query: {
+                academic_year_id: data.academicYearId,
+                program_level_id: data.programLevelId,
+                year_level: data.yearLevel,
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class TeachersService {
+    /**
+     * Read Teachers
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @param data.q
+     * @param data.specialization
+     * @returns TeachersPublic Successful Response
+     * @throws ApiError
+     */
+    public static readTeachers(data: TeachersReadTeachersData = {}): CancelablePromise<TeachersReadTeachersResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/',
+            query: {
+                skip: data.skip,
+                limit: data.limit,
+                q: data.q,
+                specialization: data.specialization
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Teacher
+     * Create new teacher.
+     * Only superusers can create teachers.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns TeacherPublic Successful Response
+     * @throws ApiError
+     */
+    public static createTeacher(data: TeachersCreateTeacherData): CancelablePromise<TeachersCreateTeacherResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/teachers/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Teachers
+     * Retrieve active teachers.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns TeachersPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveTeachers(data: TeachersReadActiveTeachersData = {}): CancelablePromise<TeachersReadActiveTeachersResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Teachers By Department
+     * Retrieve teachers by department.
+     * @param data The data for the request.
+     * @param data.departmentId
+     * @param data.skip
+     * @param data.limit
+     * @returns TeachersPublic Successful Response
+     * @throws ApiError
+     */
+    public static readTeachersByDepartment(data: TeachersReadTeachersByDepartmentData): CancelablePromise<TeachersReadTeachersByDepartmentResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/department/{department_id}',
+            path: {
+                department_id: data.departmentId
+            },
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Teacher By User Number
+     * Get teacher by user number.
+     * @param data The data for the request.
+     * @param data.userNumber
+     * @returns TeacherPublic Successful Response
+     * @throws ApiError
+     */
+    public static readTeacherByUserNumber(data: TeachersReadTeacherByUserNumberData): CancelablePromise<TeachersReadTeacherByUserNumberResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/user-number/{user_number}',
+            path: {
+                user_number: data.userNumber
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Teacher By User
+     * Get teacher by user ID.
+     * @param data The data for the request.
+     * @param data.userId
+     * @returns TeacherPublic Successful Response
+     * @throws ApiError
+     */
+    public static readTeacherByUser(data: TeachersReadTeacherByUserData): CancelablePromise<TeachersReadTeacherByUserResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/user/{user_id}',
+            path: {
+                user_id: data.userId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Teacher
+     * Get teacher by ID.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns TeacherPublicWithDetails Successful Response
+     * @throws ApiError
+     */
+    public static readTeacher(data: TeachersReadTeacherData): CancelablePromise<TeachersReadTeacherResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/teachers/{teacher_id}',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update Teacher
+     * Update a teacher.
+     * Only superusers can update teachers.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @param data.requestBody
+     * @returns TeacherPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateTeacher(data: TeachersUpdateTeacherData): CancelablePromise<TeachersUpdateTeacherResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/teachers/{teacher_id}',
+            path: {
+                teacher_id: data.teacherId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete Teacher
+     * Delete a teacher.
+     * Only superusers can delete teachers.
+     * @param data The data for the request.
+     * @param data.teacherId
+     * @returns void Successful Response
+     * @throws ApiError
+     */
+    public static deleteTeacher(data: TeachersDeleteTeacherData): CancelablePromise<TeachersDeleteTeacherResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/teachers/{teacher_id}',
+            path: {
+                teacher_id: data.teacherId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create Teacher With User
+     * Create new teacher with user account.
+     * Only superusers can create teachers.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns TeacherPublic Successful Response
+     * @throws ApiError
+     */
+    public static createTeacherWithUser(data: TeachersCreateTeacherWithUserData): CancelablePromise<TeachersCreateTeacherWithUserResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/teachers/with-user',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
+export class UniversitiesService {
+    /**
+     * Read Universities
+     * Retrieve universities.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns UniversitiesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readUniversities(data: UniversitiesReadUniversitiesData = {}): CancelablePromise<UniversitiesReadUniversitiesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/universities/',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Create University
+     * Create new university.
+     * Only superusers can create universities.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static createUniversity(data: UniversitiesCreateUniversityData): CancelablePromise<UniversitiesCreateUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/universities/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read Active Universities
+     * Retrieve active universities only.
+     * @param data The data for the request.
+     * @param data.skip
+     * @param data.limit
+     * @returns UniversitiesPublic Successful Response
+     * @throws ApiError
+     */
+    public static readActiveUniversities(data: UniversitiesReadActiveUniversitiesData = {}): CancelablePromise<UniversitiesReadActiveUniversitiesResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/universities/active',
+            query: {
+                skip: data.skip,
+                limit: data.limit
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read University
+     * Get university by ID.
+     * @param data The data for the request.
+     * @param data.universityId
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static readUniversity(data: UniversitiesReadUniversityData): CancelablePromise<UniversitiesReadUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/universities/{university_id}',
+            path: {
+                university_id: data.universityId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Update University
+     * Update a university.
+     * Only superusers can update universities.
+     * @param data The data for the request.
+     * @param data.universityId
+     * @param data.requestBody
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static updateUniversity(data: UniversitiesUpdateUniversityData): CancelablePromise<UniversitiesUpdateUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/v1/universities/{university_id}',
+            path: {
+                university_id: data.universityId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Delete University
+     * Delete a university.
+     * Only superusers can delete universities.
+     * @param data The data for the request.
+     * @param data.universityId
+     * @returns unknown Successful Response
+     * @throws ApiError
+     */
+    public static deleteUniversity(data: UniversitiesDeleteUniversityData): CancelablePromise<UniversitiesDeleteUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/api/v1/universities/{university_id}',
+            path: {
+                university_id: data.universityId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Read University By Code
+     * Get university by code.
+     * @param data The data for the request.
+     * @param data.code
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static readUniversityByCode(data: UniversitiesReadUniversityByCodeData): CancelablePromise<UniversitiesReadUniversityByCodeResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/universities/code/{code}',
+            path: {
+                code: data.code
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Deactivate University
+     * Deactivate a university.
+     * Only superusers can deactivate universities.
+     * @param data The data for the request.
+     * @param data.universityId
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static deactivateUniversity(data: UniversitiesDeactivateUniversityData): CancelablePromise<UniversitiesDeactivateUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/universities/{university_id}/deactivate',
+            path: {
+                university_id: data.universityId
+            },
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+    
+    /**
+     * Activate University
+     * Activate a university.
+     * Only superusers can activate universities.
+     * @param data The data for the request.
+     * @param data.universityId
+     * @returns UniversityPublic Successful Response
+     * @throws ApiError
+     */
+    public static activateUniversity(data: UniversitiesActivateUniversityData): CancelablePromise<UniversitiesActivateUniversityResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/universities/{university_id}/activate',
+            path: {
+                university_id: data.universityId
+            },
             errors: {
                 422: 'Validation Error'
             }
@@ -282,7 +6515,7 @@ export class UsersService {
     /**
      * Read User Me
      * Get current user.
-     * @returns UserPublic Successful Response
+     * @returns UserPublicWithRoles Successful Response
      * @throws ApiError
      */
     public static readUserMe(): CancelablePromise<UsersReadUserMeResponse> {
@@ -432,6 +6665,48 @@ export class UsersService {
     }
 }
 
+export class NotesService {
+    /**
+     * Scan Note
+     * Analyse une photo de fiche et renvoie le matricule + la note reconnus.
+     * @param data The data for the request.
+     * @param data.formData
+     * @returns NoteScanResponse Successful Response
+     * @throws ApiError
+     */
+    public static scanNote(data: NotesScanNoteData): CancelablePromise<NotesScanNoteResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/notes/scan',
+            formData: data.formData,
+            mediaType: 'multipart/form-data',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+
+    /**
+     * Save Note
+     * Enregistre (ou met à jour) la note d'un étudiant pour une évaluation.
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns NoteSaveResponse Successful Response
+     * @throws ApiError
+     */
+    public static saveNote(data: NotesSaveNoteData): CancelablePromise<NotesSaveNoteResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/notes/save',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                422: 'Validation Error'
+            }
+        });
+    }
+}
+
 export class UtilsService {
     /**
      * Test Email
@@ -444,7 +6719,7 @@ export class UtilsService {
     public static testEmail(data: UtilsTestEmailData): CancelablePromise<UtilsTestEmailResponse> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/v1/utils/test-email/',
+            url: '/api/v1/utils/utils/test-email/',
             query: {
                 email_to: data.emailTo
             },
@@ -462,7 +6737,7 @@ export class UtilsService {
     public static healthCheck(): CancelablePromise<UtilsHealthCheckResponse> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/api/v1/utils/health-check/'
+            url: '/api/v1/utils/utils/health-check/'
         });
     }
 }

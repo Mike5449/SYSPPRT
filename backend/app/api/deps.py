@@ -1,3 +1,4 @@
+import uuid
 from collections.abc import Generator
 from typing import Annotated
 
@@ -11,7 +12,9 @@ from sqlmodel import Session
 from app.core import security
 from app.core.config import settings
 from app.core.db import engine
-from app.models import TokenPayload, User
+from app.models.common import TokenPayload
+from app.models.user import User
+from app.services.user_service import UserService
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/login/access-token"
@@ -38,7 +41,9 @@ def get_current_user(session: SessionDep, token: TokenDep) -> User:
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Could not validate credentials",
         )
-    user = session.get(User, token_data.sub)
+    
+    user_service = UserService(session)
+    user = user_service.get_by_id(uuid.UUID(token_data.sub))
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     if not user.is_active:

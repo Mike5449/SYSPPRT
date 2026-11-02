@@ -5,9 +5,11 @@ from fastapi import APIRouter, HTTPException
 from sqlmodel import func, select
 
 from app.api.deps import CurrentUser, SessionDep
-from app.models import Item, ItemCreate, ItemPublic, ItemsPublic, ItemUpdate, Message
+from app.models.common import Message
+from app.models.item import Item, ItemCreate, ItemPublic, ItemsPublic, ItemUpdate
+from app.services.item_service import ItemService
 
-router = APIRouter(prefix="/items", tags=["items"])
+router = APIRouter(tags=["items"])
 
 
 @router.get("/", response_model=ItemsPublic)
@@ -17,26 +19,15 @@ def read_items(
     """
     Retrieve items.
     """
-
+    item_service = ItemService(session)
+    
     if current_user.is_superuser:
-        count_statement = select(func.count()).select_from(Item)
-        count = session.exec(count_statement).one()
-        statement = select(Item).offset(skip).limit(limit)
-        items = session.exec(statement).all()
+        items = item_service.get_all(skip=skip, limit=limit)
+        count = item_service.repository.count()
     else:
-        count_statement = (
-            select(func.count())
-            .select_from(Item)
-            .where(Item.owner_id == current_user.id)
+        items, count = item_service.get_user_items_paginated(
+            owner_id=current_user.id, skip=skip, limit=limit
         )
-        count = session.exec(count_statement).one()
-        statement = (
-            select(Item)
-            .where(Item.owner_id == current_user.id)
-            .offset(skip)
-            .limit(limit)
-        )
-        items = session.exec(statement).all()
 
     return ItemsPublic(data=items, count=count)
 
@@ -46,11 +37,13 @@ def read_item(session: SessionDep, current_user: CurrentUser, id: uuid.UUID) -> 
     """
     Get item by ID.
     """
-    item = session.get(Item, id)
+    item_service = ItemService(session)
+    item = item_service.get_by_id(id)
+    
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
     if not current_user.is_superuser and (item.owner_id != current_user.id):
-        raise HTTPException(status_code=400, detail="Not enough permissions")
+        raise HTTPException(status_code=403, detail="Not enough permissions")
     return item
 
 
@@ -61,10 +54,8 @@ def create_item(
     """
     Create new item.
     """
-    item = Item.model_validate(item_in, update={"owner_id": current_user.id})
-    session.add(item)
-    session.commit()
-    session.refresh(item)
+    item_service = ItemService(session)
+    item = item_service.create_item(item_create=item_in, owner_id=current_user.id)
     return item
 
 
@@ -79,17 +70,22 @@ def update_item(
     """
     Update an item.
     """
-    item = session.get(Item, id)
+    item_service = ItemService(session)
+    item = item_service.get_by_id(id)
+    
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
     if not current_user.is_superuser and (item.owner_id != current_user.id):
-        raise HTTPException(status_code=400, detail="Not enough permissions")
-    update_dict = item_in.model_dump(exclude_unset=True)
-    item.sqlmodel_update(update_dict)
-    session.add(item)
-    session.commit()
-    session.refresh(item)
-    return item
+        raise HTTPException(status_code=403, detail="Not enough permissions")
+    
+    updated_item = item_service.update_item(
+        item_id=id, item_update=item_in, owner_id=current_user.id
+    )
+    
+    if not updated_item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    
+    return updated_item
 
 
 @router.delete("/{id}")
@@ -99,11 +95,13 @@ def delete_item(
     """
     Delete an item.
     """
-    item = session.get(Item, id)
+    item_service = ItemService(session)
+    item = item_service.get_by_id(id)
+    
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
     if not current_user.is_superuser and (item.owner_id != current_user.id):
-        raise HTTPException(status_code=400, detail="Not enough permissions")
-    session.delete(item)
-    session.commit()
+        raise HTTPException(status_code=403, detail="Not enough permissions")
+    
+    item_service.delete_item(item_id=id, owner_id=current_user.id)
     return Message(message="Item deleted successfully")

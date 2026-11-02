@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node \"c:/Users/DELL/OneDrive/Desktop/full-stack-fastapi-template/frontend/fix_teacher_i18n.js\")",
+      "Bash(node \"c:/Users/DELL/OneDrive/Desktop/full-stack-fastapi-template/frontend/fix_admin_i18n.cjs\")",
+      "Bash(grep -n 'Table.Row background' *.tsx)",
+      "Bash(grep -n 'Table.Row background.*[^>]$' *.tsx)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/DELL/OneDrive/Desktop/full-stack-fastapi-template/frontend/src/routes/_layout/**)",
+      "Bash(npx tsc:*)",
+      "Bash(node_modules/.bin/tsc --noEmit --skipLibCheck)",
+      "Bash(do)",
+      "Bash(sed -i 's/^import React, { useEffect, useState } from \"\"react\"\"$/import { useEffect, useState } from \"\"react\"\"/' \"$f\")",
+      "Bash(echo \"Fixed $f\")",
+      "Bash(done)"
+    ]
+  }
+}

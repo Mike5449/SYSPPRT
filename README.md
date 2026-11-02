@@ -237,3 +237,49 @@ Check the file [release-notes.md](./release-notes.md).
 ## License
 
 The Full Stack FastAPI Template is licensed under the terms of the MIT license.
+
+# 1. Installer uv globalement (une seule fois)
+pip install uv
+
+# 2. Aller dans backend
+cd C:\Users\DELL\Documents\full-stack-fastapi-template\backend
+
+
+
+# 3. uv va créer automatiquement l'environnement .venv et installer tout
+uv sync
+
+# 2.1 Créer l'environnement virtuel
+python -m venv venv
+
+# 4. Activer l'environnement créé par uv
+# CMD
+.venv\Scripts\activate.bat
+
+# PowerShell
+.venv\Scripts\Activate.ps1
+
+# 3. Mettre à jour pip
+python -m pip install --upgrade pip
+
+# 4. Installer le projet en mode développement
+pip install -e .
+
+# 1. Créer les tables dans PostgreSQL
+alembic upgrade head
+
+# 2. Créer le premier superutilisateur
+python -m app.initial_data
+
+# 3. Démarrer le serveur
+uvicorn app.main:app --reload
+
+
+# 1. Créer les tables dans PostgreSQL
+alembic upgrade head
+
+# 2. Créer le premier superutilisateur
+python -m app.initial_data
+
+# 3. Démarrer le serveur
+uvicorn app.main:app --reload

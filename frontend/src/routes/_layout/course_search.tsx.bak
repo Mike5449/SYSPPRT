@@ -1,0 +1,626 @@
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Spinner,
+  Table,
+  Text,
+} from "@chakra-ui/react"
+import { useQuery } from "@tanstack/react-query"
+import { createFileRoute } from "@tanstack/react-router"
+import { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import {
+  FiActivity,
+  FiAlertCircle,
+  FiBookOpen,
+  FiCalendar,
+  FiChevronDown,
+  FiRefreshCw,
+  FiSearch,
+  FiUser,
+} from "react-icons/fi"
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "@/components/ui/menu"
+
+import {
+  CoursesService,
+  ProgramLevelsService,
+  StudentsService,
+} from "@/client"
+import CourseDetails from "@/components/course/CourseDetails"
+import useAuth from "@/hooks/useAuth"
+
+export const Route = createFileRoute("/_layout/course_search")({
+  component: CourseSearch,
+})
+
+// ─── Teacher Avatar ────────────────────────────────────────────────────────────
+function TeacherAvatar({ name }: { name: string }) {
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase()
+  return (
+    <Flex
+      align="center"
+      justify="center"
+      w="28px"
+      h="28px"
+      borderRadius="4px"
+      bg="gray.100"
+      color="gray.600"
+      fontSize="11px"
+      fontWeight="700"
+      flexShrink={0}
+      border="1px solid"
+      borderColor="gray.200"
+    >
+      {initials}
+    </Flex>
+  )
+}
+
+// ─── Percentage Pill ──────────────────────────────────────────────────────────
+function PctPill({
+  value,
+  color,
+}: {
+  value: number | null | undefined
+  color: string
+}) {
+  if (!value)
+    return (
+      <Text color="gray.300" textAlign="center" fontSize="12px">
+        —
+      </Text>
+    )
+  return (
+    <Flex justify="center">
+      <Box
+        px="7px"
+        py="2px"
+        borderRadius="3px"
+        bg={color + "12"}
+        color={color}
+        fontSize="11px"
+        fontWeight="700"
+        border={`1px solid ${color}30`}
+      >
+        {value}%
+      </Box>
+    </Flex>
+  )
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+function CourseSearch() {
+  const { t } = useTranslation()
+  const { user: currentUser } = useAuth()
+  const [programLevelId, setProgramLevelId] = useState("")
+  const [sessionNumber, setSessionNumber] = useState("")
+  const [yearLevel, setYearLevel] = useState("")
+  const [shouldFetch, setShouldFetch] = useState(false)
+
+  const isStudent = currentUser && !currentUser.is_superuser
+
+  const { data: studentData } = useQuery({
+    queryKey: ["student_by_user", currentUser?.id],
+    queryFn: () =>
+      StudentsService.readStudentByUser({ userId: currentUser!.id }),
+    enabled: !!currentUser && !!isStudent,
+  })
+
+  useEffect(() => {
+    if (isStudent && studentData?.program_level?.id) {
+      setProgramLevelId(studentData.program_level.id)
+    }
+  }, [isStudent, studentData])
+
+  const { data: programLevels } = useQuery({
+    queryKey: ["program_levels"],
+    queryFn: () =>
+      ProgramLevelsService.readProgramLevels({ skip: 0, limit: 1000 }),
+  })
+
+  const selectedProgram = programLevels?.data?.find(
+    (p) => p.id === programLevelId,
+  )
+  const maxYearLevel = selectedProgram?.typical_duration || 1
+  const yearLevels = Array.from({ length: maxYearLevel }, (_, i) => i + 1)
+
+  useEffect(() => {
+    if (yearLevel && parseInt(yearLevel, 10) > maxYearLevel) setYearLevel("")
+  }, [maxYearLevel, yearLevel])
+
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["course-search", programLevelId, sessionNumber, yearLevel],
+    queryFn: () =>
+      CoursesService.searchCourses({
+        programLevelId: programLevelId || "",
+        sessionNumber: sessionNumber ? parseInt(sessionNumber, 10) : undefined,
+        yearLevel: yearLevel ? parseInt(yearLevel, 10) : undefined,
+      }),
+    enabled: shouldFetch && (!isStudent || !!programLevelId),
+    retry: false,
+  })
+
+  const handleSearch = () => {
+    setShouldFetch(true)
+    refetch()
+  }
+
+  useEffect(() => {
+    if (shouldFetch) return
+    if (isStudent && !programLevelId) return
+    setShouldFetch(true)
+  }, [programLevelId, isStudent, shouldFetch])
+
+  const resultsRef = useRef<HTMLDivElement | null>(null)
+  const [resultsMaxH, setResultsMaxH] = useState<string>("50vh")
+
+  useEffect(() => {
+    const update = () => {
+      if (!resultsRef.current) return
+      const top = resultsRef.current.getBoundingClientRect().top
+      setResultsMaxH(
+        `${Math.max(300, Math.floor(window.innerHeight - top - 24))}px`,
+      )
+    }
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
+
+  return (
+    <Box minH="100vh" bg="gray.50" py={8}>
+      <Container maxW="container.xl">
+
+        {/* ── Header + Filters ───────────────────────────────────────────── */}
+        <Box mb={6}>
+          <Flex justify="space-between" align="center" mb={3}>
+            <Box>
+              <Flex align="center" gap={2} mb={0.5}>
+                <Icon as={FiBookOpen} color="gray.600" fontSize="18px" />
+                <Heading size="lg" color="gray.800" fontWeight="700" letterSpacing="-0.3px">
+                  Mes Cours
+                </Heading>
+              </Flex>
+              <Text color="gray.500" fontSize="sm" pl="26px">
+                {data ? `${data.data.length} résultat${data.data.length !== 1 ? "s" : ""}` : "Filtrez vos cours par session et niveau d'année."}
+              </Text>
+            </Box>
+            <IconButton variant="ghost" size="xs" color="#6b8ab0" onClick={handleSearch} loading={isLoading} aria-label="Rechercher" _hover={{ color: "ui.main", bg: "transparent" }}>
+              <FiRefreshCw />
+            </IconButton>
+          </Flex>
+          <HStack bg="white" borderRadius="8px" p="0.35rem 1rem" boxShadow="0 2px 8px rgba(0,20,40,0.04)" border="1px solid #edf2f7" gap="10px" w="full" justify="flex-end">
+              <MenuRoot positioning={{ gutter: 4, placement: "bottom-end" }}>
+                <MenuTrigger asChild>
+                  <HStack cursor="pointer" color="#1f3b62" fontWeight="500" fontSize="0.75rem" _hover={{ color: "ui.main" }} gap="4px">
+                    <Icon as={FiCalendar} color="#2a5f8a" boxSize={3} />
+                    <Text>{yearLevel ? t("course.session.table.year_short", { year: yearLevel }) : t("common.forms.select")}</Text>
+                    <Icon as={FiChevronDown} boxSize={2.5} color="#a0aec0" />
+                  </HStack>
+                </MenuTrigger>
+                <MenuContent minW="130px" bg="white" borderRadius="10px" border="1px solid #e2ecf9" p="4px" zIndex={1500}>
+                  <MenuItem value="" fontSize="0.75rem" borderRadius="6px" onClick={() => setYearLevel("")}>{t("common.forms.select")}</MenuItem>
+                  {yearLevels.map((level) => (
+                    <MenuItem key={level} value={String(level)} fontSize="0.75rem" borderRadius="6px" onClick={() => setYearLevel(String(level))}>
+                      {t("course.session.table.year_short", { year: level })}
+                    </MenuItem>
+                  ))}
+                </MenuContent>
+              </MenuRoot>
+              <Box w="1px" h="10px" bg="gray.100" />
+              <MenuRoot positioning={{ gutter: 4, placement: "bottom-end" }}>
+                <MenuTrigger asChild>
+                  <HStack cursor="pointer" color="#1f3b62" fontWeight="500" fontSize="0.75rem" _hover={{ color: "ui.main" }} gap="4px">
+                    <Icon as={FiActivity} color="#2a5f8a" boxSize={3} />
+                    <Text>{sessionNumber === "1" ? "Session 1" : sessionNumber === "2" ? "Session 2" : "Toutes"}</Text>
+                    <Icon as={FiChevronDown} boxSize={2.5} color="#a0aec0" />
+                  </HStack>
+                </MenuTrigger>
+                <MenuContent minW="120px" bg="white" borderRadius="10px" border="1px solid #e2ecf9" p="4px" zIndex={1500}>
+                  <MenuItem value="" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("")}>Toutes</MenuItem>
+                  <MenuItem value="1" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("1")}>Session 1</MenuItem>
+                  <MenuItem value="2" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("2")}>Session 2</MenuItem>
+                </MenuContent>
+              </MenuRoot>
+              {!isStudent && (
+                <>
+                  <Box w="1px" h="10px" bg="gray.100" />
+                  <MenuRoot positioning={{ gutter: 4, placement: "bottom-end" }}>
+                    <MenuTrigger asChild>
+                      <HStack cursor="pointer" color="#1f3b62" fontWeight="500" fontSize="0.75rem" _hover={{ color: "ui.main" }} gap="4px" maxW="200px">
+                        <Icon as={FiSearch} color="#2a5f8a" boxSize={3} />
+                        <Text truncate>{programLevelId ? (programLevels?.data?.find(p => p.id === programLevelId)?.name ?? "Programme") : "Programme"}</Text>
+                        <Icon as={FiChevronDown} boxSize={2.5} color="#a0aec0" />
+                      </HStack>
+                    </MenuTrigger>
+                    <MenuContent minW="260px" maxH="300px" overflowY="auto" bg="white" borderRadius="10px" border="1px solid #e2ecf9" p="4px" zIndex={1500}>
+                      <MenuItem value="" fontSize="0.75rem" borderRadius="6px" onClick={() => setProgramLevelId("")}>Sélectionner un programme</MenuItem>
+                      {programLevels?.data?.map((level) => (
+                        <MenuItem key={level.id} value={level.id} fontSize="0.75rem" borderRadius="6px" onClick={() => setProgramLevelId(level.id)}>
+                          {level.program.name} — {level.name}
+                        </MenuItem>
+                      ))}
+                    </MenuContent>
+                  </MenuRoot>
+                </>
+              )}
+          </HStack>
+        </Box>
+
+        {/* ── Error ──────────────────────────────────────────────────────── */}
+        {error && (
+          <Flex
+            align="center"
+            gap={3}
+            p={4}
+            bg="red.50"
+            border="1px solid"
+            borderColor="red.200"
+            borderRadius="6px"
+            mb={4}
+          >
+            <Icon as={FiAlertCircle} color="red.500" fontSize="16px" />
+            <Box>
+              <Text fontWeight="600" fontSize="sm" color="red.700">
+                Erreur de recherche
+              </Text>
+              <Text fontSize="xs" color="red.500">
+                {error.message}
+              </Text>
+            </Box>
+          </Flex>
+        )}
+
+        {/* ── Loading ────────────────────────────────────────────────────── */}
+        {isLoading && (
+          <Flex justify="center" align="center" py={14} gap={3}>
+            <Spinner size="sm" color="gray.500" />
+            <Text color="gray.500" fontSize="sm">
+              Chargement...
+            </Text>
+          </Flex>
+        )}
+
+        {/* ── Results Table ──────────────────────────────────────────────── */}
+        {data && !isLoading && (
+          <Box
+            bg="white"
+            border="1px solid"
+            borderColor="gray.200"
+            borderRadius="6px"
+            overflow="hidden"
+          >
+            {/* Result count bar */}
+            <Flex
+              px={5}
+              py={3}
+              borderBottom="1px solid"
+              borderColor="gray.100"
+              align="center"
+              justify="space-between"
+              bg="gray.50"
+            >
+              <Text
+                fontSize="11px"
+                fontWeight="600"
+                color="gray.500"
+                textTransform="uppercase"
+                letterSpacing="0.5px"
+              >
+                Résultats
+              </Text>
+              <Box
+                px={2}
+                py="1px"
+                bg="gray.200"
+                borderRadius="3px"
+                fontSize="11px"
+                fontWeight="600"
+                color="gray.600"
+              >
+                {data.data.length}
+              </Box>
+            </Flex>
+
+            <Box
+              ref={resultsRef}
+              overflowX="auto"
+              overflowY="auto"
+              maxH={resultsMaxH}
+            >
+              <Table.Root size="sm" stickyHeader>
+                <Table.Header>
+                  <Table.Row background="linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%)">
+                    {[
+                      { label: "Code", align: "left" },
+                      { label: "Cours", align: "left" },
+                      { label: "Professeur", align: "left" },
+                      { label: "Session / Année", align: "left" },
+                      { label: "Niveau", align: "center" },
+                      { label: "Intra", align: "center" },
+                      { label: "Final", align: "center" },
+                      { label: "Part.", align: "center" },
+                      { label: "Type", align: "left" },
+                      { label: "Statut", align: "left" },
+                      { label: "", align: "right" },
+                    ].map(({ label, align }) => (
+                      <Table.ColumnHeader
+                        key={label}
+                        fontSize="10.5px"
+                        fontWeight="600"
+                        color="white"
+                        textTransform="uppercase"
+                        letterSpacing="0.5px"
+                        py={3}
+                        textAlign={align as any}
+                        borderBottom="1px solid"
+                        borderColor="whiteAlpha.300"
+                      >
+                        {label}
+                      </Table.ColumnHeader>
+                    ))}
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {data.data.length === 0 ? (
+                    <Table.Row>
+                      <Table.Cell colSpan={11} textAlign="center" py={14}>
+                        <Flex direction="column" align="center" gap={3}>
+                          <Icon
+                            as={FiBookOpen}
+                            fontSize="24px"
+                            color="gray.300"
+                          />
+                          <Box textAlign="center">
+                            <Text
+                              fontWeight="600"
+                              fontSize="sm"
+                              color="gray.500"
+                              mb="2px"
+                            >
+                              Aucun cours trouvé
+                            </Text>
+                            <Text fontSize="xs" color="gray.400">
+                              Modifiez vos filtres pour afficher des résultats.
+                            </Text>
+                          </Box>
+                        </Flex>
+                      </Table.Cell>
+                    </Table.Row>
+                  ) : (
+                    data.data.map((course) => (
+                      <Table.Row
+                        key={course.id}
+                        borderBottom="1px solid"
+                        borderColor="gray.50"
+                        _odd={{ bg: "#f7f9fc" }} _even={{ bg: "white" }} _hover={{ bg: "gray.100" }}
+                        transition="background 0.1s"
+                      >
+                        {/* Code */}
+                        <Table.Cell py={3}>
+                          <Box
+                            display="inline-block"
+                            px="7px"
+                            py="2px"
+                            bg="gray.100"
+                            borderRadius="3px"
+                            border="1px solid"
+                            borderColor="gray.200"
+                          >
+                            <Text
+                              fontFamily="mono"
+                              fontSize="11.5px"
+                              fontWeight="700"
+                              color="gray.700"
+                            >
+                              {course.code}
+                            </Text>
+                          </Box>
+                        </Table.Cell>
+
+                        {/* Cours */}
+                        <Table.Cell py={3} maxW="260px">
+                          <Text
+                            fontWeight="600"
+                            fontSize="13px"
+                            color="gray.800"
+                            lineClamp={1}
+                          >
+                            {course.name}
+                          </Text>
+                          {course.description && (
+                            <Text
+                              fontSize="11px"
+                              color="gray.400"
+                              lineClamp={1}
+                              mt="1px"
+                            >
+                              {course.description}
+                            </Text>
+                          )}
+                        </Table.Cell>
+
+                        {/* Professeur */}
+                        <Table.Cell py={3}>
+                          {(course as any).teacher_name ? (
+                            <Flex align="center" gap={2}>
+                              <TeacherAvatar
+                                name={(course as any).teacher_name}
+                              />
+                              <Box>
+                                <Text
+                                  fontSize="12.5px"
+                                  fontWeight="600"
+                                  color="gray.700"
+                                  lineClamp={1}
+                                >
+                                  {(course as any).teacher_name}
+                                </Text>
+                                <Text
+                                  fontSize="11px"
+                                  color="gray.400"
+                                  lineClamp={1}
+                                >
+                                  {(course as any).teacher_email}
+                                </Text>
+                              </Box>
+                            </Flex>
+                          ) : (
+                            <Flex align="center" gap={1.5}>
+                              <Icon
+                                as={FiUser}
+                                fontSize="11px"
+                                color="gray.300"
+                              />
+                              <Text fontSize="11px" color="gray.400">
+                                Non assigné
+                              </Text>
+                            </Flex>
+                          )}
+                        </Table.Cell>
+
+                        {/* Session / Année */}
+                        <Table.Cell py={3}>
+                          {(course as any).session_name ? (
+                            <Box>
+                              <Text
+                                fontSize="12.5px"
+                                fontWeight="600"
+                                color="gray.700"
+                              >
+                                {(course as any).session_name}
+                              </Text>
+                              {(course as any).academic_year_name && (
+                                <Text
+                                  fontSize="11px"
+                                  color="gray.400"
+                                  mt="1px"
+                                >
+                                  {(course as any).academic_year_name}
+                                </Text>
+                              )}
+                            </Box>
+                          ) : (
+                            <Text fontSize="12px" color="gray.300">
+                              —
+                            </Text>
+                          )}
+                        </Table.Cell>
+
+                        {/* Niveau */}
+                        <Table.Cell py={3} textAlign="center">
+                          {(course as any).year_level ? (
+                            <Flex justify="center">
+                              <Box
+                                w="24px"
+                                h="24px"
+                                borderRadius="4px"
+                                bg="gray.100"
+                                border="1px solid"
+                                borderColor="gray.200"
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <Text
+                                  fontSize="11px"
+                                  fontWeight="700"
+                                  color="gray.600"
+                                >
+                                  {(course as any).year_level}
+                                </Text>
+                              </Box>
+                            </Flex>
+                          ) : (
+                            <Text color="gray.300" textAlign="center" fontSize="12px">
+                              —
+                            </Text>
+                          )}
+                        </Table.Cell>
+
+                        {/* Intra */}
+                        <Table.Cell py={3}>
+                          <PctPill
+                            value={(course as any).intra_percentage}
+                            color="#D97706"
+                          />
+                        </Table.Cell>
+
+                        {/* Final */}
+                        <Table.Cell py={3}>
+                          <PctPill
+                            value={(course as any).final_percentage}
+                            color="#DC2626"
+                          />
+                        </Table.Cell>
+
+                        {/* Participation */}
+                        <Table.Cell py={3}>
+                          <PctPill
+                            value={(course as any).participation_percentage}
+                            color="#0D9488"
+                          />
+                        </Table.Cell>
+
+                        {/* Type */}
+                        <Table.Cell py={3}>
+                          <Text
+                            fontSize="11.5px"
+                            fontWeight="500"
+                            color={
+                              course.is_mandatory ? "gray.700" : "gray.500"
+                            }
+                          >
+                            {course.is_mandatory ? "Obligatoire" : "Optionnel"}
+                          </Text>
+                        </Table.Cell>
+
+                        {/* Statut */}
+                        <Table.Cell py={3}>
+                          <Flex align="center" gap={1.5}>
+                            <Box
+                              w="6px"
+                              h="6px"
+                              borderRadius="full"
+                              bg={course.is_active ? "green.400" : "red.400"}
+                              flexShrink={0}
+                            />
+                            <Text
+                              fontSize="12px"
+                              fontWeight="500"
+                              color={
+                                course.is_active ? "green.700" : "red.600"
+                              }
+                            >
+                              {course.is_active ? "Actif" : "Inactif"}
+                            </Text>
+                          </Flex>
+                        </Table.Cell>
+
+                        {/* Actions */}
+                        <Table.Cell py={3} textAlign="right">
+                          <CourseDetails course={course as any} />
+                        </Table.Cell>
+                      </Table.Row>
+                    ))
+                  )}
+                </Table.Body>
+              </Table.Root>
+            </Box>
+          </Box>
+        )}
+      </Container>
+    </Box>
+  )
+}

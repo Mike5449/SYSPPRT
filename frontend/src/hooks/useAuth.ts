@@ -9,6 +9,8 @@ import {
   type UserPublic,
   type UserRegister,
   UsersService,
+  type OTPRequest,
+  type OTPVerify,
 } from "@/client"
 import { handleError } from "@/utils"
 
@@ -60,12 +62,36 @@ const useAuth = () => {
 
   const logout = () => {
     localStorage.removeItem("access_token")
+    // Nettoyer TOUT le cache des queries pour éviter les conflits entre utilisateurs
+    queryClient.clear()
     navigate({ to: "/login" })
   }
+
+  const requestOtpMutation = useMutation({
+    mutationFn: (data: OTPRequest) =>
+      LoginService.requestOtp({ requestBody: data }),
+    onError: (err: ApiError) => {
+      handleError(err)
+    },
+  })
+
+  const verifyOtpMutation = useMutation({
+    mutationFn: (data: OTPVerify) =>
+      LoginService.verifyOtp({ requestBody: data }),
+    onSuccess: (response) => {
+      localStorage.setItem("access_token", response.access_token)
+      navigate({ to: "/" })
+    },
+    onError: (err: ApiError) => {
+      handleError(err)
+    },
+  })
 
   return {
     signUpMutation,
     loginMutation,
+    requestOtpMutation,
+    verifyOtpMutation,
     logout,
     user,
     error,

@@ -1,4 +1,4 @@
-import { Container, Flex, Image, Input, Text } from "@chakra-ui/react"
+import { Flex, Image, Input, Text } from "@chakra-ui/react"
 import {
   createFileRoute,
   Link as RouterLink,
@@ -43,7 +43,8 @@ function SignUp() {
     criteriaMode: "all",
     defaultValues: {
       email: "",
-      full_name: "",
+      first_name: "",
+      last_name: "",
       password: "",
       confirm_password: "",
     },
@@ -55,15 +56,16 @@ function SignUp() {
 
   return (
     <Flex flexDir={{ base: "column", md: "row" }} justify="center" h="100vh">
-      <Container
+      <Flex
         as="form"
+        direction="column"
         onSubmit={handleSubmit(onSubmit)}
         h="100vh"
         maxW="sm"
+        mx="auto"
         alignItems="stretch"
         justifyContent="center"
         gap={4}
-        centerContent
       >
         <Image
           src={Logo}
@@ -74,16 +76,32 @@ function SignUp() {
           mb={4}
         />
         <Field
-          invalid={!!errors.full_name}
-          errorText={errors.full_name?.message}
+          invalid={!!errors.first_name}
+          errorText={errors.first_name?.message}
         >
           <InputGroup w="100%" startElement={<FiUser />}>
             <Input
-              minLength={3}
-              {...register("full_name", {
-                required: "Full Name is required",
+              minLength={1}
+              {...register("first_name", {
+                required: "First Name is required",
               })}
-              placeholder="Full Name"
+              placeholder="First Name"
+              type="text"
+            />
+          </InputGroup>
+        </Field>
+
+        <Field
+          invalid={!!errors.last_name}
+          errorText={errors.last_name?.message}
+        >
+          <InputGroup w="100%" startElement={<FiUser />}>
+            <Input
+              minLength={1}
+              {...register("last_name", {
+                required: "Last Name is required",
+              })}
+              placeholder="Last Name"
               type="text"
             />
           </InputGroup>
@@ -124,7 +142,7 @@ function SignUp() {
             Log In
           </RouterLink>
         </Text>
-      </Container>
+      </Flex>
     </Flex>
   )
 }

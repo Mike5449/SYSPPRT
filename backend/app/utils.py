@@ -36,7 +36,15 @@ def send_email(
     subject: str = "",
     html_content: str = "",
 ) -> None:
-    assert settings.emails_enabled, "no provided configuration for email variables"
+    if not settings.emails_enabled:
+        logger.warning(f"Emails are disabled. Result would have been sent to {email_to}")
+        logger.info("*" * 40)
+        logger.info(f"SUBJECT: {subject}")
+        # Extract OTP from html content if possible, or just log the content
+        logger.info("LOGGED EMAIL CONTENT BELOW:")
+        logger.info(html_content)
+        logger.info("*" * 40)
+        return
     message = emails.Message(
         subject=subject,
         html=html_content,
@@ -97,6 +105,23 @@ def generate_new_account_email(
             "link": settings.FRONTEND_HOST,
         },
     )
+    return EmailData(html_content=html_content, subject=subject)
+
+
+def generate_otp_email(email_to: str, email: str, otp_code: str) -> EmailData:
+    project_name = settings.PROJECT_NAME
+    subject = f"{project_name} - OTP Verification"
+    html_content = render_email_template(
+        template_name="otp_email.html",
+        context={
+            "project_name": settings.PROJECT_NAME,
+            "username": email,
+            "otp_code": otp_code,
+        },
+    )
+    logger.info("=" * 40)
+    logger.info(f"OTP CODE FOR {email}: {otp_code}")
+    logger.info("=" * 40)
     return EmailData(html_content=html_content, subject=subject)
 
 

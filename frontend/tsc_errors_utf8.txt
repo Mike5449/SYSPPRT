@@ -1,0 +1,35 @@
+﻿src/routes/_layout/attendance_record.tsx(14,3): error TS6133: 'MenuContent' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(15,3): error TS6133: 'MenuItem' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(16,3): error TS6133: 'MenuRoot' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(17,3): error TS6133: 'MenuTrigger' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(31,3): error TS6133: 'FiFileText' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(39,3): error TS6133: 'FiFilter' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(40,3): error TS6133: 'FiBook' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(49,3): error TS6133: 'AcademicYearsService' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(85,3): error TS6133: 'bgGradient' is declared but its value is never read.
+src/routes/_layout/attendance_record.tsx(372,38): error TS2339: Property 'attendance_rate' does not exist on type 'StudentAttendanceViewSummary'.
+src/routes/_layout/attendance_record.tsx(379,35): error TS2339: Property 'present_count' does not exist on type 'StudentAttendanceViewSummary'.
+src/routes/_layout/attendance_record.tsx(386,35): error TS2339: Property 'absent_count' does not exist on type 'StudentAttendanceViewSummary'.
+src/routes/_layout/attendance_record.tsx(393,38): error TS2339: Property 'late_count' does not exist on type 'StudentAttendanceViewSummary'.
+src/routes/_layout/attendance_record.tsx(393,70): error TS2339: Property 'excused_count' does not exist on type 'StudentAttendanceViewSummary'.
+src/routes/_layout/attendance_record.tsx(418,25): error TS2322: Type '"plain"' is not assignable to type 'ConditionalValue<"outline" | "subtle" | "flushed" | undefined>'.
+src/routes/_layout/attendance_record.tsx(492,23): error TS2322: Type '{ children: (string | Element)[]; size: "sm"; variant: "outline"; w: "full"; h: "32px"; borderRadius: "sm"; fontSize: "xs"; onClick: () => void; isDisabled: boolean; color: "#5e7899"; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'isDisabled' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'. Did you mean 'disabled'?
+src/routes/_layout/attendance_record.tsx(566,39): error TS2339: Property 'id' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'id' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(607,40): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(608,42): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(609,44): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(610,46): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(619,39): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(619,85): error TS2339: Property 'status' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'status' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(636,50): error TS2339: Property 'created_at' does not exist on type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations'.
+  Property 'created_at' does not exist on type 'StudentAttendanceCompleteWithCalculations'.
+src/routes/_layout/attendance_record.tsx(651,60): error TS2322: Type 'AttendanceRecordPublicWithDetails | StudentAttendanceCompleteWithCalculations' is not assignable to type 'AttendanceRecordPublic'.
+  Type 'StudentAttendanceCompleteWithCalculations' is missing the following properties from type 'AttendanceRecordPublic': id, created_at, updated_at

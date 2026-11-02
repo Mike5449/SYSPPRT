@@ -1,0 +1,753 @@
+import {
+  Badge,
+  Box,
+  Container,
+  EmptyState,
+  Flex,
+  Heading,
+  HStack,
+  IconButton,
+  Table,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { createFileRoute, useNavigate } from "@tanstack/react-router"
+import { useTranslation } from "react-i18next"
+import {
+  FiAward,
+  FiBook,
+  FiDollarSign,
+  FiHome,
+  FiLayers,
+  FiRefreshCw,
+  FiSearch,
+} from "react-icons/fi"
+import { z } from "zod"
+
+import { ProgramsService } from "@/client"
+import PendingItems from "@/components/Pending/PendingItems"
+import AddProgram from "@/components/program/AddProgram"
+import { ProgramActionsMenu } from "@/components/student/ProgramActionsMenu"
+import {
+  PaginationItems,
+  PaginationNextTrigger,
+  PaginationPrevTrigger,
+  PaginationRoot,
+} from "@/components/ui/pagination"
+
+const C = {
+  ink: "#1A202C",
+  inkMute: "#4A5568",
+  faint: "#A0AEC0",
+  line: "#E2E8F0",
+  paper: "#F7FAFC",
+  brand: "#2b6cb0",
+  brandDeep: "#2c5282",
+}
+const MONO = "ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace"
+
+const programSearchSchema = z.object({
+  page: z.number().catch(1),
+})
+
+const PER_PAGE = 10
+
+function getProgramsQueryOptions({ page }: { page: number }) {
+  return {
+    queryFn: () =>
+      ProgramsService.readPrograms({
+        skip: (page - 1) * PER_PAGE,
+        limit: PER_PAGE,
+      }),
+    queryKey: ["programs", { page }],
+  }
+}
+
+export const Route = createFileRoute("/_layout/program")({
+  component: ProgramPage,
+  validateSearch: (search) => programSearchSchema.parse(search),
+})
+
+function ProgramHeader() {
+  const { t } = useTranslation()
+  const queryClient = useQueryClient()
+  const { page } = Route.useSearch()
+
+  const handleRefresh = () => {
+    queryClient.invalidateQueries({ queryKey: ["programs"] })
+  }
+
+  const { data } = useQuery({
+    ...getProgramsQueryOptions({ page }),
+  })
+
+  const totalPrograms = data?.count ?? 0
+  const activePrograms =
+    data?.data?.filter((program) => program.is_active)?.length ?? 0
+  const inactivePrograms =
+    data?.data?.filter((program) => !program.is_active)?.length ?? 0
+  const totalCredits =
+    data?.data?.reduce(
+      (sum, program) => sum + (program.credits_required ?? 0),
+      0,
+    ) ?? 0
+  const avgTuitionFee =
+    (data?.data ?? [])
+      .filter((program) => program.tuition_fee)
+      .reduce((sum, program) => sum + (program.tuition_fee || 0), 0) /
+    Math.max(
+      (data?.data ?? []).filter((program) => program.tuition_fee)?.length ?? 1,
+      1,
+    )
+
+  return (
+    <Box borderBottom="1px solid" borderColor={C.line} pb={6} mb={6}>
+      <Flex justify="space-between" align="flex-start" mb={4} gap={4} wrap="wrap">
+        <Flex gap="14px" align="stretch">
+          <Box w="3px" borderRadius="full" bg={C.brand} flexShrink={0} />
+          <Box>
+            <Text fontFamily={MONO} fontSize="10px" fontWeight="700" letterSpacing="2px" color={C.brand} mb="5px">
+              PROGRAMMES D'ÉTUDES
+            </Text>
+            <Heading fontSize={{ base: "20px", md: "24px" }} fontWeight="800" color={C.ink} letterSpacing="-0.5px" lineHeight="1.05">
+              Programmes
+            </Heading>
+            <Text color={C.inkMute} fontSize="13px" mt="5px">
+              {t("common.tables.description_program", {
+                defaultValue: "Manage academic programs, degrees, and curriculum",
+              })}
+            </Text>
+          </Box>
+        </Flex>
+
+        <HStack gap={2}>
+          <IconButton
+            variant="outline"
+            onClick={handleRefresh}
+            aria-label={t("common.tables.refresh")}
+            size="sm"
+            borderColor={C.line}
+            color={C.inkMute}
+            borderRadius="4px"
+            _hover={{ color: C.brandDeep, borderColor: C.brand, bg: "white" }}
+          >
+            <FiRefreshCw />
+          </IconButton>
+          <AddProgram />
+        </HStack>
+      </Flex>
+
+      <Flex justify="space-between" align="center">
+        <HStack gap={6}>
+          <Text fontSize="xs" color="fg.muted">
+            <Text as="span" fontWeight="600" color="fg.default" fontSize="xs">
+              {totalPrograms}
+            </Text>{" "}
+            {t("common.tables.total_items", {
+              count: totalPrograms,
+              defaultValue: "total programs",
+            })}
+          </Text>
+          <HStack gap={2}>
+            <Text fontSize="xs" color="fg.muted">
+              {t("common.tables.active")}:
+            </Text>
+            <Badge colorPalette="green" variant="subtle" size="sm">
+              <Text fontSize="xs">{activePrograms}</Text>
+            </Badge>
+          </HStack>
+          <HStack gap={2}>
+            <Text fontSize="xs" color="fg.muted">
+              {t("common.tables.inactive")}:
+            </Text>
+            <Badge colorPalette="red" variant="subtle" size="sm">
+              <Text fontSize="xs">{inactivePrograms}</Text>
+            </Badge>
+          </HStack>
+          <HStack gap={2}>
+            <Text fontSize="xs" color="fg.muted">
+              {t("common.tables.total_credits")}:
+            </Text>
+            <Badge colorPalette="blue" variant="subtle" size="sm">
+              <Text fontSize="xs">{totalCredits}</Text>
+            </Badge>
+          </HStack>
+          <HStack gap={2}>
+            <Text fontSize="xs" color="fg.muted">
+              {t("common.tables.avg_tuition")}:
+            </Text>
+            <Badge colorPalette="purple" variant="subtle" size="sm">
+              <Text fontSize="xs">
+                ${Math.round(avgTuitionFee) || t("common.tables.none")}
+              </Text>
+            </Badge>
+          </HStack>
+        </HStack>
+      </Flex>
+    </Box>
+  )
+}
+
+function ProgramTable() {
+  const { t } = useTranslation()
+  const navigate = useNavigate({ from: Route.fullPath })
+  const { page } = Route.useSearch()
+
+  const { data, isLoading, isPlaceholderData } = useQuery({
+    ...getProgramsQueryOptions({ page }),
+    placeholderData: (prevData) => prevData,
+  })
+
+  const setPage = (page: number) => {
+    navigate({
+      to: "/program",
+      search: (prev) => ({ ...prev, page }),
+    })
+  }
+
+  const programs = data?.data?.slice(0, PER_PAGE) ?? []
+  const count = data?.count ?? 0
+
+  if (isLoading) {
+    return <PendingItems />
+  }
+
+  if (programs.length === 0) {
+    return (
+      <Box py={12}>
+        <EmptyState.Root>
+          <EmptyState.Content>
+            <EmptyState.Indicator>
+              <FiSearch size="48px" />
+            </EmptyState.Indicator>
+            <VStack textAlign="center" gap={2}>
+              <EmptyState.Title
+                fontSize="sm"
+                color="fg.emphasized"
+                fontWeight="600"
+              >
+                {t("common.tables.no_results")}
+              </EmptyState.Title>
+              <EmptyState.Description color="fg.muted" fontSize="xs">
+                {t("common.tables.add_first_program", {
+                  defaultValue:
+                    "Get started by creating your first academic program",
+                })}
+              </EmptyState.Description>
+            </VStack>
+          </EmptyState.Content>
+        </EmptyState.Root>
+      </Box>
+    )
+  }
+
+  const formatCurrency = (amount: number | null | undefined) => {
+    if (!amount) return "N/A"
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount)
+  }
+
+  return (
+    <VStack align="stretch" gap={4}>
+      <Box
+        bg="white"
+        borderRadius="6px"
+        border="1px solid"
+        borderColor={C.line}
+        boxShadow="0 1px 3px rgba(20,34,30,0.05)"
+        overflow="hidden"
+      >
+        <Table.Root size="md" variant="outline">
+          <Table.Header position="sticky" top={0} zIndex={1}>
+            <Table.Row background="linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%)">
+              <Table.ColumnHeader w="60px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.id")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="200px">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.program_info", {
+                    defaultValue: "Program Info",
+                  })}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="100px">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.code")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader flex="1" minW="180px">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.description")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="100px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.credits")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="100px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.tuition")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="80px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.language")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="140px">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.faculty")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="120px">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.level")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="90px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.status")}
+                </Text>
+              </Table.ColumnHeader>
+              <Table.ColumnHeader w="80px" textAlign="center">
+                <Text fontSize="xs" fontWeight="600" letterSpacing="wide" color="white">
+                  {t("common.tables.actions")}
+                </Text>
+              </Table.ColumnHeader>
+            </Table.Row>
+          </Table.Header>
+        </Table.Root>
+
+        {/* Scrollable Body Container */}
+        <Box maxH="450px" overflowY="auto" overflowX="hidden">
+          <Table.Root size="md" variant="outline">
+            <Table.Body>
+              {programs.map((program, index) => (
+                <Table.Row
+                  key={program.id}
+                  opacity={isPlaceholderData ? 0.5 : 1}
+                  _hover={{ bg: "#edf2f7" }}
+                  transition="background 0.1s"
+                  bg={index % 2 === 0 ? "white" : "#f7f9fc"}
+                >
+                  <Table.Cell w="60px" textAlign="center">
+                    <Text fontSize="xs" fontFamily="mono" color="fg.muted">
+                      {program.id?.toString().slice(-4) || "N/A"}
+                    </Text>
+                  </Table.Cell>
+
+                  <Table.Cell w="200px">
+                    <VStack align="start" gap={0.5}>
+                      <HStack gap={1}>
+                        <FiBook
+                          size="10px"
+                          color="var(--chakra-colors-fg-muted)"
+                        />
+                        <Text
+                          fontSize="xs"
+                          color="gray.700"
+                          fontWeight="600"
+                          truncate
+                        >
+                          {program.name}
+                        </Text>
+                      </HStack>
+                      <Text fontSize="xs" color="fg.muted">
+                        {new Date(program.created_at).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            day: "numeric",
+                            year: "2-digit",
+                          },
+                        )}
+                      </Text>
+                    </VStack>
+                  </Table.Cell>
+
+                  <Table.Cell w="100px">
+                    <Badge colorPalette="blue" variant="outline" size="sm">
+                      <Text fontSize="xs" fontWeight="500" fontFamily="mono">
+                        {program.code}
+                      </Text>
+                    </Badge>
+                  </Table.Cell>
+
+                  <Table.Cell flex="1" minW="180px">
+                    <Text
+                      fontSize="xs"
+                      color="gray.600"
+                      css={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                      }}
+                      title={program.description || undefined}
+                    >
+                      {program.description || t("common.tables.no_description")}
+                    </Text>
+                  </Table.Cell>
+
+                  <Table.Cell w="100px" textAlign="center">
+                    <HStack gap={1} justify="center">
+                      <FiAward
+                        size="10px"
+                        color="var(--chakra-colors-fg-muted)"
+                      />
+                      <Text
+                        fontSize="xs"
+                        color="gray.800"
+                        fontFamily="mono"
+                        fontWeight="600"
+                      >
+                        {program.credits_required || 0}
+                      </Text>
+                    </HStack>
+                  </Table.Cell>
+
+                  <Table.Cell w="100px" textAlign="center">
+                    <VStack gap={0.5}>
+                      <HStack gap={1} justify="center">
+                        <FiDollarSign
+                          size="10px"
+                          color="var(--chakra-colors-fg-muted)"
+                        />
+                        <Text
+                          fontSize="xs"
+                          color="gray.800"
+                          fontFamily="mono"
+                          fontWeight="500"
+                        >
+                          {formatCurrency(program.tuition_fee)}
+                        </Text>
+                      </HStack>
+                    </VStack>
+                  </Table.Cell>
+
+                  <Table.Cell w="140px">
+                    <VStack align="start" gap={1}>
+                      {(program as any).faculty ? (
+                        <HStack gap={1}>
+                          <FiHome
+                            size="10px"
+                            color="var(--chakra-colors-fg-muted)"
+                          />
+                          <Text
+                            fontSize="xs"
+                            color="gray.700"
+                            truncate
+                            title={(program as any).faculty.name}
+                          >
+                            {(program as any).faculty.name}
+                          </Text>
+                        </HStack>
+                      ) : (
+                        <Text fontSize="xs" color="fg.muted">
+                          N/A
+                        </Text>
+                      )}
+                    </VStack>
+                  </Table.Cell>
+
+                  <Table.Cell w="120px">
+                    <VStack align="start" gap={1}>
+                      {(program as any).level ? (
+                        <HStack gap={1}>
+                          <FiLayers
+                            size="10px"
+                            color="var(--chakra-colors-fg-muted)"
+                          />
+                          <Text
+                            fontSize="xs"
+                            color="gray.700"
+                            truncate
+                            title={(program as any).level.name}
+                          >
+                            {(program as any).level.name}
+                          </Text>
+                        </HStack>
+                      ) : (
+                        <Text fontSize="xs" color="fg.muted">
+                          N/A
+                        </Text>
+                      )}
+                    </VStack>
+                  </Table.Cell>
+
+                  <Table.Cell w="90px" textAlign="center">
+                    {program.is_active ? (
+                      <Badge colorPalette="green" variant="solid" size="sm">
+                        <Text fontSize="xs">{t("common.tables.active")}</Text>
+                      </Badge>
+                    ) : (
+                      <Badge colorPalette="red" variant="outline" size="sm">
+                        <Text fontSize="xs">{t("common.tables.inactive")}</Text>
+                      </Badge>
+                    )}
+                  </Table.Cell>
+
+                  <Table.Cell w="80px" textAlign="center">
+                    <ProgramActionsMenu program={program as any} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table.Root>
+        </Box>
+      </Box>
+
+      {/* Pagination - Always visible */}
+      <Flex justify="space-between" align="center" mt={4}>
+        <Text fontSize="xs" color="fg.muted">
+          {t("common.tables.showing", {
+            first: (page - 1) * PER_PAGE + 1,
+            last: Math.min(page * PER_PAGE, count),
+            total: count,
+            items: t("common.programs"),
+          })}
+        </Text>
+
+        <PaginationRoot
+          count={count}
+          pageSize={PER_PAGE}
+          page={page}
+          onPageChange={({ page }) => setPage(page)}
+        >
+          <HStack gap={1}>
+            <PaginationPrevTrigger />
+            <PaginationItems />
+            <PaginationNextTrigger />
+          </HStack>
+        </PaginationRoot>
+      </Flex>
+    </VStack>
+  )
+}
+
+function ProgramPage() {
+  return (
+    <Box minH="100vh" bg={C.paper}>
+      <Container maxW="full" py={{ base: 5, md: 6 }}>
+        <ProgramHeader />
+        <ProgramTable />
+      </Container>
+    </Box>
+  )
+}
+
+// import React, { useState } from "react";
+// import { ProgramsService } from "@/client";
+// import type {
+//   ProgramCreate,
+//   ProgramPublic,
+//   ProgramsPublic,
+//   ProgramUpdate,
+// } from "@/client/types.gen";
+// import { createFileRoute } from '@tanstack/react-router';
+
+// type ResultState = {
+//   operation: string;
+//   data?: any;
+//   error?: string;
+// } | null;
+
+// function ProgramCRUD() {
+//   const [loading, setLoading] = useState(false);
+//   const [result, setResult] = useState<ResultState>(null);
+
+//   // CREATE
+//   const createProgram = async () => {
+//     setLoading(true);
+//     try {
+//       const newProgram = await ProgramsService.createProgram({
+//         requestBody: {
+//           name: "Computer Science",
+//           code: "CS",
+//           description: "Computer Science Program",
+//           is_active: true,
+//           faculty_id: "8365e11d-c765-42c3-98f8-091ad9362338",
+//           level_id: "7cde631b-4092-4ecd-8514-6ef041bbceb7",
+//           duration_years:4
+//         } as ProgramCreate,
+//       });
+//       setResult({ operation: "CREATE", data: newProgram });
+//     } catch (error) {
+//       setResult({
+//         operation: "CREATE",
+//         error: typeof error === "object" && error !== null && "message" in error ? String((error as any).message) : String(error),
+//       });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   // READ ALL
+//   const readAllPrograms = async () => {
+//     setLoading(true);
+//     try {
+//       const programs = await ProgramsService.readPrograms({
+//         skip: 0,
+//         limit: 20,
+//       });
+//       setResult({ operation: "READ ALL", data: programs });
+//     } catch (error) {
+//       setResult({
+//         operation: "READ ALL",
+//         error: typeof error === "object" && error !== null && "message" in error ? String((error as any).message) : String(error),
+//       });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   // READ ONE
+//   const readOneProgram = async (id: string) => {
+//     setLoading(true);
+//     try {
+//       const program = await ProgramsService.readProgram({
+//         programId: id,
+//       });
+//       setResult({ operation: "READ ONE", data: program });
+//     } catch (error) {
+//       setResult({
+//         operation: "READ ONE",
+//         error: typeof error === "object" && error !== null && "message" in error ? String((error as any).message) : String(error),
+//       });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   // UPDATE
+//   const updateProgram = async (id: string) => {
+//     setLoading(true);
+//     try {
+//       const updated = await ProgramsService.updateProgram({
+//         programId: id,
+//         requestBody: {
+//           name: "Computer Science Updated",
+//           description: "Updated description",
+//           is_active: true,
+//         } as ProgramUpdate,
+//       });
+//       setResult({ operation: "UPDATE", data: updated });
+//     } catch (error) {
+//       setResult({
+//         operation: "UPDATE",
+//         error: typeof error === "object" && error !== null && "message" in error ? String((error as any).message) : String(error),
+//       });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   // DELETE
+//   const deleteProgram = async (id: string) => {
+//     setLoading(true);
+//     try {
+//       const deleted = await ProgramsService.deleteProgram({
+//         programId: id,
+//       });
+//       setResult({ operation: "DELETE", data: deleted });
+//     } catch (error) {
+//       setResult({
+//         operation: "DELETE",
+//         error: typeof error === "object" && error !== null && "message" in error ? String((error as any).message) : String(error),
+//       });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="p-6 max-w-4xl mx-auto">
+//       <h1 className="text-3xl font-bold mb-6">Programs CRUD Operations</h1>
+
+//       <div className="space-y-4 mb-6">
+//         <div className="bg-white p-4 rounded-lg shadow">
+//           <h2 className="text-xl font-semibold mb-3">Create</h2>
+//           <button
+//             onClick={createProgram}
+//             disabled={loading}
+//             className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"
+//           >
+//             CREATE Program
+//           </button>
+//         </div>
+
+//         <div className="bg-white p-4 rounded-lg shadow">
+//           <h2 className="text-xl font-semibold mb-3">Read Operations</h2>
+//           <div className="grid grid-cols-2 gap-2">
+//             <button
+//               onClick={readAllPrograms}
+//               disabled={loading}
+//               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"
+//             >
+//               READ ALL Programs
+//             </button>
+//             <button
+//               onClick={() => readOneProgram("42379369-7fee-4e93-bba2-4c2bc058dca2")}
+//               disabled={loading}
+//               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"
+//             >
+//               READ ONE by ID
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="bg-white p-4 rounded-lg shadow">
+//           <h2 className="text-xl font-semibold mb-3">Update</h2>
+//           <button
+//             onClick={() => updateProgram("42379369-7fee-4e93-bba2-4c2bc058dca2")}
+//             disabled={loading}
+//             className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 disabled:bg-gray-400"
+//           >
+//             UPDATE Program
+//           </button>
+//         </div>
+
+//         <div className="bg-white p-4 rounded-lg shadow">
+//           <h2 className="text-xl font-semibold mb-3">Delete</h2>
+//           <button
+//             onClick={() => deleteProgram("42379369-7fee-4e93-bba2-4c2bc058dca2")}
+//             disabled={loading}
+//             className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-gray-400"
+//           >
+//             DELETE Program
+//           </button>
+//         </div>
+//       </div>
+
+//       {loading && (
+//         <div className="text-center py-4">
+//           <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+//           <p className="mt-2">Loading...</p>
+//         </div>
+//       )}
+
+//       {result && (
+//         <div className="bg-gray-100 p-4 rounded-lg">
+//           <h2 className="text-xl font-semibold mb-2">Result - {result.operation}</h2>
+//           <pre className="bg-white p-4 rounded overflow-auto max-h-96">
+//             {JSON.stringify(result, null, 2)}
+//           </pre>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default ProgramCRUD;
+
+// export const Route = createFileRoute('/_layout/program')({
+//   component: ProgramCRUD,
+// });

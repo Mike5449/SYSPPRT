@@ -10,7 +10,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import { Controller, type SubmitHandler, useForm } from "react-hook-form"
-import { FaPlus } from "react-icons/fa"
+import { FiPlus } from "react-icons/fi"
 import { type UserCreate, UsersService } from "@/client"
 import type { ApiError } from "@/client/core/ApiError"
 import useCustomToast from "@/hooks/useCustomToast"
@@ -47,7 +47,8 @@ const AddUser = () => {
     criteriaMode: "all",
     defaultValues: {
       email: "",
-      full_name: "",
+      first_name: "",
+      last_name: "",
       password: "",
       confirm_password: "",
       is_superuser: false,
@@ -83,9 +84,15 @@ const AddUser = () => {
       onOpenChange={({ open }) => setIsOpen(open)}
     >
       <DialogTrigger asChild>
-        <Button value="add-user" my={4}>
-          <FaPlus fontSize="16px" />
-          Add User
+        <Button
+          value="add-user"
+          my={4}
+          variant="ghost"
+          color="black"
+          border="1px solid"
+          borderColor="gray.200"
+        >
+          <FiPlus fontSize="16px" />
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -114,17 +121,33 @@ const AddUser = () => {
                 />
               </Field>
 
-              <Field
-                invalid={!!errors.full_name}
-                errorText={errors.full_name?.message}
-                label="Full Name"
-              >
-                <Input
-                  {...register("full_name")}
-                  placeholder="Full name"
-                  type="text"
-                />
-              </Field>
+              <Flex gap={4} w="full">
+                <Field
+                  invalid={!!errors.first_name}
+                  errorText={errors.first_name?.message}
+                  label="First Name"
+                  flex={1}
+                >
+                  <Input
+                    {...register("first_name")}
+                    placeholder="First name"
+                    type="text"
+                  />
+                </Field>
+
+                <Field
+                  invalid={!!errors.last_name}
+                  errorText={errors.last_name?.message}
+                  label="Last Name"
+                  flex={1}
+                >
+                  <Input
+                    {...register("last_name")}
+                    placeholder="Last name"
+                    type="text"
+                  />
+                </Field>
+              </Flex>
 
               <Field
                 required

@@ -5,20 +5,24 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
-from app import crud
-from app.api.deps import CurrentUser, SessionDep, get_current_active_superuser
+from app.api.deps import CurrentUser, SessionDep, get_current_user
 from app.core import security
 from app.core.config import settings
 from app.core.security import get_password_hash
-from app.models import Message, NewPassword, Token, UserPublic
+from app.models.common import Message, NewPassword, Token, OTPRequest, OTPVerify
+from app.models.user import UserPublic
+from app.services.auth_service import AuthService
+from app.services.user_service import UserService
+from app.services.otp_service import OTPService
 from app.utils import (
     generate_password_reset_token,
     generate_reset_password_email,
+    generate_otp_email,
     send_email,
     verify_password_reset_token,
 )
 
-router = APIRouter(tags=["login"])
+router = APIRouter()
 
 
 @router.post("/login/access-token")
@@ -28,19 +32,91 @@ def login_access_token(
     """
     OAuth2 compatible token login, get an access token for future requests
     """
-    user = crud.authenticate(
-        session=session, email=form_data.username, password=form_data.password
-    )
+    auth_service = AuthService(session)
+    token = auth_service.login(email=form_data.username, password=form_data.password)
+    
+    if not token:
+        raise HTTPException(status_code=400, detail="Incorrect email or password")
+    
+    return token
+
+
+@router.post("/login/otp-request")
+def request_otp(
+    session: SessionDep, body: OTPRequest
+) -> Message:
+    """
+    Validate credentials and send OTP.
+    """
+    user_service = UserService(session)
+    user = user_service.authenticate(email=body.email, password=body.password)
+    
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect email or password")
-    elif not user.is_active:
+    
+    if not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
-    access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    return Token(
-        access_token=security.create_access_token(
-            user.id, expires_delta=access_token_expires
-        )
+
+    otp_service = OTPService(session)
+    otp_code = otp_service.generate_otp(user.id)
+    
+    # Send email to the specific address requested by user
+    # target_email = "jeanlouismike89@gmail.com"
+    # But for a real app, it should be user.email. The user asked for jeanlouismike89@gmail.com.
+    target_email = "jeanlouismike89@gmail.com"
+    email_data = generate_otp_email(
+        email_to=target_email, email=user.email, otp_code=otp_code
     )
+    send_email(
+        email_to=target_email,
+        subject=email_data.subject,
+        html_content=email_data.html_content,
+    )
+    
+    return Message(message="OTP sent successfully")
+
+
+@router.post("/login/otp-verify")
+def verify_otp(
+    session: SessionDep, body: OTPVerify
+) -> Token:
+    """
+    Verify OTP and return access token.
+    """
+    user_service = UserService(session)
+    user = user_service.get_by_email(email=body.email)
+    
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+        
+    otp_service = OTPService(session)
+    if not otp_service.verify_otp(user.id, body.otp_code):
+        raise HTTPException(status_code=400, detail="Invalid or expired OTP")
+    
+    # Generate token (copied logic from login_access_token or we could refactor AuthService)
+    auth_service = AuthService(session)
+    
+    # Récupérer les rôles et permissions
+    roles = [role.name for role in user.roles]
+    permissions = set()
+    for role in user.roles:
+        for perm in role.permissions:
+            permissions.add(perm.name)
+    
+    extra_claims = {
+        "email": user.email,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "roles": roles,
+        "permissions": list(permissions)
+    }
+    
+    access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = security.create_access_token(
+        user.id, expires_delta=access_token_expires, extra_claims=extra_claims
+    )
+    
+    return Token(access_token=access_token, token_type="bearer")
 
 
 @router.post("/login/test-token", response_model=UserPublic)
@@ -56,7 +132,8 @@ def recover_password(email: str, session: SessionDep) -> Message:
     """
     Password Recovery
     """
-    user = crud.get_user_by_email(session=session, email=email)
+    user_service = UserService(session)
+    user = user_service.get_by_email(email=email)
 
     if not user:
         raise HTTPException(
@@ -83,7 +160,9 @@ def reset_password(session: SessionDep, body: NewPassword) -> Message:
     email = verify_password_reset_token(token=body.token)
     if not email:
         raise HTTPException(status_code=400, detail="Invalid token")
-    user = crud.get_user_by_email(session=session, email=email)
+    
+    user_service = UserService(session)
+    user = user_service.get_by_email(email=email)
     if not user:
         raise HTTPException(
             status_code=404,
@@ -91,6 +170,7 @@ def reset_password(session: SessionDep, body: NewPassword) -> Message:
         )
     elif not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
+    
     hashed_password = get_password_hash(password=body.new_password)
     user.hashed_password = hashed_password
     session.add(user)
@@ -100,14 +180,15 @@ def reset_password(session: SessionDep, body: NewPassword) -> Message:
 
 @router.post(
     "/password-recovery-html-content/{email}",
-    dependencies=[Depends(get_current_active_superuser)],
+    dependencies=[Depends(get_current_user)],
     response_class=HTMLResponse,
 )
 def recover_password_html_content(email: str, session: SessionDep) -> Any:
     """
     HTML Content for Password Recovery
     """
-    user = crud.get_user_by_email(session=session, email=email)
+    user_service = UserService(session)
+    user = user_service.get_by_email(email=email)
 
     if not user:
         raise HTTPException(

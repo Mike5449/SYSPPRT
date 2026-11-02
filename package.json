@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@ark-ui/react": "^5.26.2",
+    "lucide-react": "^0.546.0",
+    "recharts": "^3.7.0"
+  }
+}

@@ -15,9 +15,38 @@ import { Route as RecoverPasswordRouteImport } from './routes/recover-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LayoutRouteImport } from './routes/_layout'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
+import { Route as LayoutUniversity_newRouteImport } from './routes/_layout/university_new'
+import { Route as LayoutUniversityRouteImport } from './routes/_layout/university'
+import { Route as LayoutTranscriptRouteImport } from './routes/_layout/transcript'
+import { Route as LayoutTeacherRouteImport } from './routes/_layout/teacher'
+import { Route as LayoutStudent_coursesRouteImport } from './routes/_layout/student_courses'
+import { Route as LayoutStudentRouteImport } from './routes/_layout/student'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
+import { Route as LayoutSessionRouteImport } from './routes/_layout/session'
+import { Route as LayoutScheduleRouteImport } from './routes/_layout/schedule'
+import { Route as LayoutScanAttendanceRouteImport } from './routes/_layout/scan-attendance'
+import { Route as LayoutProgram_levelRouteImport } from './routes/_layout/program_level'
+import { Route as LayoutProgramRouteImport } from './routes/_layout/program'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
+import { Route as LayoutGradesRouteImport } from './routes/_layout/grades'
+import { Route as LayoutGradeRouteImport } from './routes/_layout/grade'
+import { Route as LayoutFacultyRouteImport } from './routes/_layout/faculty'
+import { Route as LayoutEnrollmentRouteImport } from './routes/_layout/enrollment'
+import { Route as LayoutDiagramsRouteImport } from './routes/_layout/diagrams'
+import { Route as LayoutDepartmentRouteImport } from './routes/_layout/department'
+import { Route as LayoutCourse_sessionRouteImport } from './routes/_layout/course_session'
+import { Route as LayoutCourse_searchRouteImport } from './routes/_layout/course_search'
+import { Route as LayoutCourseProgramLevelsRouteImport } from './routes/_layout/course-program-levels'
+import { Route as LayoutCourseRouteImport } from './routes/_layout/course'
+import { Route as LayoutAttendance_sessionRouteImport } from './routes/_layout/attendance_session'
+import { Route as LayoutAttendance_recordRouteImport } from './routes/_layout/attendance_record'
+import { Route as LayoutAssessmentRouteImport } from './routes/_layout/assessment'
 import { Route as LayoutAdminRouteImport } from './routes/_layout/admin'
+import { Route as LayoutAcademic_yearRouteImport } from './routes/_layout/academic_year'
+import { Route as LayoutNotesScanRouteImport } from './routes/_layout/notes/scan'
+import { Route as LayoutDashboardTeacherRouteImport } from './routes/_layout/dashboard/teacher'
+import { Route as LayoutDashboardStudentRouteImport } from './routes/_layout/dashboard/student'
+import { Route as LayoutDashboardAdminRouteImport } from './routes/_layout/dashboard/admin'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -48,9 +77,64 @@ const LayoutIndexRoute = LayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutUniversity_newRoute = LayoutUniversity_newRouteImport.update({
+  id: '/university_new',
+  path: '/university_new',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutUniversityRoute = LayoutUniversityRouteImport.update({
+  id: '/university',
+  path: '/university',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutTranscriptRoute = LayoutTranscriptRouteImport.update({
+  id: '/transcript',
+  path: '/transcript',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutTeacherRoute = LayoutTeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutStudent_coursesRoute = LayoutStudent_coursesRouteImport.update({
+  id: '/student_courses',
+  path: '/student_courses',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutStudentRoute = LayoutStudentRouteImport.update({
+  id: '/student',
+  path: '/student',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutSessionRoute = LayoutSessionRouteImport.update({
+  id: '/session',
+  path: '/session',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutScheduleRoute = LayoutScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutScanAttendanceRoute = LayoutScanAttendanceRouteImport.update({
+  id: '/scan-attendance',
+  path: '/scan-attendance',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutProgram_levelRoute = LayoutProgram_levelRouteImport.update({
+  id: '/program_level',
+  path: '/program_level',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutProgramRoute = LayoutProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
   getParentRoute: () => LayoutRoute,
 } as any)
 const LayoutItemsRoute = LayoutItemsRouteImport.update({
@@ -58,9 +142,101 @@ const LayoutItemsRoute = LayoutItemsRouteImport.update({
   path: '/items',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutGradesRoute = LayoutGradesRouteImport.update({
+  id: '/grades',
+  path: '/grades',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutGradeRoute = LayoutGradeRouteImport.update({
+  id: '/grade',
+  path: '/grade',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutFacultyRoute = LayoutFacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutEnrollmentRoute = LayoutEnrollmentRouteImport.update({
+  id: '/enrollment',
+  path: '/enrollment',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDiagramsRoute = LayoutDiagramsRouteImport.update({
+  id: '/diagrams',
+  path: '/diagrams',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDepartmentRoute = LayoutDepartmentRouteImport.update({
+  id: '/department',
+  path: '/department',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCourse_sessionRoute = LayoutCourse_sessionRouteImport.update({
+  id: '/course_session',
+  path: '/course_session',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCourse_searchRoute = LayoutCourse_searchRouteImport.update({
+  id: '/course_search',
+  path: '/course_search',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCourseProgramLevelsRoute =
+  LayoutCourseProgramLevelsRouteImport.update({
+    id: '/course-program-levels',
+    path: '/course-program-levels',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutCourseRoute = LayoutCourseRouteImport.update({
+  id: '/course',
+  path: '/course',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutAttendance_sessionRoute =
+  LayoutAttendance_sessionRouteImport.update({
+    id: '/attendance_session',
+    path: '/attendance_session',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutAttendance_recordRoute = LayoutAttendance_recordRouteImport.update({
+  id: '/attendance_record',
+  path: '/attendance_record',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutAssessmentRoute = LayoutAssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutAdminRoute = LayoutAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutAcademic_yearRoute = LayoutAcademic_yearRouteImport.update({
+  id: '/academic_year',
+  path: '/academic_year',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutNotesScanRoute = LayoutNotesScanRouteImport.update({
+  id: '/notes/scan',
+  path: '/notes/scan',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDashboardTeacherRoute = LayoutDashboardTeacherRouteImport.update({
+  id: '/dashboard/teacher',
+  path: '/dashboard/teacher',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDashboardStudentRoute = LayoutDashboardStudentRouteImport.update({
+  id: '/dashboard/student',
+  path: '/dashboard/student',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDashboardAdminRoute = LayoutDashboardAdminRouteImport.update({
+  id: '/dashboard/admin',
+  path: '/dashboard/admin',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -69,20 +245,78 @@ export interface FileRoutesByFullPath {
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/academic_year': typeof LayoutAcademic_yearRoute
   '/admin': typeof LayoutAdminRoute
+  '/assessment': typeof LayoutAssessmentRoute
+  '/attendance_record': typeof LayoutAttendance_recordRoute
+  '/attendance_session': typeof LayoutAttendance_sessionRoute
+  '/course': typeof LayoutCourseRoute
+  '/course-program-levels': typeof LayoutCourseProgramLevelsRoute
+  '/course_search': typeof LayoutCourse_searchRoute
+  '/course_session': typeof LayoutCourse_sessionRoute
+  '/department': typeof LayoutDepartmentRoute
+  '/diagrams': typeof LayoutDiagramsRoute
+  '/enrollment': typeof LayoutEnrollmentRoute
+  '/faculty': typeof LayoutFacultyRoute
+  '/grade': typeof LayoutGradeRoute
+  '/grades': typeof LayoutGradesRoute
   '/items': typeof LayoutItemsRoute
+  '/program': typeof LayoutProgramRoute
+  '/program_level': typeof LayoutProgram_levelRoute
+  '/scan-attendance': typeof LayoutScanAttendanceRoute
+  '/schedule': typeof LayoutScheduleRoute
+  '/session': typeof LayoutSessionRoute
   '/settings': typeof LayoutSettingsRoute
+  '/student': typeof LayoutStudentRoute
+  '/student_courses': typeof LayoutStudent_coursesRoute
+  '/teacher': typeof LayoutTeacherRoute
+  '/transcript': typeof LayoutTranscriptRoute
+  '/university': typeof LayoutUniversityRoute
+  '/university_new': typeof LayoutUniversity_newRoute
   '/': typeof LayoutIndexRoute
+  '/dashboard/admin': typeof LayoutDashboardAdminRoute
+  '/dashboard/student': typeof LayoutDashboardStudentRoute
+  '/dashboard/teacher': typeof LayoutDashboardTeacherRoute
+  '/notes/scan': typeof LayoutNotesScanRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/academic_year': typeof LayoutAcademic_yearRoute
   '/admin': typeof LayoutAdminRoute
+  '/assessment': typeof LayoutAssessmentRoute
+  '/attendance_record': typeof LayoutAttendance_recordRoute
+  '/attendance_session': typeof LayoutAttendance_sessionRoute
+  '/course': typeof LayoutCourseRoute
+  '/course-program-levels': typeof LayoutCourseProgramLevelsRoute
+  '/course_search': typeof LayoutCourse_searchRoute
+  '/course_session': typeof LayoutCourse_sessionRoute
+  '/department': typeof LayoutDepartmentRoute
+  '/diagrams': typeof LayoutDiagramsRoute
+  '/enrollment': typeof LayoutEnrollmentRoute
+  '/faculty': typeof LayoutFacultyRoute
+  '/grade': typeof LayoutGradeRoute
+  '/grades': typeof LayoutGradesRoute
   '/items': typeof LayoutItemsRoute
+  '/program': typeof LayoutProgramRoute
+  '/program_level': typeof LayoutProgram_levelRoute
+  '/scan-attendance': typeof LayoutScanAttendanceRoute
+  '/schedule': typeof LayoutScheduleRoute
+  '/session': typeof LayoutSessionRoute
   '/settings': typeof LayoutSettingsRoute
+  '/student': typeof LayoutStudentRoute
+  '/student_courses': typeof LayoutStudent_coursesRoute
+  '/teacher': typeof LayoutTeacherRoute
+  '/transcript': typeof LayoutTranscriptRoute
+  '/university': typeof LayoutUniversityRoute
+  '/university_new': typeof LayoutUniversity_newRoute
   '/': typeof LayoutIndexRoute
+  '/dashboard/admin': typeof LayoutDashboardAdminRoute
+  '/dashboard/student': typeof LayoutDashboardStudentRoute
+  '/dashboard/teacher': typeof LayoutDashboardTeacherRoute
+  '/notes/scan': typeof LayoutNotesScanRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -91,10 +325,39 @@ export interface FileRoutesById {
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/_layout/academic_year': typeof LayoutAcademic_yearRoute
   '/_layout/admin': typeof LayoutAdminRoute
+  '/_layout/assessment': typeof LayoutAssessmentRoute
+  '/_layout/attendance_record': typeof LayoutAttendance_recordRoute
+  '/_layout/attendance_session': typeof LayoutAttendance_sessionRoute
+  '/_layout/course': typeof LayoutCourseRoute
+  '/_layout/course-program-levels': typeof LayoutCourseProgramLevelsRoute
+  '/_layout/course_search': typeof LayoutCourse_searchRoute
+  '/_layout/course_session': typeof LayoutCourse_sessionRoute
+  '/_layout/department': typeof LayoutDepartmentRoute
+  '/_layout/diagrams': typeof LayoutDiagramsRoute
+  '/_layout/enrollment': typeof LayoutEnrollmentRoute
+  '/_layout/faculty': typeof LayoutFacultyRoute
+  '/_layout/grade': typeof LayoutGradeRoute
+  '/_layout/grades': typeof LayoutGradesRoute
   '/_layout/items': typeof LayoutItemsRoute
+  '/_layout/program': typeof LayoutProgramRoute
+  '/_layout/program_level': typeof LayoutProgram_levelRoute
+  '/_layout/scan-attendance': typeof LayoutScanAttendanceRoute
+  '/_layout/schedule': typeof LayoutScheduleRoute
+  '/_layout/session': typeof LayoutSessionRoute
   '/_layout/settings': typeof LayoutSettingsRoute
+  '/_layout/student': typeof LayoutStudentRoute
+  '/_layout/student_courses': typeof LayoutStudent_coursesRoute
+  '/_layout/teacher': typeof LayoutTeacherRoute
+  '/_layout/transcript': typeof LayoutTranscriptRoute
+  '/_layout/university': typeof LayoutUniversityRoute
+  '/_layout/university_new': typeof LayoutUniversity_newRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/dashboard/admin': typeof LayoutDashboardAdminRoute
+  '/_layout/dashboard/student': typeof LayoutDashboardStudentRoute
+  '/_layout/dashboard/teacher': typeof LayoutDashboardTeacherRoute
+  '/_layout/notes/scan': typeof LayoutNotesScanRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -103,20 +366,78 @@ export interface FileRouteTypes {
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/academic_year'
     | '/admin'
+    | '/assessment'
+    | '/attendance_record'
+    | '/attendance_session'
+    | '/course'
+    | '/course-program-levels'
+    | '/course_search'
+    | '/course_session'
+    | '/department'
+    | '/diagrams'
+    | '/enrollment'
+    | '/faculty'
+    | '/grade'
+    | '/grades'
     | '/items'
+    | '/program'
+    | '/program_level'
+    | '/scan-attendance'
+    | '/schedule'
+    | '/session'
     | '/settings'
+    | '/student'
+    | '/student_courses'
+    | '/teacher'
+    | '/transcript'
+    | '/university'
+    | '/university_new'
     | '/'
+    | '/dashboard/admin'
+    | '/dashboard/student'
+    | '/dashboard/teacher'
+    | '/notes/scan'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/academic_year'
     | '/admin'
+    | '/assessment'
+    | '/attendance_record'
+    | '/attendance_session'
+    | '/course'
+    | '/course-program-levels'
+    | '/course_search'
+    | '/course_session'
+    | '/department'
+    | '/diagrams'
+    | '/enrollment'
+    | '/faculty'
+    | '/grade'
+    | '/grades'
     | '/items'
+    | '/program'
+    | '/program_level'
+    | '/scan-attendance'
+    | '/schedule'
+    | '/session'
     | '/settings'
+    | '/student'
+    | '/student_courses'
+    | '/teacher'
+    | '/transcript'
+    | '/university'
+    | '/university_new'
     | '/'
+    | '/dashboard/admin'
+    | '/dashboard/student'
+    | '/dashboard/teacher'
+    | '/notes/scan'
   id:
     | '__root__'
     | '/_layout'
@@ -124,10 +445,39 @@ export interface FileRouteTypes {
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/_layout/academic_year'
     | '/_layout/admin'
+    | '/_layout/assessment'
+    | '/_layout/attendance_record'
+    | '/_layout/attendance_session'
+    | '/_layout/course'
+    | '/_layout/course-program-levels'
+    | '/_layout/course_search'
+    | '/_layout/course_session'
+    | '/_layout/department'
+    | '/_layout/diagrams'
+    | '/_layout/enrollment'
+    | '/_layout/faculty'
+    | '/_layout/grade'
+    | '/_layout/grades'
     | '/_layout/items'
+    | '/_layout/program'
+    | '/_layout/program_level'
+    | '/_layout/scan-attendance'
+    | '/_layout/schedule'
+    | '/_layout/session'
     | '/_layout/settings'
+    | '/_layout/student'
+    | '/_layout/student_courses'
+    | '/_layout/teacher'
+    | '/_layout/transcript'
+    | '/_layout/university'
+    | '/_layout/university_new'
     | '/_layout/'
+    | '/_layout/dashboard/admin'
+    | '/_layout/dashboard/student'
+    | '/_layout/dashboard/teacher'
+    | '/_layout/notes/scan'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -182,11 +532,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutIndexRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/university_new': {
+      id: '/_layout/university_new'
+      path: '/university_new'
+      fullPath: '/university_new'
+      preLoaderRoute: typeof LayoutUniversity_newRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/university': {
+      id: '/_layout/university'
+      path: '/university'
+      fullPath: '/university'
+      preLoaderRoute: typeof LayoutUniversityRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/transcript': {
+      id: '/_layout/transcript'
+      path: '/transcript'
+      fullPath: '/transcript'
+      preLoaderRoute: typeof LayoutTranscriptRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/teacher': {
+      id: '/_layout/teacher'
+      path: '/teacher'
+      fullPath: '/teacher'
+      preLoaderRoute: typeof LayoutTeacherRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/student_courses': {
+      id: '/_layout/student_courses'
+      path: '/student_courses'
+      fullPath: '/student_courses'
+      preLoaderRoute: typeof LayoutStudent_coursesRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/student': {
+      id: '/_layout/student'
+      path: '/student'
+      fullPath: '/student'
+      preLoaderRoute: typeof LayoutStudentRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/settings': {
       id: '/_layout/settings'
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof LayoutSettingsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/session': {
+      id: '/_layout/session'
+      path: '/session'
+      fullPath: '/session'
+      preLoaderRoute: typeof LayoutSessionRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/schedule': {
+      id: '/_layout/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof LayoutScheduleRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/scan-attendance': {
+      id: '/_layout/scan-attendance'
+      path: '/scan-attendance'
+      fullPath: '/scan-attendance'
+      preLoaderRoute: typeof LayoutScanAttendanceRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/program_level': {
+      id: '/_layout/program_level'
+      path: '/program_level'
+      fullPath: '/program_level'
+      preLoaderRoute: typeof LayoutProgram_levelRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/program': {
+      id: '/_layout/program'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof LayoutProgramRouteImport
       parentRoute: typeof LayoutRoute
     }
     '/_layout/items': {
@@ -196,6 +623,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutItemsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/grades': {
+      id: '/_layout/grades'
+      path: '/grades'
+      fullPath: '/grades'
+      preLoaderRoute: typeof LayoutGradesRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/grade': {
+      id: '/_layout/grade'
+      path: '/grade'
+      fullPath: '/grade'
+      preLoaderRoute: typeof LayoutGradeRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/faculty': {
+      id: '/_layout/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof LayoutFacultyRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/enrollment': {
+      id: '/_layout/enrollment'
+      path: '/enrollment'
+      fullPath: '/enrollment'
+      preLoaderRoute: typeof LayoutEnrollmentRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/diagrams': {
+      id: '/_layout/diagrams'
+      path: '/diagrams'
+      fullPath: '/diagrams'
+      preLoaderRoute: typeof LayoutDiagramsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/department': {
+      id: '/_layout/department'
+      path: '/department'
+      fullPath: '/department'
+      preLoaderRoute: typeof LayoutDepartmentRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/course_session': {
+      id: '/_layout/course_session'
+      path: '/course_session'
+      fullPath: '/course_session'
+      preLoaderRoute: typeof LayoutCourse_sessionRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/course_search': {
+      id: '/_layout/course_search'
+      path: '/course_search'
+      fullPath: '/course_search'
+      preLoaderRoute: typeof LayoutCourse_searchRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/course-program-levels': {
+      id: '/_layout/course-program-levels'
+      path: '/course-program-levels'
+      fullPath: '/course-program-levels'
+      preLoaderRoute: typeof LayoutCourseProgramLevelsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/course': {
+      id: '/_layout/course'
+      path: '/course'
+      fullPath: '/course'
+      preLoaderRoute: typeof LayoutCourseRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/attendance_session': {
+      id: '/_layout/attendance_session'
+      path: '/attendance_session'
+      fullPath: '/attendance_session'
+      preLoaderRoute: typeof LayoutAttendance_sessionRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/attendance_record': {
+      id: '/_layout/attendance_record'
+      path: '/attendance_record'
+      fullPath: '/attendance_record'
+      preLoaderRoute: typeof LayoutAttendance_recordRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/assessment': {
+      id: '/_layout/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof LayoutAssessmentRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/admin': {
       id: '/_layout/admin'
       path: '/admin'
@@ -203,21 +721,114 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAdminRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/academic_year': {
+      id: '/_layout/academic_year'
+      path: '/academic_year'
+      fullPath: '/academic_year'
+      preLoaderRoute: typeof LayoutAcademic_yearRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/notes/scan': {
+      id: '/_layout/notes/scan'
+      path: '/notes/scan'
+      fullPath: '/notes/scan'
+      preLoaderRoute: typeof LayoutNotesScanRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/dashboard/teacher': {
+      id: '/_layout/dashboard/teacher'
+      path: '/dashboard/teacher'
+      fullPath: '/dashboard/teacher'
+      preLoaderRoute: typeof LayoutDashboardTeacherRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/dashboard/student': {
+      id: '/_layout/dashboard/student'
+      path: '/dashboard/student'
+      fullPath: '/dashboard/student'
+      preLoaderRoute: typeof LayoutDashboardStudentRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/dashboard/admin': {
+      id: '/_layout/dashboard/admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof LayoutDashboardAdminRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
 interface LayoutRouteChildren {
+  LayoutAcademic_yearRoute: typeof LayoutAcademic_yearRoute
   LayoutAdminRoute: typeof LayoutAdminRoute
+  LayoutAssessmentRoute: typeof LayoutAssessmentRoute
+  LayoutAttendance_recordRoute: typeof LayoutAttendance_recordRoute
+  LayoutAttendance_sessionRoute: typeof LayoutAttendance_sessionRoute
+  LayoutCourseRoute: typeof LayoutCourseRoute
+  LayoutCourseProgramLevelsRoute: typeof LayoutCourseProgramLevelsRoute
+  LayoutCourse_searchRoute: typeof LayoutCourse_searchRoute
+  LayoutCourse_sessionRoute: typeof LayoutCourse_sessionRoute
+  LayoutDepartmentRoute: typeof LayoutDepartmentRoute
+  LayoutDiagramsRoute: typeof LayoutDiagramsRoute
+  LayoutEnrollmentRoute: typeof LayoutEnrollmentRoute
+  LayoutFacultyRoute: typeof LayoutFacultyRoute
+  LayoutGradeRoute: typeof LayoutGradeRoute
+  LayoutGradesRoute: typeof LayoutGradesRoute
   LayoutItemsRoute: typeof LayoutItemsRoute
+  LayoutProgramRoute: typeof LayoutProgramRoute
+  LayoutProgram_levelRoute: typeof LayoutProgram_levelRoute
+  LayoutScanAttendanceRoute: typeof LayoutScanAttendanceRoute
+  LayoutScheduleRoute: typeof LayoutScheduleRoute
+  LayoutSessionRoute: typeof LayoutSessionRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
+  LayoutStudentRoute: typeof LayoutStudentRoute
+  LayoutStudent_coursesRoute: typeof LayoutStudent_coursesRoute
+  LayoutTeacherRoute: typeof LayoutTeacherRoute
+  LayoutTranscriptRoute: typeof LayoutTranscriptRoute
+  LayoutUniversityRoute: typeof LayoutUniversityRoute
+  LayoutUniversity_newRoute: typeof LayoutUniversity_newRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutDashboardAdminRoute: typeof LayoutDashboardAdminRoute
+  LayoutDashboardStudentRoute: typeof LayoutDashboardStudentRoute
+  LayoutDashboardTeacherRoute: typeof LayoutDashboardTeacherRoute
+  LayoutNotesScanRoute: typeof LayoutNotesScanRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutAcademic_yearRoute: LayoutAcademic_yearRoute,
   LayoutAdminRoute: LayoutAdminRoute,
+  LayoutAssessmentRoute: LayoutAssessmentRoute,
+  LayoutAttendance_recordRoute: LayoutAttendance_recordRoute,
+  LayoutAttendance_sessionRoute: LayoutAttendance_sessionRoute,
+  LayoutCourseRoute: LayoutCourseRoute,
+  LayoutCourseProgramLevelsRoute: LayoutCourseProgramLevelsRoute,
+  LayoutCourse_searchRoute: LayoutCourse_searchRoute,
+  LayoutCourse_sessionRoute: LayoutCourse_sessionRoute,
+  LayoutDepartmentRoute: LayoutDepartmentRoute,
+  LayoutDiagramsRoute: LayoutDiagramsRoute,
+  LayoutEnrollmentRoute: LayoutEnrollmentRoute,
+  LayoutFacultyRoute: LayoutFacultyRoute,
+  LayoutGradeRoute: LayoutGradeRoute,
+  LayoutGradesRoute: LayoutGradesRoute,
   LayoutItemsRoute: LayoutItemsRoute,
+  LayoutProgramRoute: LayoutProgramRoute,
+  LayoutProgram_levelRoute: LayoutProgram_levelRoute,
+  LayoutScanAttendanceRoute: LayoutScanAttendanceRoute,
+  LayoutScheduleRoute: LayoutScheduleRoute,
+  LayoutSessionRoute: LayoutSessionRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
+  LayoutStudentRoute: LayoutStudentRoute,
+  LayoutStudent_coursesRoute: LayoutStudent_coursesRoute,
+  LayoutTeacherRoute: LayoutTeacherRoute,
+  LayoutTranscriptRoute: LayoutTranscriptRoute,
+  LayoutUniversityRoute: LayoutUniversityRoute,
+  LayoutUniversity_newRoute: LayoutUniversity_newRoute,
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutDashboardAdminRoute: LayoutDashboardAdminRoute,
+  LayoutDashboardStudentRoute: LayoutDashboardStudentRoute,
+  LayoutDashboardTeacherRoute: LayoutDashboardTeacherRoute,
+  LayoutNotesScanRoute: LayoutNotesScanRoute,
 }
 
 const LayoutRouteWithChildren =

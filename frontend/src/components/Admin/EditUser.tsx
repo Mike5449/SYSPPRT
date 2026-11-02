@@ -113,17 +113,33 @@ const EditUser = ({ user }: EditUserProps) => {
                 />
               </Field>
 
-              <Field
-                invalid={!!errors.full_name}
-                errorText={errors.full_name?.message}
-                label="Full Name"
-              >
-                <Input
-                  {...register("full_name")}
-                  placeholder="Full name"
-                  type="text"
-                />
-              </Field>
+              <Flex gap={4} w="full">
+                <Field
+                  invalid={!!errors.first_name}
+                  errorText={errors.first_name?.message}
+                  label="First Name"
+                  flex={1}
+                >
+                  <Input
+                    {...register("first_name")}
+                    placeholder="First name"
+                    type="text"
+                  />
+                </Field>
+
+                <Field
+                  invalid={!!errors.last_name}
+                  errorText={errors.last_name?.message}
+                  label="Last Name"
+                  flex={1}
+                >
+                  <Input
+                    {...register("last_name")}
+                    placeholder="Last name"
+                    type="text"
+                  />
+                </Field>
+              </Flex>
 
               <Field
                 invalid={!!errors.password}

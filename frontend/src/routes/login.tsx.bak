@@ -1,0 +1,293 @@
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Input,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+import {
+  createFileRoute,
+  Link as RouterLink,
+  redirect,
+} from "@tanstack/react-router"
+import { type SubmitHandler, useForm } from "react-hook-form"
+import { FiLock, FiMail, FiCheckCircle } from "react-icons/fi"
+
+import type { Body_login_login_access_token as AccessToken } from "@/client"
+import { Button } from "@/components/ui/button"
+import { Field } from "@/components/ui/field"
+import { InputGroup } from "@/components/ui/input-group"
+import { PasswordInput } from "@/components/ui/password-input"
+import useAuth, { isLoggedIn } from "@/hooks/useAuth"
+import { emailPattern, passwordRules } from "../utils"
+
+export const Route = createFileRoute("/login")({
+  component: Login,
+  beforeLoad: async () => {
+    if (isLoggedIn()) {
+      throw redirect({
+        to: "/",
+      })
+    }
+  },
+})
+
+function Login() {
+  const { t } = useTranslation()
+  const [step, setStep] = useState<"login" | "otp">("login")
+  const [email, setEmail] = useState("")
+  const { requestOtpMutation, verifyOtpMutation, error, resetError } = useAuth()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting: isLoginSubmitting },
+  } = useForm<AccessToken>({
+    mode: "onBlur",
+    criteriaMode: "all",
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  })
+
+  const {
+    register: registerOtp,
+    handleSubmit: handleSubmitOtp,
+    formState: { errors: errorsOtp, isSubmitting: isOtpSubmitting },
+  } = useForm<{ otp_code: string }>({
+    defaultValues: {
+      otp_code: "",
+    },
+  })
+
+  const onLoginSubmit: SubmitHandler<AccessToken> = async (data) => {
+    if (isLoginSubmitting) return
+    resetError()
+    try {
+      await requestOtpMutation.mutateAsync({
+        email: data.username,
+        password: data.password,
+      })
+      setEmail(data.username)
+      setStep("otp")
+    } catch {
+      // error is handled by useAuth hook
+    }
+  }
+
+  const onOtpSubmit: SubmitHandler<{ otp_code: string }> = async (data) => {
+    if (isOtpSubmitting) return
+    resetError()
+    try {
+      await verifyOtpMutation.mutateAsync({
+        email: email,
+        otp_code: data.otp_code,
+      })
+    } catch {
+      // error is handled by useAuth hook
+    }
+  }
+
+  return (
+    <Flex
+      minH="100vh"
+      w="100%"
+      bg="white"
+      align="center"
+      justify="center"
+      p={4}
+    >
+      <Container maxW="380px">
+        <VStack gap={6} w="100%">
+          {step === "login" ? (
+            <Box
+              as="form"
+              onSubmit={handleSubmit(onLoginSubmit)}
+              w="100%"
+              bg="white"
+              p={{ base: 6, md: 8 }}
+              borderRadius="xl"
+              shadow="md"
+              border="1px solid"
+              borderColor="gray.100"
+            >
+              <VStack gap={5} align="stretch">
+                <Heading size="md" textAlign="center" color="#2c5282" mb={2}>
+                  SIGN IN
+                </Heading>
+
+                <Field
+                  label={
+                    <Text fontSize="xs" fontWeight="bold" color="gray.600">
+                      Email address
+                    </Text>
+                  }
+                  invalid={!!errors.username}
+                  errorText={errors.username?.message || (error as any)}
+                >
+                  <InputGroup w="100%" startElement={<FiMail color="gray.400" />}>
+                    <Input
+                      {...register("username", {
+                        required: t("auth.email_required"),
+                        pattern: emailPattern,
+                      })}
+                      placeholder={t("auth.email_placeholder")}
+                      type="email"
+                      variant="outline"
+                      borderRadius="lg"
+                      bg="transparent"
+                    />
+                  </InputGroup>
+                </Field>
+
+                <Field
+                  label={
+                    <Text fontSize="xs" fontWeight="bold" color="gray.600">
+                      Password
+                    </Text>
+                  }
+                  invalid={!!errors.password}
+                  errorText={errors.password?.message}
+                >
+                  <PasswordInput
+                    {...register("password", passwordRules())}
+                    placeholder="••••••••"
+                    startElement={<FiLock color="gray.400" />}
+                    variant="outline"
+                    borderRadius="lg"
+                    bg="transparent"
+                  />
+                </Field>
+
+                <RouterLink to="/recover-password">
+                  <Text
+                    fontSize="xs"
+                    color="#2c5282"
+                    fontWeight="bold"
+                    textAlign="right"
+                  >
+                    Forgot Password?
+                  </Text>
+                </RouterLink>
+
+                <Button
+                  variant="solid"
+                  type="submit"
+                  loading={isLoginSubmitting}
+                  size="lg"
+                  bg="linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%)"
+                  color="white"
+                  shadow="md"
+                  _hover={{ shadow: "lg", opacity: 0.9 }}
+                  fontSize="sm"
+                >
+                  Sign In
+                </Button>
+
+                <HStack justify="center" pt={1}>
+                  <Text fontSize="xs" color="gray.600">
+                    Don't have an account?
+                  </Text>
+                  <RouterLink to="/signup">
+                    <Text fontSize="xs" color="#2c5282" fontWeight="bold">
+                      Sign Up
+                    </Text>
+                  </RouterLink>
+                </HStack>
+              </VStack>
+            </Box>
+          ) : (
+            <Box
+              as="form"
+              onSubmit={handleSubmitOtp(onOtpSubmit)}
+              w="100%"
+              bg="white"
+              p={{ base: 6, md: 8 }}
+              borderRadius="xl"
+              shadow="md"
+              border="1px solid"
+              borderColor="gray.100"
+            >
+              <VStack gap={5} align="stretch">
+                <Heading size="md" textAlign="center" color="#2c5282" mb={2}>
+                  OTP VERIFICATION
+                </Heading>
+                <Text fontSize="xs" color="gray.600" textAlign="center">
+                  An OTP has been sent to your email. Please enter it below to
+                  verify your account.
+                </Text>
+
+                <Field
+                  label={
+                    <Text fontSize="xs" fontWeight="bold" color="gray.600">
+                      OTP Code
+                    </Text>
+                  }
+                  invalid={!!errorsOtp.otp_code}
+                  errorText={errorsOtp.otp_code?.message || (error as any)}
+                >
+                  <InputGroup
+                    w="100%"
+                    startElement={<FiCheckCircle color="gray.400" />}
+                  >
+                    <Input
+                      {...registerOtp("otp_code", {
+                        required: t("auth.otp_required"),
+                        minLength: {
+                          value: 6,
+                          message: t("auth.otp_length"),
+                        },
+                        maxLength: {
+                          value: 6,
+                          message: t("auth.otp_length"),
+                        },
+                      })}
+                      placeholder="000000"
+                      type="text"
+                      variant="outline"
+                      borderRadius="lg"
+                      bg="transparent"
+                    />
+                  </InputGroup>
+                </Field>
+
+                <Button
+                  variant="solid"
+                  type="submit"
+                  loading={isOtpSubmitting}
+                  size="lg"
+                  bg="linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%)"
+                  color="white"
+                  shadow="md"
+                  _hover={{ shadow: "lg", opacity: 0.9 }}
+                  fontSize="sm"
+                >
+                  Verify OTP
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setStep("login")
+                    resetError()
+                  }}
+                  color="#2c5282"
+                  fontSize="xs"
+                >
+                  Back to Sign In
+                </Button>
+              </VStack>
+            </Box>
+          )}
+        </VStack>
+      </Container>
+    </Flex>
+  )
+}

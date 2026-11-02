@@ -37,9 +37,10 @@ const UserInformation = () => {
     mode: "onBlur",
     criteriaMode: "all",
     defaultValues: {
-      full_name: currentUser?.full_name,
+      first_name: currentUser?.first_name,
+      last_name: currentUser?.last_name,
       email: currentUser?.email,
-    },
+    } as any,
   })
 
   const toggleEditMode = () => {
@@ -79,25 +80,48 @@ const UserInformation = () => {
         as="form"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Field label="Full name">
-          {editMode ? (
-            <Input
-              {...register("full_name", { maxLength: 30 })}
-              type="text"
-              size="md"
-            />
-          ) : (
-            <Text
-              fontSize="md"
-              py={2}
-              color={!currentUser?.full_name ? "gray" : "inherit"}
-              truncate
-              maxW="sm"
-            >
-              {currentUser?.full_name || "N/A"}
-            </Text>
-          )}
-        </Field>
+        <Flex gap={4}>
+          <Field label="First name" flex={1}>
+            {editMode ? (
+              <Input
+                {...register("first_name" as any, { maxLength: 30 })}
+                type="text"
+                size="md"
+              />
+            ) : (
+              <Text
+                fontSize="md"
+                py={2}
+                color={!currentUser?.first_name ? "gray.400" : "#4b6a92"}
+                fontWeight="600"
+                truncate
+                maxW="sm"
+              >
+                {currentUser?.first_name || "N/A"}
+              </Text>
+            )}
+          </Field>
+          <Field label="Last name" flex={1}>
+            {editMode ? (
+              <Input
+                {...register("last_name" as any, { maxLength: 30 })}
+                type="text"
+                size="md"
+              />
+            ) : (
+              <Text
+                fontSize="md"
+                py={2}
+                color={!currentUser?.last_name ? "gray.400" : "#4b6a92"}
+                fontWeight="600"
+                truncate
+                maxW="sm"
+              >
+                {currentUser?.last_name || "N/A"}
+              </Text>
+            )}
+          </Field>
+        </Flex>
         <Field
           mt={4}
           label="Email"
@@ -114,7 +138,7 @@ const UserInformation = () => {
               size="md"
             />
           ) : (
-            <Text fontSize="md" py={2} truncate maxW="sm">
+            <Text fontSize="md" py={2} truncate maxW="sm" color="#4b6a92" fontWeight="600">
               {currentUser?.email}
             </Text>
           )}

@@ -1,0 +1,542 @@
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Input,
+  Table,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { createFileRoute } from "@tanstack/react-router"
+import { useEffect, useState } from "react"
+import { FiAward, FiBookOpen, FiChevronDown, FiClock, FiRefreshCw, FiSearch } from "react-icons/fi"
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "@/components/ui/menu"
+
+import { StudentsService } from "@/client"
+import useAuth from "@/hooks/useAuth"
+import { useUserRoles } from "@/hooks/useUserRoles"
+
+export const Route = createFileRoute("/_layout/grades")({
+  component: Grades,
+})
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function toNote20(score: number, maxScore: number): number {
+  if (!maxScore) return 0
+  return (score / maxScore) * 20
+}
+
+function weightedAvg(grades: any[]): number {
+  if (!grades.length) return 0
+  const totalWeight = grades.reduce(
+    (acc: number, g: any) => acc + (g.assessment_weight ?? 0),
+    0,
+  )
+  if (totalWeight === 0) {
+    return (
+      grades.reduce(
+        (acc: number, g: any) =>
+          acc + toNote20(g.score, g.assessment_max_score),
+        0,
+      ) / grades.length
+    )
+  }
+  const weighted = grades.reduce(
+    (acc: number, g: any) =>
+      acc +
+      toNote20(g.score, g.assessment_max_score) * (g.assessment_weight ?? 0),
+    0,
+  )
+  return weighted / totalWeight
+}
+
+function fmtNote(n: number): string {
+  return isNaN(n) || !isFinite(n) ? "—" : n.toFixed(2)
+}
+
+function noteColor(note20: number): string {
+  if (note20 >= 16) return "#1a6741"
+  if (note20 >= 12) return "#1a4f8a"
+  if (note20 >= 10) return "#8a6200"
+  return "#c53030"
+}
+
+function noteLabel(note20: number): string {
+  if (note20 >= 16) return "Excellent"
+  if (note20 >= 14) return "Très bien"
+  if (note20 >= 12) return "Bien"
+  if (note20 >= 10) return "Passable"
+  return "Insuffisant"
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  exam: "Exam",
+  quiz: "Quiz",
+  devoir: "Devoir",
+  project: "Projet",
+  presentation: "Présentation",
+  lab: "Labo",
+  homework: "HW",
+  test: "Test",
+  participation: "Participation",
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+function Grades() {
+  const { user: currentUser } = useAuth()
+  const { data: userRoles } = useUserRoles(currentUser?.id)
+  const isStudent = (userRoles || []).some(
+    (r: any) => r.role?.name?.toLowerCase() === "student",
+  )
+
+  const [studentNumber, setStudentNumber] = useState("")
+  const [yearLevel, setYearLevel] = useState("")
+  const [sessionNumber, setSessionNumber] = useState("")
+
+  const { data: studentData } = useQuery({
+    queryKey: ["student_by_user", currentUser?.id],
+    queryFn: () =>
+      StudentsService.readStudentByUser({ userId: currentUser!.id }),
+    enabled: !!currentUser && !currentUser.is_superuser,
+    retry: false,
+  })
+
+  useEffect(() => {
+    if (studentData) {
+      if (studentData.user?.user_number && !studentNumber)
+        setStudentNumber(studentData.user.user_number)
+      if (studentData.current_year_level && !yearLevel)
+        setYearLevel(studentData.current_year_level.toString())
+    }
+  }, [studentData]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["grades", studentNumber, yearLevel, sessionNumber],
+    queryFn: () =>
+      StudentsService.readStudentGradesByYearWithCourseInfo({
+        studentNumber,
+        yearLevel: parseInt(yearLevel, 10),
+        sessionNumber: sessionNumber ? parseInt(sessionNumber, 10) : undefined,
+      }),
+    enabled: !!studentNumber && !!yearLevel,
+    retry: false,
+  })
+
+  const grades: any[] = data?.data ?? []
+
+  // Group by session
+  const sessions: Record<string, any[]> = {}
+  for (const g of grades) {
+    const key = g.session_name || "Sans session"
+    if (!sessions[key]) sessions[key] = []
+    sessions[key].push(g)
+  }
+
+  const overallAvg = weightedAvg(grades)
+  const passed = grades.filter((g) => g.is_passing).length
+
+  const queryClient = useQueryClient()
+
+  return (
+    <Container maxW="full" py={8}>
+      {/* ── Page title + Filters ── */}
+      <Box mb={6}>
+        <Flex justify="space-between" align="center" mb={3}>
+          <Box>
+            <Heading size="lg" fontWeight="bold" color="gray.800" mb={0.5}>
+              Tableau des Notes
+            </Heading>
+            <Text color="gray.500" fontSize="sm">
+              Consulter et suivre les notes par étudiant et session
+            </Text>
+          </Box>
+          <IconButton variant="ghost" size="xs" color="#6b8ab0" onClick={() => queryClient.invalidateQueries({ queryKey: ["grades"] })} aria-label="Rafraîchir" _hover={{ color: "ui.main", bg: "transparent" }}>
+            <FiRefreshCw />
+          </IconButton>
+        </Flex>
+        <HStack bg="white" borderRadius="8px" p="0.35rem 1rem" boxShadow="0 2px 8px rgba(0,20,40,0.04)" border="1px solid #edf2f7" gap="10px" w="full" justify="flex-end">
+          <Icon as={FiSearch} color="#a0aec0" boxSize={3} />
+          {!isStudent && (
+            <Input border="none" bg="transparent" placeholder="N° Étudiant" fontSize="0.75rem" w="140px" size="sm" outline="none" _focus={{ outline: "none", boxShadow: "none" }} value={studentNumber} onChange={(e) => setStudentNumber(e.target.value)} />
+          )}
+          <Input border="none" bg="transparent" placeholder="Année" type="number" fontSize="0.75rem" w="70px" size="sm" outline="none" _focus={{ outline: "none", boxShadow: "none" }} value={yearLevel} onChange={(e) => setYearLevel(e.target.value)} />
+          <Box w="1px" h="10px" bg="gray.100" />
+          <MenuRoot positioning={{ gutter: 4, placement: "bottom-end" }}>
+            <MenuTrigger asChild>
+              <HStack cursor="pointer" color="#1f3b62" fontWeight="500" fontSize="0.75rem" _hover={{ color: "ui.main" }} gap="4px">
+                <Icon as={FiClock} color="#2a5f8a" boxSize={3} />
+                <Text>{sessionNumber === "1" ? "Session 1" : sessionNumber === "2" ? "Session 2" : "Session"}</Text>
+                <Icon as={FiChevronDown} boxSize={2.5} color="#a0aec0" />
+              </HStack>
+            </MenuTrigger>
+            <MenuContent minW="120px" bg="white" borderRadius="10px" border="1px solid #e2ecf9" p="4px" zIndex={1500}>
+              <MenuItem value="" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("")}>Toutes</MenuItem>
+              <MenuItem value="1" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("1")}>Session 1</MenuItem>
+              <MenuItem value="2" fontSize="0.75rem" borderRadius="6px" onClick={() => setSessionNumber("2")}>Session 2</MenuItem>
+            </MenuContent>
+          </MenuRoot>
+        </HStack>
+      </Box>
+
+      {/* ── Content ── */}
+      {isLoading ? (
+        <Flex justify="center" align="center" py={16}>
+          <Text color="gray.400" fontSize="sm">
+            Chargement...
+          </Text>
+        </Flex>
+      ) : !studentNumber || !yearLevel ? (
+        <Flex direction="column" align="center" justify="center" py={16} gap={3}>
+          <Flex
+            w="48px"
+            h="48px"
+            bg="#eef2f7"
+            borderRadius="full"
+            align="center"
+            justify="center"
+          >
+            <Icon as={FiBookOpen} color="#9baec8" fontSize="20px" />
+          </Flex>
+          <Text color="gray.400" fontSize="sm">
+            Sélectionnez un étudiant et un niveau pour afficher les notes.
+          </Text>
+        </Flex>
+      ) : grades.length === 0 ? (
+        <Flex direction="column" align="center" justify="center" py={16} gap={3}>
+          <Flex
+            w="48px"
+            h="48px"
+            bg="#eef2f7"
+            borderRadius="full"
+            align="center"
+            justify="center"
+          >
+            <Icon as={FiAward} color="#9baec8" fontSize="20px" />
+          </Flex>
+          <Text color="gray.400" fontSize="sm">
+            Aucune note enregistrée pour cette sélection.
+          </Text>
+        </Flex>
+      ) : (
+        <VStack align="stretch" gap={5}>
+          {Object.entries(sessions).map(([sessionName, sessionGrades]) => {
+            const sessionAvg = weightedAvg(sessionGrades)
+
+            return (
+              <Box
+                key={sessionName}
+                border="1px solid"
+                borderColor="gray.200"
+                borderRadius="sm"
+                overflow="hidden"
+                bg="white"
+              >
+                {/* Session header */}
+                <Flex
+                  px={5}
+                  py={2.5}
+                  bg="gray.50"
+                  borderBottom="1px solid"
+                  borderColor="gray.200"
+                  align="center"
+                  justify="space-between"
+                >
+                  <HStack gap={2}>
+                    <Box w="3px" h="14px" bg="#2563a8" borderRadius="2px" />
+                    <Text
+                      fontSize="11px"
+                      fontWeight="700"
+                      color="gray.700"
+                      textTransform="uppercase"
+                      letterSpacing="0.08em"
+                    >
+                      {sessionName}
+                    </Text>
+                  </HStack>
+                  <Text fontSize="11px" fontWeight="600" color="#2563a8">
+                    Moyenne session : {fmtNote(sessionAvg)} / 20
+                  </Text>
+                </Flex>
+
+                {/* Table */}
+                <Table.Root size="sm">
+                  <Table.Header>
+                    <Table.Row background="linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%)" borderBottom="1px solid" borderColor="whiteAlpha.300">
+                      <Table.ColumnHeader
+                        px={5}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        minW="200px"
+                      >
+                        Cours
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader
+                        px={4}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        w="90px"
+                      >
+                        Code
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader
+                        px={4}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                      >
+                        Évaluation
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader
+                        px={4}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        w="90px"
+                      >
+                        Type
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader
+                        px={4}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        w="100px"
+                        textAlign="center"
+                      >
+                        Note / 20
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader
+                        px={4}
+                        py={2.5}
+                        fontSize="10px"
+                        fontWeight="700"
+                        color="white"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        w="120px"
+                        textAlign="center"
+                      >
+                        Appréciation
+                      </Table.ColumnHeader>
+                    </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body>
+                    {sessionGrades.map((grade: any, idx: number) => {
+                      const note20 = toNote20(grade.score, grade.assessment_max_score)
+                      const color = noteColor(note20)
+                      const typeKey = grade.assessment_type?.toLowerCase() ?? ""
+
+                      return (
+                        <Table.Row
+                          key={grade.id ?? idx}
+                          borderBottom="1px solid #f3f4f6"
+                          _odd={{ bg: "#f7f9fc" }} _even={{ bg: "white" }} _hover={{ bg: "gray.100" }}
+                        >
+                          {/* Cours */}
+                          <Table.Cell px={5} py={3} minW="200px">
+                            <Text fontSize="xs" fontWeight="600" color="#1f2937">
+                              {grade.course_name}
+                            </Text>
+                          </Table.Cell>
+
+                          {/* Code */}
+                          <Table.Cell px={4} py={3} w="90px">
+                            <Box
+                              as="span"
+                              display="inline-block"
+                              fontSize="10px"
+                              fontFamily="mono"
+                              color="#6b7280"
+                              bg="#f3f4f6"
+                              px={1.5}
+                              py={0.5}
+                              borderRadius="3px"
+                            >
+                              {grade.course_code || "—"}
+                            </Box>
+                          </Table.Cell>
+
+                          {/* Évaluation */}
+                          <Table.Cell px={4} py={3}>
+                            <Text fontSize="xs" color="#374151" fontWeight="500">
+                              {grade.assessment_name}
+                            </Text>
+                            {grade.assessment_due_date && (
+                              <Text fontSize="10px" color="#9ca3af" mt={0.5}>
+                                Dû le{" "}
+                                {new Date(grade.assessment_due_date).toLocaleDateString(
+                                  "fr-FR",
+                                  { day: "2-digit", month: "short", year: "numeric" },
+                                )}
+                              </Text>
+                            )}
+                          </Table.Cell>
+
+                          {/* Type */}
+                          <Table.Cell px={4} py={3} w="90px">
+                            <Text fontSize="11px" color="#6b7280">
+                              {TYPE_LABELS[typeKey] ?? grade.assessment_type ?? "—"}
+                            </Text>
+                          </Table.Cell>
+
+                          {/* Note /20 */}
+                          <Table.Cell px={4} py={3} w="100px" textAlign="center">
+                            <Text
+                              fontSize="sm"
+                              fontWeight="800"
+                              color={color}
+                              letterSpacing="-0.01em"
+                            >
+                              {fmtNote(note20)}
+                            </Text>
+                            <Text fontSize="10px" color="#9ca3af">
+                              {grade.score}&thinsp;/&thinsp;{grade.assessment_max_score}
+                            </Text>
+                          </Table.Cell>
+
+                          {/* Appréciation */}
+                          <Table.Cell px={4} py={3} w="120px" textAlign="center">
+                            <Text
+                              fontSize="10px"
+                              fontWeight="700"
+                              color={color}
+                              letterSpacing="0.02em"
+                            >
+                              {noteLabel(note20)}
+                            </Text>
+                          </Table.Cell>
+                        </Table.Row>
+                      )
+                    })}
+                  </Table.Body>
+                </Table.Root>
+              </Box>
+            )
+          })}
+
+          {/* ─ Summary footer ─ */}
+          <Box
+            border="1px solid"
+            borderColor="gray.200"
+            borderRadius="sm"
+            px={5}
+            py={4}
+            bg="white"
+          >
+            <Flex justify="space-between" align="center" wrap="wrap" gap={4}>
+              {/* Legend */}
+              <HStack gap={4} fontSize="10px" color="#6b7280" wrap="wrap">
+                {[
+                  { color: "#1a6741", label: "Excellent ≥ 16" },
+                  { color: "#1a4f8a", label: "Bien ≥ 12" },
+                  { color: "#8a6200", label: "Passable ≥ 10" },
+                  { color: "#c53030", label: "Insuffisant < 10" },
+                ].map((item) => (
+                  <HStack key={item.label} gap={1.5}>
+                    <Box
+                      w="7px"
+                      h="7px"
+                      borderRadius="full"
+                      bg={item.color}
+                      flexShrink={0}
+                    />
+                    <Text>{item.label}</Text>
+                  </HStack>
+                ))}
+              </HStack>
+
+              {/* Overall stats */}
+              <HStack gap={0} align="stretch">
+                <VStack gap={0} align="center" px={5}>
+                  <Text
+                    fontSize="10px"
+                    fontWeight="600"
+                    color="#9ca3af"
+                    textTransform="uppercase"
+                    letterSpacing="wide"
+                  >
+                    Validées
+                  </Text>
+                  <Text fontSize="lg" fontWeight="800" color="gray.700">
+                    {passed}
+                    <Text as="span" fontSize="xs" fontWeight="400" color="#9ca3af">
+                      {" "}/ {grades.length}
+                    </Text>
+                  </Text>
+                </VStack>
+
+                <Box w="1px" bg="#e8edf3" />
+
+                <VStack gap={0} align="center" px={5}>
+                  <Text
+                    fontSize="10px"
+                    fontWeight="600"
+                    color="#9ca3af"
+                    textTransform="uppercase"
+                    letterSpacing="wide"
+                  >
+                    Moy. générale
+                  </Text>
+                  <Text
+                    fontSize="lg"
+                    fontWeight="800"
+                    color={noteColor(overallAvg)}
+                    letterSpacing="-0.02em"
+                  >
+                    {fmtNote(overallAvg)}
+                    <Text as="span" fontSize="xs" fontWeight="400" color="#9ca3af">
+                      {" "}/ 20
+                    </Text>
+                  </Text>
+                </VStack>
+
+                <Box w="1px" bg="#e8edf3" />
+
+                <VStack gap={0} align="center" px={5}>
+                  <Text
+                    fontSize="10px"
+                    fontWeight="600"
+                    color="#9ca3af"
+                    textTransform="uppercase"
+                    letterSpacing="wide"
+                  >
+                    Mention
+                  </Text>
+                  <Text fontSize="sm" fontWeight="700" color={noteColor(overallAvg)}>
+                    {noteLabel(overallAvg)}
+                  </Text>
+                </VStack>
+              </HStack>
+            </Flex>
+          </Box>
+        </VStack>
+      )}
+    </Container>
+  )
+}

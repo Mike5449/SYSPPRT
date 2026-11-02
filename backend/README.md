@@ -170,3 +170,31 @@ The email templates are in `./backend/app/email-templates/`. Here, there are two
 Before continuing, ensure you have the [MJML extension](https://marketplace.visualstudio.com/items?itemName=attilabuti.vscode-mjml) installed in your VS Code.
 
 Once you have the MJML extension installed, you can create a new email template in the `src` directory. After creating the new email template and with the `.mjml` file open in your editor, open the command palette with `Ctrl+Shift+P` and search for `MJML: Export to HTML`. This will convert the `.mjml` file to a `.html` file and now you can save it in the build directory.
+
+
+
+
+# 1. Activer l'environnement
+.venv\Scripts\activate
+
+# 2. Créer une nouvelle migration
+alembic revision --autogenerate -m "Restructure models"
+
+# 3. Appliquer la migration
+alembic upgrade head
+
+# Pour ajouter les colonnes created_at et updated_at dans user
+alembic revision --autogenerate -m "add created_at and updated_at to user"
+
+# 4. Créer les données initiales
+python -m app.initial_data
+
+# 5. Démarrer le serveur
+uvicorn app.main:app --reload
+
+alembic stamp base
+
+# to generated entity backend to frontend
+npx openapi-typescript http://localhost:8000/openapi.json -o src/client/types.gen.ts
+
+npx @hey-api/openapi-ts -i http://localhost:8000/api/v1/openapi.json -o src/client/types.gen.ts

@@ -9,7 +9,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import { type SubmitHandler, useForm } from "react-hook-form"
-import { FaPlus } from "react-icons/fa"
+import { FiPlus } from "react-icons/fi"
 
 import { type ItemCreate, ItemsService } from "@/client"
 import type { ApiError } from "@/client/core/ApiError"
@@ -72,9 +72,15 @@ const AddItem = () => {
       onOpenChange={({ open }) => setIsOpen(open)}
     >
       <DialogTrigger asChild>
-        <Button value="add-item" my={4}>
-          <FaPlus fontSize="16px" />
-          Add Item
+        <Button
+          value="add-item"
+          my={4}
+          variant="ghost"
+          color="black"
+          border="1px solid"
+          borderColor="gray.200"
+        >
+          <FiPlus fontSize="16px" />
         </Button>
       </DialogTrigger>
       <DialogContent>
